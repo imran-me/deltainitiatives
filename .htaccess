@@ -1,0 +1,17 @@
+# Safety net for shared hosting.
+# Recommended: point the domain's document root at /public (see docs/DEPLOYMENT.md).
+# If the whole project is uploaded into public_html instead, this file sends every
+# request to /public and blocks direct access to application files (.env, storage, vendor…).
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Block hidden files (.env, .git) and application folders outright.
+    RewriteRule (^|/)\.(?!well-known/) - [F,L]
+    RewriteRule ^(app|bootstrap|config|database|modules|resources|routes|storage|tests|vendor|node_modules)(/|$) - [F,L]
+    RewriteRule ^(composer\.(json|lock)|package(-lock)?\.json|artisan|phpunit\.xml|vite\.config\.js|README\.md)$ - [F,L]
+
+    # Everything else is served from /public.
+    RewriteCond %{REQUEST_URI} !^/public/
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
