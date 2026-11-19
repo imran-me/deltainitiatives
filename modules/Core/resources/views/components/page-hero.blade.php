@@ -1,23 +1,20 @@
-{{-- Navy header for inner pages. --}}
+{{-- v3 editorial page head for server-rendered pages (forms, receipts, events, legal). --}}
 @props(['eyebrow' => null, 'title', 'intro' => null, 'bangla' => null])
-<section {{ $attributes->merge(['class' => 'on-dark relative isolate overflow-hidden bg-navy-900 pt-36 pb-20 text-white sm:pt-44 sm:pb-24']) }}>
-    <div class="absolute inset-0 -z-10 bg-[radial-gradient(60%_80%_at_80%_0%,rgb(31_162_166/0.16),transparent_70%)]"></div>
-    <x-delta-lines variant="page" class="-z-10 opacity-70" />
-    <div class="container-delta">
-        <div class="hero-enter max-w-3xl">
-            @if($eyebrow)
-                <p class="eyebrow">{{ $eyebrow }}</p>
-            @endif
-            <h1 class="mt-5 text-4xl font-semibold tracking-[-0.03em] text-balance sm:text-5xl lg:text-6xl lg:leading-[1.04]">{{ $title }}</h1>
-            @if($bangla)
-                <p class="font-bangla mt-4 text-lg text-river-300" lang="bn">{{ $bangla }}</p>
-            @endif
-            @if($intro)
-                <p class="mt-6 max-w-2xl text-lg leading-relaxed text-pretty text-white/70 sm:text-xl">{{ $intro }}</p>
-            @endif
-            @if(trim($slot))
-                <div class="mt-9 flex flex-wrap gap-3">{{ $slot }}</div>
-            @endif
-        </div>
-    </div>
+<section {{ $attributes->merge(['class' => 'phead']) }}>
+    <svg class="contours" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#E6F5F5" stroke-width="1.2">@for($i = 0; $i < 10; $i++)<path d="M-50 {{ 120 + $i * 70 }}C300 {{ 60 + $i * 70 }} 520 {{ 200 + $i * 64 }} 820 {{ 150 + $i * 66 }}S1300 {{ 90 + $i * 72 }} 1500 {{ 160 + $i * 70 }}"/>@endfor</g></svg>
+    <div class="wrap phead-in"><div>
+        @if($eyebrow)
+            <div class="eyebrow">{{ $eyebrow }}</div>
+        @endif
+        <h1>{{ $title }}</h1>
+        @if($bangla)
+            <p class="bn hero-bn" lang="bn">{{ $bangla }}</p>
+        @endif
+        @if($intro)
+            <p class="lead">{{ $intro }}</p>
+        @endif
+        @if(trim($slot))
+            <div class="phead-slot">{{ $slot }}</div>
+        @endif
+    </div></div>
 </section>

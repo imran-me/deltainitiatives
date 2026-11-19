@@ -101,6 +101,10 @@
         </div>
     </section>
 
+    {{-- v3: protection explained + public Idea Ledger (sample entries) with an in-browser fingerprint check --}}
+    @include('ideaportal::partials.v3-protection')
+    @include('ideaportal::partials.v3-ledger')
+
     {{-- The form --}}
     <section id="submit-form" class="scroll-mt-20 border-t border-navy-100 bg-[#f6f9fb] py-20 sm:py-28">
         <div class="container-delta grid gap-12 lg:grid-cols-12">

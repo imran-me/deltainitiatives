@@ -1,92 +1,60 @@
+{{-- v3 site footer: Delta Dispatch sign-up (real newsletter form), four link columns, legal links. --}}
 @php
     $socials = array_filter([
-        'linkedin' => ['LinkedIn', setting('social_linkedin')],
-        'facebook' => ['Facebook', setting('social_facebook')],
-        'x-brand' => ['X', setting('social_x')],
-        'youtube' => ['YouTube', setting('social_youtube')],
-        'instagram' => ['Instagram', setting('social_instagram')],
-    ], fn ($s) => filled($s[1]));
+        'LinkedIn' => setting('social_linkedin'),
+        'Facebook' => setting('social_facebook'),
+        'X' => setting('social_x'),
+        'YouTube' => setting('social_youtube'),
+        'Instagram' => setting('social_instagram'),
+    ]);
+    $areas = ['ai' => 'AI & Computing', 'hardware' => 'Hardware & Engineering', 'ventures' => 'Startups & Ventures', 'climate' => 'Nature & Climate', 'life' => 'Life Sciences & Health', 'governance' => 'Good Governance'];
 @endphp
-<footer class="on-dark relative isolate overflow-hidden bg-navy-950 text-white" aria-labelledby="footer-heading">
-    <h2 id="footer-heading" class="sr-only">Footer</h2>
-    <div class="bg-contours on-dark absolute inset-0 -z-10 opacity-60"></div>
-
-    @if($newsletter ?? true)
-        <div class="border-b border-white/10">
-            <div class="container-delta grid gap-8 py-14 lg:grid-cols-12 lg:items-center">
-                <div class="lg:col-span-5">
-                    <p class="eyebrow">{{ __('core::ui.footer.newsletter_eyebrow') }}</p>
-                    <p class="mt-3 text-2xl font-semibold tracking-tight">{{ __('core::ui.footer.newsletter_title') }}</p>
-                    <p class="mt-2 text-white/60">{{ __('core::ui.footer.newsletter_text') }}</p>
-                </div>
-                <div class="lg:col-span-6 lg:col-start-7">
-                    <x-newsletter::signup variant="dark" source="footer" />
-                </div>
-            </div>
+@if($newsletter ?? true)
+    <section class="news-band" aria-labelledby="dispatch-title"><div class="wrap news">
+        <div>
+            <div class="eyebrow">{{ __('core::ui.footer.newsletter_eyebrow') }}</div>
+            <h2 id="dispatch-title" data-bn="মাসে একটি ইমেইল। প্রমাণ, কোলাহল নয়।">One email a month. Evidence, not noise.</h2>
+            <p class="lead">{{ __('core::ui.footer.newsletter_text') }}</p>
         </div>
-    @endif
-
-    <div class="container-delta grid gap-12 py-16 lg:grid-cols-12">
-        <div class="lg:col-span-4">
-            <a href="{{ route('home') }}" class="inline-block rounded-lg" aria-label="{{ setting('site_name') }}"><x-logo /></a>
-            <p class="mt-6 max-w-sm text-sm leading-relaxed text-white/60">{{ setting('site_descriptor') }}. {{ __('core::ui.footer.blurb') }}</p>
-            <p class="mt-6 text-lg italic text-white/90">{{ setting('site_tagline') }}</p>
-            @if($socials)
-                <ul class="mt-6 flex gap-2" role="list">
-                    @foreach($socials as $icon => [$label, $url])
-                        <li>
-                            <a href="{{ $url }}" target="_blank" rel="noopener noreferrer" class="inline-flex size-10 items-center justify-center rounded-full ring-1 ring-white/15 transition hover:bg-white/10 hover:ring-white/30">
-                                <x-icon :name="$icon" class="size-4.5" />
-                                <span class="sr-only">{{ $label }}</span>
-                            </a>
-                        </li>
-                    @endforeach
-                </ul>
-            @endif
-        </div>
-
-        <nav class="grid gap-10 sm:grid-cols-3 lg:col-span-7 lg:col-start-6" aria-label="Footer">
-            <div>
-                <h3 class="text-xs font-semibold tracking-[0.2em] text-white/50 uppercase">{{ __('core::ui.footer.institute') }}</h3>
-                <ul class="mt-5 space-y-3 text-sm" role="list">
-                    <li><a class="text-white/80 hover:text-white" href="{{ route('about') }}">{{ __('core::ui.nav.about') }}</a></li>
-                    <li><a class="text-white/80 hover:text-white" href="{{ route('what-we-do') }}">{{ __('core::ui.nav.what_we_do') }}</a></li>
-                    <li><a class="text-white/80 hover:text-white" href="{{ route('programmes.index') }}">{{ __('core::ui.nav.programmes') }}</a></li>
-                    <li><a class="text-white/80 hover:text-white" href="{{ route('contact.create') }}">{{ __('core::ui.nav.contact') }}</a></li>
-                </ul>
-            </div>
-            <div>
-                <h3 class="text-xs font-semibold tracking-[0.2em] text-white/50 uppercase">{{ __('core::ui.footer.get_involved') }}</h3>
-                <ul class="mt-5 space-y-3 text-sm" role="list">
-                    <li><a class="text-white/80 hover:text-white" href="{{ localized_route('ideas.create') }}">{{ __('core::ui.nav.submit_idea') }}</a></li>
-                    <li><a class="text-white/80 hover:text-white" href="{{ route('partner.index') }}">{{ __('core::ui.nav.partner') }}</a></li>
-                    <li><a class="text-white/80 hover:text-white" href="{{ localized_route('join.create') }}">{{ __('core::ui.nav.join') }}</a></li>
-                    <li><a class="text-white/80 hover:text-white" href="{{ route('ideas.verify') }}">{{ __('core::ui.footer.verify') }}</a></li>
-                </ul>
-            </div>
-            <div>
-                <h3 class="text-xs font-semibold tracking-[0.2em] text-white/50 uppercase">{{ __('core::ui.footer.contact') }}</h3>
-                <ul class="mt-5 space-y-3 text-sm" role="list">
-                    <li><a class="break-all text-white/80 hover:text-white" href="mailto:{{ setting('contact_email') }}">{{ setting('contact_email') }}</a></li>
-                    <li><a class="break-all text-white/80 hover:text-white" href="mailto:{{ setting('ideas_email') }}">{{ setting('ideas_email') }}</a></li>
-                    <li><a class="break-all text-white/80 hover:text-white" href="mailto:{{ setting('partners_email') }}">{{ setting('partners_email') }}</a></li>
-                    @if($phone = setting('contact_phone'))
-                        <li><a class="text-white/80 hover:text-white" href="tel:{{ preg_replace('/[^0-9+]/', '', $phone) }}">{{ $phone }}</a></li>
-                    @endif
-                    <li class="text-white/60">{{ setting('contact_address') }}</li>
-                </ul>
-            </div>
-        </nav>
+        <div><x-newsletter::signup variant="light" source="footer" /></div>
+    </div></section>
+@endif
+<footer class="ftr"><div class="wrap"><div class="ftr-grid">
+    <div>
+        <a class="logo" href="{{ route('home') }}">
+            <svg width="38" height="38" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 4 37 35H3Z" fill="none" stroke="#0B1F3A" stroke-width="3" stroke-linejoin="round"/><path d="M20 14v21M20 22l-8 13M20 22l8 13" stroke="#1FA2A6" stroke-width="2.4" stroke-linecap="round"/><circle cx="20" cy="12" r="2.6" fill="#C9A227"/></svg>
+            <span><b>Delta Initiatives</b><small>Research · Innovation · Policy</small></span>
+        </a>
+        <p class="bn ftr-bn" lang="bn">আমরা আইডিয়া দিই না — আমরা আইডিয়াকে বাস্তবে রূপ দিই</p>
+        <p class="hint">An independent research, innovation and policy institute from the world’s largest delta.</p>
+        <p class="hint"><a href="mailto:{{ setting('contact_email') }}">{{ setting('contact_email') }}</a>@if($phone = setting('contact_phone')) · <a href="tel:{{ preg_replace('/[^0-9+]/', '', $phone) }}">{{ $phone }}</a>@endif</p>
+        @if($socials)
+            <p class="hint">@foreach($socials as $label => $url)<a href="{{ $url }}" target="_blank" rel="noopener noreferrer">{{ $label }}</a>@if(! $loop->last) · @endif @endforeach</p>
+        @endif
     </div>
-
-    <div class="border-t border-white/10">
-        <div class="container-delta flex flex-col gap-4 py-6 text-xs text-white/50 sm:flex-row sm:items-center sm:justify-between">
-            <p>© {{ now()->year }} {{ setting('site_name') }}. {{ __('core::ui.footer.rights') }}</p>
-            <ul class="flex flex-wrap gap-x-6 gap-y-2" role="list">
-                <li><a class="hover:text-white" href="{{ route('legal.show', 'privacy') }}">{{ __('core::ui.footer.privacy') }}</a></li>
-                <li><a class="hover:text-white" href="{{ route('legal.show', 'terms') }}">{{ __('core::ui.footer.terms') }}</a></li>
-                <li><a class="hover:text-white" href="{{ route('legal.show', 'contributor-agreement') }}">{{ __('core::ui.footer.agreement') }}</a></li>
-            </ul>
-        </div>
-    </div>
-</footer>
+    <div><h2 class="ftr-h">Research</h2><ul>
+        @foreach($areas as $key => $label)<li><a href="{{ route('research.'.$key) }}">{{ $label }}</a></li>@endforeach
+    </ul></div>
+    <div><h2 class="ftr-h">Institute</h2><ul>
+        <li><a href="{{ route('about') }}">{{ __('core::ui.nav.about') }}</a></li>
+        <li><a href="{{ route('initiatives.index') }}">Initiatives</a></li>
+        <li><a href="{{ route('insights.index') }}">Insights</a></li>
+        <li><a href="{{ route('impact') }}">Impact</a></li>
+        <li><a href="{{ route('initiators') }}">Initiators</a></li>
+        <li><a href="{{ route('programmes.index') }}">{{ __('core::ui.nav.programmes') }}</a></li>
+        <li><a href="{{ route('press') }}">Press kit</a></li>
+    </ul></div>
+    <div><h2 class="ftr-h">Work with us</h2><ul>
+        <li><a href="{{ localized_route('ideas.create') }}">{{ __('core::ui.nav.submit_idea') }}</a></li>
+        <li><a href="{{ route('ideas.verify') }}">{{ __('core::ui.footer.verify') }}</a></li>
+        <li><a href="{{ route('partner.index') }}">Briefing room</a></li>
+        <li><a href="{{ localized_route('join.create') }}">Fellowships</a></li>
+        <li><a href="{{ route('events.index') }}">Events</a></li>
+        <li><a href="{{ route('contact.create') }}">{{ __('core::ui.nav.contact') }}</a></li>
+    </ul></div>
+</div>
+<div class="ftr-bot">
+    <span>© {{ now()->year }} {{ setting('site_name', 'Delta Initiatives') }}. Figures are targets; items marked “Sample” are illustrative. We list no partner until an agreement is signed.</span>
+    <span><a href="{{ route('legal.show', 'privacy') }}">{{ __('core::ui.footer.privacy') }}</a> · <a href="{{ route('legal.show', 'terms') }}">{{ __('core::ui.footer.terms') }}</a> · <a href="{{ route('legal.show', 'contributor-agreement') }}">{{ __('core::ui.footer.agreement') }}</a></span>
+</div></div></footer>
+@include('core::partials.search')

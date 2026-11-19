@@ -72,7 +72,7 @@
     <link rel="apple-touch-icon" href="{{ asset('apple-touch-icon.png') }}">
 
     <script nonce="{{ \Illuminate\Support\Facades\Vite::cspNonce() }}">document.documentElement.classList.add('js')</script>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @vite(['resources/css/app.css', 'resources/css/site.css', 'resources/js/app.js', 'resources/js/site.js'])
 
     <script type="application/ld+json" nonce="{{ \Illuminate\Support\Facades\Vite::cspNonce() }}">{!! json_encode($organization, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_HEX_TAG) !!}</script>
     @if($jsonLd)
@@ -80,12 +80,12 @@
     @endif
     @stack('head')
 </head>
-<body class="min-h-screen bg-white">
-    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-navy-900 focus:shadow-lg">{{ __('core::ui.skip') }}</a>
+<body>
+    <a href="#main" class="skip">{{ __('core::ui.skip') }}</a>
 
     @include('core::partials.header', ['solid' => $solidHeader, 'alternates' => $alternates])
 
-    <main id="main" tabindex="-1" class="outline-none">
+    <main id="main" tabindex="-1">
         {{ $slot }}
     </main>
 

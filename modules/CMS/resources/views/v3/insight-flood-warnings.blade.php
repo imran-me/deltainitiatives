@@ -1,0 +1,20 @@
+{{-- Generated from the Delta v3 design (deltainitiatives-v3/_build.py). Edit there, then re-run port.py. --}}
+<x-layouts.public :title="'Who hears the warning? Flood alerts on the chars'" :description="'Warnings exist but often do not reach char families in time. Trust and language matter as much as technology. We test a low-cost sensor and SMS design.'">
+<div class="progress" aria-hidden="true"><i></i></div>
+<section class="phead art-head"><svg class="contours" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#E6F5F5" stroke-width="1.2"><path d="M-50 120C300 60 520 200 820 150S1300 90 1500 160"/><path d="M-50 190C300 130 520 264 820 216S1300 162 1500 230"/><path d="M-50 260C300 200 520 328 820 282S1300 234 1500 300"/><path d="M-50 330C300 270 520 392 820 348S1300 306 1500 370"/><path d="M-50 400C300 340 520 456 820 414S1300 378 1500 440"/><path d="M-50 470C300 410 520 520 820 480S1300 450 1500 510"/><path d="M-50 540C300 480 520 584 820 546S1300 522 1500 580"/><path d="M-50 610C300 550 520 648 820 612S1300 594 1500 650"/><path d="M-50 680C300 620 520 712 820 678S1300 666 1500 720"/><path d="M-50 750C300 690 520 776 820 744S1300 738 1500 790"/></g></svg><div class="wrap"><div class="article">
+<nav class="crumb" aria-label="Breadcrumb"><a href="{{ route('home') }}">Home</a> / <a href="{{ route('insights.index') }}">Insights</a> / Working paper</nav>
+<div class="eyebrow">Working paper · Nature & Climate <span class="sample">Sample</span></div><h1 class="art-h1" data-bn="সতর্কবার্তা কে শোনে? চরের বন্যা সতর্কতা">Who hears the warning? Flood alerts on the chars</h1>
+<div class="byline"><span class="av " aria-hidden="true">DN</span><span><b>Delta Initiatives · Nature & Climate</b><br>Forthcoming · Q2 2027 · 12 min read</span></div>
+<div class="btns art-tools"><button class="btn ghost" data-print>Print or save as PDF</button><a class="btn ghost" href="{{ route('insights.index') }}">All insights</a></div></div></div></section>
+<section class="sec"><div class="wrap"><article class="article">
+<div class="keyfind"><b>In three lines</b><ul><li>Warnings exist but often do not reach char families in time.</li><li>Trust and language matter as much as technology.</li><li>We test a low-cost sensor and SMS design.</li></ul><p class="sdgline">SDGs <span class="sdgt sdgc-13" title="SDG 13: Climate Action">13</span><span class="sdgt sdgc-11" title="SDG 11: Sustainable Cities">11</span></p></div>
+<p class="note">Sample article: it shows how a Delta publication reads. It contains no survey results or statistics of our own yet.</p>
+
+<h2>The last mile of a warning</h2><p>Flood forecasting in Bangladesh has improved a great deal. But a forecast is only useful if it reaches the person who has to move their family, livestock and seed stock, and if they trust it enough to act. On the chars, the shifting river islands of the Jamuna and Brahmaputra, that last mile is the hardest part.</p>
+<p>Char families are often far from official river gauges, may not have reliable internet, and hear warnings that use place names and water levels that do not match what they see on their own island.</p>
+<blockquote>A warning that arrives on time, in the wrong words, is still a warning that arrives too late.</blockquote>
+<h2>A low-cost design to test</h2><p>This working paper sets out a design that young engineers on the Delta pipeline have proposed: small solar-powered water-level sensors placed near the community, a low-power radio mesh between them, and short Bangla SMS alerts that refer to local landmarks. The design aims to work without smartphones or mobile data.</p>
+<h2>What we will measure</h2><p>The field test will ask three questions: how much earlier a family receives a local warning, whether they understand and trust it, and what it costs to install and maintain per village. We will publish the method before the results, and the results whatever they show.</p>
+<div class="art-end"><a class="btn pri" href="{{ route('partner.index') }}#multilateral">Discuss a field partnership</a></div>
+</article></div></section>
+</x-layouts.public>

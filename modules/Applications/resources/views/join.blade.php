@@ -98,6 +98,9 @@
         </div>
     </section>
 
+    {{-- v3: the fellowship in five stages + FAQ --}}
+    @include('applications::partials.v3-fellowship')
+
     {{-- Application form --}}
     <section id="apply" class="scroll-mt-20 py-20 sm:py-28" aria-labelledby="apply-title">
         <div class="container-delta grid gap-12 lg:grid-cols-12">

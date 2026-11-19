@@ -1,235 +1,70 @@
-@php
-    $hero = block('home.hero');
-    $story = block('home.story');
-    $headline = $hero->title ?: setting('site_tagline');
-    $endsWithDot = str_ends_with($headline, '.');
-@endphp
-<x-layouts.public :newsletter="false">
+{{-- Generated from the Delta v3 design (deltainitiatives-v3/_build.py). Edit there, then re-run port.py. --}}
+<x-layouts.public :title="null" :description="'Delta Initiatives is a research, innovation and policy institute from Bangladesh. We protect, develop and validate ideas from young innovators and bring them to the people who can implement them.'">
+<section class="manifesto"><svg class="contours" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#E6F5F5" stroke-width="1.2"><path d="M-50 120C300 60 520 200 820 150S1300 90 1500 160"/><path d="M-50 190C300 130 520 264 820 216S1300 162 1500 230"/><path d="M-50 260C300 200 520 328 820 282S1300 234 1500 300"/><path d="M-50 330C300 270 520 392 820 348S1300 306 1500 370"/><path d="M-50 400C300 340 520 456 820 414S1300 378 1500 440"/><path d="M-50 470C300 410 520 520 820 480S1300 450 1500 510"/><path d="M-50 540C300 480 520 584 820 546S1300 522 1500 580"/><path d="M-50 610C300 550 520 648 820 612S1300 594 1500 650"/><path d="M-50 680C300 620 520 712 820 678S1300 666 1500 720"/><path d="M-50 750C300 690 520 776 820 744S1300 738 1500 790"/></g></svg><div class="wrap hero2">
+<div class="hero-copy"><div class="eyebrow">Research · Innovation · Policy Institute</div>
+<h1 class="" data-bn="ব-দ্বীপ থেকে এমন সমাধান, যা বিশ্ব বাস্তবায়ন করতে পারে।">From the delta, <em>solutions</em> the world can implement.</h1>
+<p class="bn hero-bn">আমরা আইডিয়া দিই না — আমরা আইডিয়াকে বাস্তবে রূপ দিই</p>
+<p class="lead">Bangladesh’s young researchers and engineers already build answers to hard problems. We give them an institution, protect every idea on a public ledger, prove what works, and carry the evidence to the people who can implement it.</p>
+<div class="btns"><a class="btn pri" href="{{ route('ideas.create') }}#submit-form">Submit an idea</a><a class="btn ghost" href="{{ route('partner.index') }}">Book a briefing</a></div></div>
+<div class="map-box"><div class="map-cap"><span class="kicker">The Living Delta Map</span><span class="kicker">Select a hotspot</span></div><svg class="dmap" viewBox="0 0 600 660" role="img" aria-labelledby="dmap-t"><title id="dmap-t">Line-art map of the Ganges–Brahmaputra–Meghna delta with six problem hotspots</title>
+<g fill="none" stroke-linecap="round"><path d="M300 0C300 70 288 130 292 200S300 300 300 330" stroke="#E6F5F5" stroke-width="17"/><path d="M40 170C110 190 180 230 230 270S280 320 300 330" stroke="#E6F5F5" stroke-width="16"/><path d="M560 90C520 160 470 210 430 270S380 360 365 420" stroke="#E6F5F5" stroke-width="15"/><path d="M300 330C320 360 345 390 365 420S350 520 340 590" stroke="#E6F5F5" stroke-width="18"/><path d="M250 300C230 380 205 440 190 500S175 560 170 600" stroke="#E6F5F5" stroke-width="13"/><path d="M262 330C250 410 248 480 250 600" stroke="#E6F5F5" stroke-width="12.5"/><path d="M282 350C285 430 300 500 300 600" stroke="#E6F5F5" stroke-width="12.5"/><path d="M210 420C170 470 130 520 110 600" stroke="#E6F5F5" stroke-width="12"/><path d="M380 470C420 520 440 560 450 600" stroke="#E6F5F5" stroke-width="12.5"/></g><g class="rivers" fill="none" stroke-linecap="round"><path class="river" pathLength="1" d="M300 0C300 70 288 130 292 200S300 300 300 330" stroke-width="2.7"/><path class="river" pathLength="1" d="M40 170C110 190 180 230 230 270S280 320 300 330" stroke-width="2.3"/><path class="river" pathLength="1" d="M560 90C520 160 470 210 430 270S380 360 365 420" stroke-width="1.9"/><path class="river" pathLength="1" d="M300 330C320 360 345 390 365 420S350 520 340 590" stroke-width="3.1"/><path class="river" pathLength="1" d="M250 300C230 380 205 440 190 500S175 560 170 600" stroke-width="1.4"/><path class="river" pathLength="1" d="M262 330C250 410 248 480 250 600" stroke-width="1.4"/><path class="river" pathLength="1" d="M282 350C285 430 300 500 300 600" stroke-width="1.4"/><path class="river" pathLength="1" d="M210 420C170 470 130 520 110 600" stroke-width="1.4"/><path class="river" pathLength="1" d="M380 470C420 520 440 560 450 600" stroke-width="1.4"/></g><path class="coast" d="M0 600C60 585 100 610 150 596S230 612 270 600 340 616 380 602 470 612 520 596 600 604 600 604" fill="none" stroke="#0B1F3A" stroke-width="1" stroke-dasharray="2 5"/>
+<text class="sea" x="300" y="640" text-anchor="middle">BAY OF BENGAL</text>
+<text class="rn" x="306" y="60">Jamuna</text><text class="rn" x="70" y="160">Padma</text><text class="rn" x="500" y="120">Meghna</text><a class="hot" href="{{ route('research.climate') }}" data-area="climate" aria-label="Salinity & cyclones, South-west coast: open Nature & Climate"><circle class="halo" cx="176" cy="528" r="16"/><circle class="pt" cx="176" cy="528" r="6"/><text class="pn" x="176" y="534" text-anchor="middle" aria-hidden="true">1</text><text class="lb" x="190" y="524" text-anchor="start">Salinity & cyclones</text><text class="pl" x="190" y="539" text-anchor="start">South-west coast</text></a><a class="hot" href="{{ route('research.life') }}" data-area="life" aria-label="Safe water & health, Central plains: open Life Sciences & Health"><circle class="halo" cx="236" cy="318" r="16"/><circle class="pt" cx="236" cy="318" r="6"/><text class="pn" x="236" y="324" text-anchor="middle" aria-hidden="true">2</text><text class="lb" x="250" y="314" text-anchor="start">Safe water & health</text><text class="pl" x="250" y="329" text-anchor="start">Central plains</text></a><a class="hot" href="{{ route('research.governance') }}" data-area="governance" aria-label="Local service delivery, North-west: open Good Governance"><circle class="halo" cx="120" cy="214" r="16"/><circle class="pt" cx="120" cy="214" r="6"/><text class="pn" x="120" y="220" text-anchor="middle" aria-hidden="true">3</text><text class="lb" x="134" y="210" text-anchor="start">Local service delivery</text><text class="pl" x="134" y="225" text-anchor="start">North-west</text></a><a class="hot" href="{{ route('research.ai') }}" data-area="ai" aria-label="Bangla language AI, Dhaka: open AI & Computing"><circle class="halo" cx="352" cy="342" r="16"/><circle class="pt" cx="352" cy="342" r="6"/><text class="pn" x="352" y="348" text-anchor="middle" aria-hidden="true">4</text><text class="lb" x="366" y="338" text-anchor="start">Bangla language AI</text><text class="pl" x="366" y="353" text-anchor="start">Dhaka</text></a><a class="hot" href="{{ route('research.hardware') }}" data-area="hardware" aria-label="Off-grid energy, Coastal islands: open Hardware & Engineering"><circle class="halo" cx="392" cy="520" r="16"/><circle class="pt" cx="392" cy="520" r="6"/><text class="pn" x="392" y="526" text-anchor="middle" aria-hidden="true">5</text><text class="lb" x="406" y="516" text-anchor="start">Off-grid energy</text><text class="pl" x="406" y="531" text-anchor="start">Coastal islands</text></a><a class="hot" href="{{ route('research.ventures') }}" data-area="ventures" aria-label="Ports & logistics, Chattogram: open Startups & Ventures"><circle class="halo" cx="500" cy="470" r="16"/><circle class="pt" cx="500" cy="470" r="6"/><text class="pn" x="500" y="476" text-anchor="middle" aria-hidden="true">6</text><text class="lb" x="486" y="466" text-anchor="end">Ports & logistics</text><text class="pl" x="486" y="481" text-anchor="end">Chattogram</text></a></svg><div class="legend"><a href="{{ route('research.climate') }}" data-area="climate"><i>1</i><span>Salinity & cyclones<small>South-west coast</small></span></a><a href="{{ route('research.life') }}" data-area="life"><i>2</i><span>Safe water & health<small>Central plains</small></span></a><a href="{{ route('research.governance') }}" data-area="governance"><i>3</i><span>Local service delivery<small>North-west</small></span></a><a href="{{ route('research.ai') }}" data-area="ai"><i>4</i><span>Bangla language AI<small>Dhaka</small></span></a><a href="{{ route('research.hardware') }}" data-area="hardware"><i>5</i><span>Off-grid energy<small>Coastal islands</small></span></a><a href="{{ route('research.ventures') }}" data-area="ventures"><i>6</i><span>Ports & logistics<small>Chattogram</small></span></a></div></div>
+</div></section>
 
-    {{-- 1 · Hero --}}
-    <section class="on-dark relative isolate overflow-hidden bg-navy-900 text-white" aria-labelledby="hero-title">
-        <div class="absolute inset-0 -z-10 bg-[radial-gradient(55%_70%_at_78%_8%,rgb(31_162_166/0.20),transparent_70%)]"></div>
-        <div class="bg-contours on-dark absolute inset-0 -z-10 opacity-40 [mask-image:linear-gradient(to_bottom,black,transparent_75%)]"></div>
-        <x-delta-lines class="-z-10" />
+<section class="sec"><div class="wrap"><div class="eyebrow">The mandate</div>
+<div class="mandate"><div class="rv"><b>01 · Identity</b><p>Give every serious young innovator an institution behind their name.</p></div>
+<div class="rv"><b>02 · Evidence</b><p>Develop and validate ideas until they hold up in the field.</p></div>
+<div class="rv"><b>03 · Implementation</b><p>Take what works to the government, multilaterals and industry partners who can scale it.</p></div></div></div></section>
 
-        <div class="container-delta flex min-h-[94svh] flex-col justify-end pt-36 pb-14 sm:pb-20">
-            <div class="hero-enter max-w-4xl">
-                <p class="eyebrow">{{ $hero->eyebrow ?: setting('site_descriptor') }}</p>
-                <h1 id="hero-title" class="mt-6 text-display font-semibold">
-                    @if($endsWithDot){{ \Illuminate\Support\Str::beforeLast($headline, '.') }}<span class="text-river-400">.</span>@else{{ $headline }}@endif
-                </h1>
-                <div class="mt-8 max-w-2xl text-lg leading-relaxed text-pretty text-white/75 sm:text-xl [&_p]:m-0">{{ markdown($hero->body) }}</div>
-                <div class="mt-10 flex flex-wrap gap-3">
-                    <x-button :href="localized_route('ideas.create')" size="lg" icon="arrow-right">{{ __('core::ui.nav.submit_idea') }}</x-button>
-                    <x-button :href="route('partner.index')" size="lg" variant="outline-light">{{ __('core::ui.nav.partner') }}</x-button>
-                </div>
-            </div>
+<section class="sec navy why"><div class="wrap"><div class="sec-head"><div><div class="eyebrow">Why Bangladesh, why now</div><h2 class="" data-bn="ভবিষ্যৎ সবার আগে আসে ব-দ্বীপে।">The delta is where the future <em>arrives first</em>.</h2></div>
+<p class="lead">Climate, digital government and a young population are meeting here faster than almost anywhere. Solutions proven in the delta will travel.</p></div>
+<div class="why-grid"><div class="rv"><b>170M+</b><h3>people</h3><p>One of the most densely populated countries on earth, with a median age under 30. Talent is not the constraint.</p></div>
+<div class="rv"><b>No. 1</b><h3>largest river delta</h3><p>The Ganges–Brahmaputra–Meghna delta faces floods, salinity and cyclones that much of the world will meet later.</p></div>
+<div class="rv"><b>2041</b><h3>Smart Bangladesh</h3><p>A national vision for digital government and a knowledge economy creates real demand for tested, local solutions.</p></div>
+<div class="rv"><b>0</b><h3>front doors</h3><p>Today there is no formal route from a student’s prototype to a ministry’s pilot. That is the gap we are built to close.</p></div></div>
+<p class="note note-dark">Population and age figures are rounded national estimates; the last card describes the gap we exist to address.</p></div></section>
 
-            {{-- What every submission receives — the Idea Portal's promise, at a glance --}}
-            <ul role="list" class="hero-enter mt-16 grid overflow-hidden rounded-2xl bg-white/[0.04] ring-1 ring-white/10 backdrop-blur-sm sm:mt-20 sm:grid-cols-3">
-                @foreach([
-                    ['hash', 'A unique Idea ID', 'DI-'.now()->year.'-0001'],
-                    ['clock', 'A precise timestamp', now()->setTimezone('Asia/Dhaka')->format('j M Y · H:i:s').' BST'],
-                    ['fingerprint', 'A SHA-256 fingerprint', '9f2c 41d7 … e0b3 a41e'],
-                ] as [$icon, $label, $sample])
-                    <li class="flex items-center gap-4 border-white/10 px-6 py-5 max-sm:border-b max-sm:last:border-b-0 sm:border-r sm:last:border-r-0">
-                        <span class="inline-flex size-10 shrink-0 items-center justify-center rounded-xl bg-river-500/15 text-river-400 ring-1 ring-river-400/25"><x-icon :name="$icon" class="size-5" /></span>
-                        <div class="min-w-0">
-                            <p class="text-sm text-white/60">{{ $label }}</p>
-                            <p class="mt-0.5 truncate font-mono text-sm text-white/90">{{ $sample }}</p>
-                        </div>
-                    </li>
-                @endforeach
-            </ul>
-            <p class="mt-4 text-sm text-white/50">Every idea submitted through the Idea Portal is recorded, receipted and kept confidential. <span class="text-white/80">Your idea stays yours.</span></p>
-        </div>
-    </section>
+<section class="sec soft"><div class="wrap"><div class="sec-head"><div><div class="eyebrow">Research</div><h2 class="" data-bn="ছয়টি ক্ষেত্র। একটি ব-দ্বীপ।">Six areas. One <em>delta</em>.</h2></div>
+<p class="lead">Each area starts from a problem people in Bangladesh live with, and asks what it would take to solve it at national scale.</p></div><div class="areas"><a class="area rv" id="ai" href="{{ route('research.ai') }}"><span class="num">01 / 06</span><h3 data-bn="এআই ও কম্পিউটিং">AI & Computing</h3><p>Bangla language technology, public-sector AI and the compute a developing country needs to build its own models.</p><span class="go">Explore the area →</span></a><a class="area rv" id="hardware" href="{{ route('research.hardware') }}"><span class="num">02 / 06</span><h3 data-bn="হার্ডওয়্যার ও প্রকৌশল">Hardware & Engineering</h3><p>Sensors, devices and low-cost machines engineered for heat, humidity, floods and unreliable power.</p><span class="go">Explore the area →</span></a><a class="area rv" id="ventures" href="{{ route('research.ventures') }}"><span class="num">03 / 06</span><h3 data-bn="স্টার্টআপ ও উদ্যোগ">Startups & Ventures</h3><p>Turning validated research into companies that can sustain themselves and employ the next generation.</p><span class="go">Explore the area →</span></a><a class="area rv" id="climate" href="{{ route('research.climate') }}"><span class="num">04 / 06</span><h3 data-bn="প্রকৃতি ও জলবায়ু">Nature & Climate</h3><p>Floods, salinity, cyclones and river erosion: adaptation designed by the people who live with them.</p><span class="go">Explore the area →</span></a><a class="area rv" id="life" href="{{ route('research.life') }}"><span class="num">05 / 06</span><h3 data-bn="জীবনবিজ্ঞান ও স্বাস্থ্য">Life Sciences & Health</h3><p>Diagnostics, water safety and public-health research that works at a union health centre.</p><span class="go">Explore the area →</span></a><a class="area rv" id="governance" href="{{ route('research.governance') }}"><span class="num">06 / 06</span><h3 data-bn="সুশাসন">Good Governance</h3><p>Evidence, civic technology and transparency tools that help institutions serve citizens better.</p><span class="go">Explore the area →</span></a></div></div></section>
 
-    {{-- 2 · The story --}}
-    <section class="relative py-24 sm:py-32" aria-labelledby="story-title">
-        <div class="container-delta grid gap-12 lg:grid-cols-12 lg:gap-16">
-            <div class="lg:col-span-4" data-reveal>
-                <p class="eyebrow">{{ $story->eyebrow ?: 'Our name' }}</p>
-                <div class="mt-8 hidden select-none lg:block" aria-hidden="true">
-                    <x-delta-mark class="h-40 w-auto text-navy-900" lines="#0B1F3A" />
-                </div>
-            </div>
-            <div class="lg:col-span-8">
-                <h2 id="story-title" class="text-3xl leading-tight font-semibold tracking-[-0.03em] text-balance text-navy-900 sm:text-4xl lg:text-[3.25rem] lg:leading-[1.08]" data-reveal>{{ $story->title }}</h2>
-                <div class="prose-delta mt-8 max-w-2xl" data-reveal style="--delay:.1s">{{ markdown($story->body) }}</div>
-                <div class="mt-10 grid gap-4 sm:grid-cols-2" data-reveal style="--delay:.2s">
-                    <div class="rounded-2xl bg-river-50 p-6 ring-1 ring-river-100">
-                        <p class="font-mono text-3xl text-river-700">Δ</p>
-                        <p class="mt-3 text-sm font-semibold tracking-wide text-navy-900 uppercase">In science</p>
-                        <p class="mt-1 text-navy-600">The symbol for change — the difference between where things are and where they could be.</p>
-                    </div>
-                    <div class="rounded-2xl bg-navy-900 p-6 text-white">
-                        <x-icon name="waves" class="size-8 text-river-400" />
-                        <p class="mt-3 text-sm font-semibold tracking-wide uppercase">In geography</p>
-                        <p class="mt-1 text-white/70">The Ganges–Brahmaputra–Meghna delta — the restless, fertile land Bangladesh is built on.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<section class="sec"><div class="wrap"><div class="sec-head"><div><div class="eyebrow">Flagship initiatives</div><h2 class="" data-bn="লক্ষ্যসহ ল্যাব।">Labs with a <em>finish line</em>.</h2></div>
+<p class="lead">Every initiative shows where its flagship project stands on our five-stage method. Nothing is hidden behind a press release.</p></div><div class="rows"><article class="irow rv"><span class="n">01</span><div><h3 data-bn="জলবায়ু ল্যাব"><a class="irow-a" href="{{ route('initiatives.climate-lab') }}">Delta Climate Lab</a></h3><p class="kicker">Nature & Climate</p></div>
+<div><p>Community-led adaptation research for floods, salinity and river erosion, with field sites on chars and the coast.</p><p class="proj"><b>Flagship project</b> Flood-warning sensor mesh for char villages <span class="sample">Sample</span></p><ol class="rail sm" aria-label="Stage: Validate (3 of 5)"><li class="on"><span>Discover</span></li><li class="on"><span>Develop</span></li><li class="cur"><span>Validate</span></li><li class=""><span>Brief</span></li><li class=""><span>Implement</span></li></ol></div><div class="st"><span class="sdgt sdgc-13" title="SDG 13: Climate Action">13</span><span class="sdgt sdgc-11" title="SDG 11: Sustainable Cities">11</span><span class="sdgt sdgc-6" title="SDG 6: Clean Water">6</span></div></article><article class="irow rv"><span class="n">02</span><div><h3 data-bn="গভটেক ল্যাব"><a class="irow-a" href="{{ route('initiatives.govtech-lab') }}">GovTech Lab</a></h3><p class="kicker">Good Governance</p></div>
+<div><p>Designing and testing digital public services with ministries and local government, in the open.</p><p class="proj"><b>Flagship project</b> Open tracker for school stipends <span class="sample">Sample</span></p><ol class="rail sm" aria-label="Stage: Brief (4 of 5)"><li class="on"><span>Discover</span></li><li class="on"><span>Develop</span></li><li class="on"><span>Validate</span></li><li class="cur"><span>Brief</span></li><li class=""><span>Implement</span></li></ol></div><div class="st"><span class="sdgt sdgc-16" title="SDG 16: Strong Institutions">16</span><span class="sdgt sdgc-4" title="SDG 4: Quality Education">4</span></div></article><article class="irow rv"><span class="n">03</span><div><h3 data-bn="বাংলা এআই ল্যাব"><a class="irow-a" href="{{ route('initiatives.bangla-ai-lab') }}">AI for Bangla Lab</a></h3><p class="kicker">AI & Computing</p></div>
+<div><p>Speech, text and vision models for Bangla, built on open data and evaluated for fairness.</p><p class="proj"><b>Flagship project</b> Voice assistant for union parishad services <span class="sample">Sample</span></p><ol class="rail sm" aria-label="Stage: Develop (2 of 5)"><li class="on"><span>Discover</span></li><li class="cur"><span>Develop</span></li><li class=""><span>Validate</span></li><li class=""><span>Brief</span></li><li class=""><span>Implement</span></li></ol></div><div class="st"><span class="sdgt sdgc-9" title="SDG 9: Industry & Innovation">9</span><span class="sdgt sdgc-16" title="SDG 16: Strong Institutions">16</span></div></article></div>
+<p class="more"><a href="{{ route('initiatives.index') }}">All five initiatives →</a></p></div></section>
 
-    {{-- 3 · Three arms --}}
-    @if($arms->isNotEmpty())
-        <section class="bg-mist py-24 sm:py-32" aria-labelledby="arms-title">
-            <div class="container-delta">
-                <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-                    <x-section-heading eyebrow="What we do" title="Three arms, one purpose" intro="Research that is built, tested and carried into policy — so good ideas do not stop at the idea stage." id="arms-title" />
-                    <x-button :href="route('what-we-do')" variant="outline" icon="arrow-right" class="self-start lg:self-auto" data-reveal>How we work</x-button>
-                </div>
-                <div class="mt-14 grid gap-5 md:grid-cols-3">
-                    @foreach($arms as $arm)
-                        <a href="{{ route('what-we-do') }}#{{ $arm->slug }}" class="card-delta group flex flex-col p-7 sm:p-8" data-reveal style="--delay: {{ $loop->index * 0.08 }}s">
-                            <span class="inline-flex size-12 items-center justify-center rounded-2xl bg-navy-900 text-river-400"><x-icon :name="$arm->icon" class="size-6" /></span>
-                            <p class="mt-7 text-xs font-semibold tracking-[0.18em] text-river-700 uppercase">{{ $arm->tagline }}</p>
-                            <h3 class="mt-2 text-2xl font-semibold tracking-tight text-navy-900">{{ $arm->name }}</h3>
-                            <p class="mt-3 flex-1 leading-relaxed text-navy-600">{{ $arm->summary }}</p>
-                            <span class="mt-7 inline-flex items-center gap-1.5 text-sm font-semibold text-navy-900">
-                                Explore {{ $arm->name }}
-                                <x-icon name="arrow-right" class="size-4 text-river-600 transition-transform duration-300 group-hover:translate-x-1" />
-                            </span>
-                        </a>
-                    @endforeach
-                </div>
-            </div>
-        </section>
-    @endif
+<section class="sec soft"><div class="wrap"><div class="sec-head"><div><div class="eyebrow">Insights</div><h2 class="" data-bn="তিন লাইনে পড়ুন, অথবা পুরোটা।">Read it in three lines. Or read it all.</h2></div>
+<p class="lead">Policy briefs, reports and working papers on our research agenda. Each one opens with its argument in three lines.</p></div>
+<div class="insights"><a class="ins rv lead-ins" href="{{ route('insights.adoption-pathway') }}" data-item data-type="brief" data-area="governance" data-sdg="16 17">
+<div class="cover"><svg viewBox="0 0 480 270" aria-hidden="true" preserveAspectRatio="xMidYMid slice"><rect width="480" height="270" fill="#F2FAFA"/><g fill="none" stroke="#1FA2A6" stroke-width="1.2" opacity=".55"><path d="M0 33C80 19.0 160 54.0 240 33S400 12.0 480 33"/><path d="M0 62C80 31.666666666666668 160 107.5 240 62S400 16.5 480 62"/><path d="M0 75C80 47.33333333333333 160 116.5 240 75S400 33.5 480 75"/><path d="M0 105C80 80.0 160 142.5 240 105S400 67.5 480 105"/><path d="M0 125C80 93.66666666666667 160 172.0 240 125S400 78.0 480 125"/><path d="M0 140C80 114.0 160 179.0 240 140S400 101.0 480 140"/><path d="M0 164C80 148.0 160 188.0 240 164S400 140.0 480 164"/></g><circle cx="129" cy="165" r="7" fill="#C9A227"/><text x="24" y="246" font-family="Inter,sans-serif" font-size="13" font-weight="600" fill="#0B1F3A" letter-spacing="2">GOOD GOVERNANCE</text></svg></div><span class="type">Policy brief</span> <span class="tag">Forthcoming · Q1 2027</span>
+<h3>From student project to public service: a fair adoption pathway</h3><ul class="three"><li>Young innovators lack a route to government.</li><li>A transparent intake and credit rule would fix most of it.</li><li>We propose a five-step pathway ministries can adopt.</li></ul><p class="meta-line">Good Governance · 6 min read</p></a><a class="ins rv" href="{{ route('insights.bangla-ai-readiness') }}" data-item data-type="report" data-area="ai" data-sdg="9 4">
+<div class="cover"><svg viewBox="0 0 480 270" aria-hidden="true" preserveAspectRatio="xMidYMid slice"><rect width="480" height="270" fill="#F2FAFA"/><g fill="none" stroke="#1FA2A6" stroke-width="1.2" opacity=".55"><path d="M0 35C80 18.0 160 60.5 240 35S400 9.5 480 35"/><path d="M0 60C80 40.33333333333333 160 89.5 240 60S400 30.5 480 60"/><path d="M0 76C80 49.66666666666667 160 115.5 240 76S400 36.5 480 76"/><path d="M0 106C80 92.33333333333333 160 126.5 240 106S400 85.5 480 106"/><path d="M0 120C80 91.33333333333333 160 163.0 240 120S400 77.0 480 120"/><path d="M0 140C80 112.66666666666667 160 181.0 240 140S400 99.0 480 140"/><path d="M0 171C80 146.66666666666666 160 207.5 240 171S400 134.5 480 171"/></g><circle cx="298" cy="136" r="7" fill="#C9A227"/><text x="24" y="246" font-family="Inter,sans-serif" font-size="13" font-weight="600" fill="#0B1F3A" letter-spacing="2">AI & COMPUTING</text></svg></div><span class="type">Report</span> <span class="tag">Forthcoming · Q1 2027</span>
+<h3>Bangla AI readiness: data, compute and people</h3><ul class="three"><li>Bangla is spoken by hundreds of millions but under-served by AI.</li><li>The bottleneck is open data, not talent.</li><li>We map what a national effort would need.</li></ul><p class="meta-line">AI & Computing · 18 min read</p></a><a class="ins rv" href="{{ route('insights.idea-ledger') }}" data-item data-type="explainer" data-area="governance" data-sdg="9 16">
+<div class="cover"><svg viewBox="0 0 480 270" aria-hidden="true" preserveAspectRatio="xMidYMid slice"><rect width="480" height="270" fill="#F2FAFA"/><g fill="none" stroke="#1FA2A6" stroke-width="1.2" opacity=".55"><path d="M0 39C80 10.333333333333332 160 82.0 240 39S400 -4.0 480 39"/><path d="M0 55C80 31.0 160 91.0 240 55S400 19.0 480 55"/><path d="M0 81C80 64.0 160 106.5 240 81S400 55.5 480 81"/><path d="M0 97C80 78.66666666666667 160 124.5 240 97S400 69.5 480 97"/><path d="M0 126C80 98.0 160 168.0 240 126S400 84.0 480 126"/><path d="M0 143C80 129.66666666666666 160 163.0 240 143S400 123.0 480 143"/><path d="M0 170C80 155.0 160 192.5 240 170S400 147.5 480 170"/></g><circle cx="205" cy="154" r="7" fill="#C9A227"/><text x="24" y="246" font-family="Inter,sans-serif" font-size="13" font-weight="600" fill="#0B1F3A" letter-spacing="2">GOOD GOVERNANCE</text></svg></div><span class="type">Explainer</span> <span class="tag gold">Published · 2026</span>
+<h3>How the Idea Ledger protects an idea</h3><ul class="three"><li>Every idea gets an ID, a timestamp and a fingerprint.</li><li>Anyone can verify the record later.</li><li>It is proof of priority, not a patent.</li></ul><p class="meta-line">Good Governance · 4 min read</p></a></div><p class="more"><a href="{{ route('insights.index') }}">The full library →</a></p></div></section>
 
-    {{-- 4 · Idea-to-Impact pipeline --}}
-    @if($steps->isNotEmpty())
-        <section class="py-24 sm:py-32" aria-labelledby="pipeline-title">
-            <div class="container-delta">
-                <x-section-heading eyebrow="Idea to impact" title="From first draft to real-world change, in six steps" intro="A clear, published path — so every contributor knows what happens to their idea and when." align="center" id="pipeline-title" />
+<section class="sec navy"><div class="wrap"><div class="sec-head"><div><div class="eyebrow">The method</div><h2 class="" data-bn="অনুসন্ধান, উন্নয়ন, যাচাই, ব্রিফ, বাস্তবায়ন।">Discover. Develop. Validate. Brief. <em>Implement</em>.</h2></div>
+<p class="lead">Like a river delta, one idea can branch into many outcomes: a policy, a pilot, a product or a company.</p></div><div class="method"><div class="rv"><span class="k">01</span><h3>Discover</h3><span class="bn">অনুসন্ধান</span><p>We scout campuses, open calls and the Idea Portal for people already solving real problems.</p></div><div class="rv"><span class="k">02</span><h3>Develop</h3><span class="bn">উন্নয়ন</span><p>Mentors, labs and sprints turn a raw idea into a working prototype with a clear owner.</p></div><div class="rv"><span class="k">03</span><h3>Validate</h3><span class="bn">যাচাই</span><p>Field tests, peer review and data show whether it works, for whom and at what cost.</p></div><div class="rv"><span class="k">04</span><h3>Brief</h3><span class="bn">ব্রিফ</span><p>We write policy-grade briefs and put the evidence in front of the people who decide.</p></div><div class="rv"><span class="k">05</span><h3>Implement</h3><span class="bn">বাস্তবায়ন</span><p>Partners pilot, adopt and scale. The innovator keeps the credit and a fair stake.</p></div></div></div></section>
 
-                <ol class="relative mt-16 grid gap-10 md:grid-cols-3 md:gap-x-8 md:gap-y-14 xl:grid-cols-6 xl:gap-6" data-reveal role="list">
-                    {{-- Connector line (desktop) --}}
-                    <div class="pipeline-line absolute top-6 right-[8%] left-[8%] hidden h-px bg-gradient-to-r from-river-200 via-river-500 to-river-200 xl:block" aria-hidden="true"></div>
-                    @foreach($steps as $step)
-                        <li class="relative flex gap-5 xl:flex-col xl:gap-0">
-                            @unless($loop->last)
-                                <span class="absolute top-12 bottom-[-2.5rem] left-6 w-px bg-river-200 md:hidden" aria-hidden="true"></span>
-                            @endunless
-                            <span class="relative z-10 inline-flex size-12 shrink-0 items-center justify-center rounded-full bg-white text-river-700 shadow-[0_0_0_6px_white] ring-1 ring-river-200 xl:mx-0">
-                                <x-icon :name="$step->icon" class="size-5" />
-                            </span>
-                            <div class="xl:mt-6">
-                                <p class="font-mono text-xs font-medium text-river-700">{{ str_pad((string) $loop->iteration, 2, '0', STR_PAD_LEFT) }}</p>
-                                <h3 class="mt-1 text-lg font-semibold text-navy-900">{{ $step->title }}</h3>
-                                <p class="mt-2 text-[0.9375rem] leading-relaxed text-navy-500">{{ $step->summary }}</p>
-                            </div>
-                        </li>
-                    @endforeach
-                </ol>
+<section class="sec"><div class="wrap"><div class="portal rv"><div><div class="eyebrow">Idea Portal</div><h2 class="" data-bn="পাঠানোর সঙ্গে সঙ্গেই তোমার আইডিয়া রেকর্ডে।">Your idea is on the record the moment you send it.</h2>
+<p class="lead">Every submission receives an ID, a timestamp and a SHA-256 fingerprint, published on a public ledger. Anyone can check later that the idea was yours, on that date, in that form.</p>
+<div class="btns"><a class="btn pri" href="{{ route('ideas.create') }}#submit-form">Submit an idea</a><a class="btn ghost" href="{{ route('ideas.create') }}#ledger">View the Idea Ledger</a></div></div><div class="rcpt" aria-label="Example receipt"><div class="hd"><span>Idea receipt</span><span class="sample">Sample</span></div>
+<span class="l">ID</span> <span class="v">DI-2026-0104</span><br><span class="l">Timestamp</span> <span class="v">2026-03-04T09:42:17Z</span><br>
+<span class="l">SHA-256</span> <span class="v">0d7def8bc297474dec19074a00496e5c9a31a5c0d35888920429ec0c29a5e0b7</span><br><span class="l">Stage</span> <span class="v">Validate</span></div></div>
+<div class="strip-head"><div class="eyebrow">Latest from the ledger <span class="sample">Sample</span></div><a class="more-a" href="{{ route('ideas.create') }}#ledger">Full ledger →</a></div>
+<div class="ledger-wrap"><table class="ledger"><caption class="sr">Idea Ledger: protected ideas with ID, date, fingerprint and stage</caption>
+<thead><tr><th scope="col">Idea ID</th><th scope="col">Protected</th><th scope="col">Title</th><th scope="col">SHA-256 fingerprint</th><th scope="col">Stage</th></tr></thead><tbody><tr data-item data-area="ai" data-stage="1"><td class="mono">DI-2026-0167</td><td>2026-10-12</td><td><a href="{{ route('ideas.create') }}#ledger">Plain-Bangla legal aid chatbot</a><span class="sub">AI & Computing</span></td>
+<td class="mono hash" title="ea8f7d66f9f5acf7b9f5db2d5a1081cab4147f44e64732d3b780f57297c24b77">ea8f7d66f9…c24b77</td><td><ol class="rail sm" aria-label="Stage: Develop (2 of 5)"><li class="on"><span>Discover</span></li><li class="cur"><span>Develop</span></li><li class=""><span>Validate</span></li><li class=""><span>Brief</span></li><li class=""><span>Implement</span></li></ol></td></tr><tr data-item data-area="climate" data-stage="0"><td class="mono">DI-2026-0160</td><td>2026-09-30</td><td><a href="{{ route('ideas.create') }}#ledger">Mangrove carbon mapping with drones</a><span class="sub">Nature & Climate</span></td>
+<td class="mono hash" title="7ab2d6498c8bad3e15c7053f070a4ee4badc7f19323e25888c191ec947d0b737">7ab2d6498c…d0b737</td><td><ol class="rail sm" aria-label="Stage: Discover (1 of 5)"><li class="cur"><span>Discover</span></li><li class=""><span>Develop</span></li><li class=""><span>Validate</span></li><li class=""><span>Brief</span></li><li class=""><span>Implement</span></li></ol></td></tr><tr data-item data-area="hardware" data-stage="0"><td class="mono">DI-2026-0153</td><td>2026-08-22</td><td><a href="{{ route('ideas.create') }}#ledger">Solar cold box for fish traders</a><span class="sub">Hardware & Engineering</span></td>
+<td class="mono hash" title="8af50e22f4897719f3a7d5bf42a3f7313333e11a2bf1cbe7fb93cfb8f8c327f1">8af50e22f4…c327f1</td><td><ol class="rail sm" aria-label="Stage: Discover (1 of 5)"><li class="cur"><span>Discover</span></li><li class=""><span>Develop</span></li><li class=""><span>Validate</span></li><li class=""><span>Brief</span></li><li class=""><span>Implement</span></li></ol></td></tr><tr data-item data-area="life" data-stage="3"><td class="mono">DI-2026-0146</td><td>2026-07-01</td><td><a href="{{ route('ideas.create') }}#ledger">Offline-first telehealth triage app</a><span class="sub">Life Sciences & Health</span></td>
+<td class="mono hash" title="b95304ebe754aaba7f7175acfc03c88c5d2ffdb1ace6ac71e4ef978dca46bd95">b95304ebe7…46bd95</td><td><ol class="rail sm" aria-label="Stage: Brief (4 of 5)"><li class="on"><span>Discover</span></li><li class="on"><span>Develop</span></li><li class="on"><span>Validate</span></li><li class="cur"><span>Brief</span></li><li class=""><span>Implement</span></li></ol></td></tr><tr data-item data-area="ventures" data-stage="1"><td class="mono">DI-2026-0139</td><td>2026-06-15</td><td><a href="{{ route('ideas.create') }}#ledger">Marketplace linking rickshaw-van owners to cargo</a><span class="sub">Startups & Ventures</span></td>
+<td class="mono hash" title="97d488800eb7b9368c46da1ae890c8a033ca02ad2b0152e929ae250abf76c593">97d488800e…76c593</td><td><ol class="rail sm" aria-label="Stage: Develop (2 of 5)"><li class="on"><span>Discover</span></li><li class="cur"><span>Develop</span></li><li class=""><span>Validate</span></li><li class=""><span>Brief</span></li><li class=""><span>Implement</span></li></ol></td></tr></tbody></table></div></div></section>
 
-                {{-- Proof band --}}
-                <div class="on-dark relative isolate mt-20 overflow-hidden rounded-3xl bg-navy-900 px-6 py-10 text-white sm:px-12 sm:py-14" data-reveal>
-                    <div class="absolute inset-y-0 right-0 -z-10 w-1/2 bg-[radial-gradient(60%_80%_at_100%_50%,rgb(31_162_166/0.22),transparent_70%)]"></div>
-                    <div class="grid items-center gap-10 lg:grid-cols-12">
-                        <div class="lg:col-span-7">
-                            <p class="eyebrow">The Idea Portal</p>
-                            <h3 class="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">Your idea stays yours.</h3>
-                            <p class="mt-4 max-w-xl leading-relaxed text-white/70">The moment you submit, we record exactly what you sent and when — with a unique ID and a SHA-256 digital fingerprint — and e-mail you a receipt. If anyone ever claims your idea, the record speaks for you.</p>
-                        </div>
-                        <div class="flex flex-col gap-3 sm:flex-row lg:col-span-5 lg:justify-end">
-                            <x-button :href="localized_route('ideas.create')" size="lg" icon="arrow-right">{{ __('core::ui.nav.submit_idea') }}</x-button>
-                            <x-button :href="route('legal.show', 'contributor-agreement')" size="lg" variant="outline-light">Contributor Agreement</x-button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    @endif
+<section class="sec soft"><div class="wrap"><div class="sec-head"><div><div class="eyebrow">Built to collaborate with</div><h2 class="" data-bn="প্রতিষ্ঠানে প্রবেশের চারটি দরজা।">Four doors into the institute.</h2></div>
+<p class="lead">We are designed to work with the institutions that turn evidence into change, each through its own briefing room.</p></div><div class="collab"><a class="rv" href="{{ route('partner.index') }}#government"><span class="tag">Door 1</span><h3 data-bn="বাংলাদেশ সরকার">Government of Bangladesh</h3><p>Tested, locally built solutions with the evidence a decision needs.</p><span class="who">Ministries, divisions, a2i and local government</span></a><a class="rv" href="{{ route('partner.index') }}#multilateral"><span class="tag">Door 2</span><h3 data-bn="বহুপাক্ষিক ও জাতিসংঘ">Multilaterals & UN</h3><p>A pipeline of youth-led innovation mapped to the SDGs.</p><span class="who">UN agencies, SDG bodies and development partners</span></a><a class="rv" href="{{ route('partner.index') }}#industry"><span class="tag">Door 3</span><h3 data-bn="শিল্প ও প্রযুক্তি">Industry & Technology</h3><p>Talent, field data and real problems for frontier technology.</p><span class="who">Global technology and science organisations, local industry</span></a><a class="rv" href="{{ route('partner.index') }}#academia"><span class="tag">Door 4</span><h3 data-bn="শিক্ষা ও গবেষণা প্রতিষ্ঠান">Academia</h3><p>Pathways for student research to leave the drawer.</p><span class="who">Universities, labs and research councils</span></a></div>
+<p class="note">We name a partner only after an agreement is signed. Organisations mentioned anywhere on this site are those we are built to work with, not endorsements.</p></div></section>
 
-    {{-- 5 · Focus areas --}}
-    @if($focusAreas->isNotEmpty())
-        <section class="border-y border-navy-100 bg-navy-50/50 py-24 sm:py-32" aria-labelledby="focus-title">
-            <div class="container-delta">
-                <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-                    <x-section-heading eyebrow="Focus areas" :title="$focusAreas->count() === 8 ? 'Eight areas where change matters most' : 'Where change matters most'" intro="We prioritise problems where Bangladesh's young researchers have a real advantage — and where evidence can move policy." id="focus-title" />
-                    <x-button :href="route('what-we-do').'#focus-areas'" variant="outline" icon="arrow-right" class="self-start lg:self-auto" data-reveal>See examples</x-button>
-                </div>
-                <ul class="mt-14 grid gap-px overflow-hidden rounded-3xl bg-navy-100 ring-1 ring-navy-100 sm:grid-cols-2 lg:grid-cols-4" role="list">
-                    @foreach($focusAreas as $area)
-                        <li class="group bg-white p-7 transition-colors duration-300 hover:bg-river-50/60" data-reveal style="--delay: {{ ($loop->index % 4) * 0.06 }}s">
-                            <span class="inline-flex size-11 items-center justify-center rounded-xl bg-river-50 text-river-700 ring-1 ring-river-100 transition group-hover:bg-white"><x-icon :name="$area->icon" class="size-5.5" /></span>
-                            <h3 class="mt-5 font-semibold text-navy-900">{{ $area->name }}</h3>
-                            <p class="mt-2 text-sm leading-relaxed text-navy-500">{{ $area->summary }}</p>
-                        </li>
-                    @endforeach
-                </ul>
-            </div>
-        </section>
-    @endif
-
-    {{-- 6 · Numbers — only verified or live-counted figures, never invented ones --}}
-    @if($stats->isNotEmpty())
-        <section class="on-dark bg-navy-900 py-20 text-white sm:py-24" aria-labelledby="numbers-title">
-            <div class="container-delta">
-                <h2 id="numbers-title" class="sr-only">Delta Initiatives in numbers</h2>
-                <dl @class(['grid gap-10 sm:grid-cols-2', [1 => 'lg:grid-cols-1', 2 => 'lg:grid-cols-2', 3 => 'lg:grid-cols-3'][$stats->count()] ?? 'lg:grid-cols-4'])>
-                    @foreach($stats as $stat)
-                        <div class="flex flex-col-reverse border-l border-river-500/40 pl-6" data-reveal style="--delay: {{ $loop->index * 0.08 }}s">
-                            <dt class="mt-2 text-white/60">{{ $stat->label }}</dt>
-                            <dd class="text-5xl font-semibold tracking-tight tabular-nums">{{ number_format($stat->resolvedValue()) }}<span class="text-river-400">{{ $stat->suffix }}</span></dd>
-                        </div>
-                    @endforeach
-                </dl>
-            </div>
-        </section>
-    @endif
-
-    {{-- 7 · Upcoming events --}}
-    <x-programmes::upcoming-events />
-
-    {{-- 8 · Partners — only logos with written permission --}}
-    <section class="border-t border-navy-100 py-20 sm:py-24" aria-labelledby="partners-title">
-        <div class="container-delta">
-            @if($partners->isNotEmpty())
-                <p id="partners-title" class="text-center text-xs font-semibold tracking-[0.22em] text-navy-400 uppercase" data-reveal>In collaboration with</p>
-                <ul class="mt-10 flex flex-wrap items-center justify-center gap-x-14 gap-y-10" role="list">
-                    @foreach($partners as $partner)
-                        <li data-reveal>
-                            @php($logo = $partner->logoUrl())
-                            <a @if($partner->website_url) href="{{ $partner->website_url }}" target="_blank" rel="noopener noreferrer" @endif class="block opacity-70 grayscale transition hover:opacity-100 hover:grayscale-0" title="{{ $partner->name }}">
-                                @if($logo)
-                                    <img src="{{ $logo }}" alt="{{ $partner->name }}" class="h-10 w-auto max-w-44 object-contain sm:h-12" loading="lazy" decoding="async">
-                                @else
-                                    <span class="text-lg font-semibold text-navy-700">{{ $partner->name }}</span>
-                                @endif
-                            </a>
-                        </li>
-                    @endforeach
-                </ul>
-            @else
-                <div class="grid items-center gap-8 rounded-3xl bg-river-50 p-8 ring-1 ring-river-100 sm:p-12 lg:grid-cols-12" data-reveal>
-                    <div class="lg:col-span-8">
-                        <p id="partners-title" class="eyebrow">In collaboration with</p>
-                        <h2 class="mt-3 text-2xl font-semibold tracking-tight text-navy-900 sm:text-3xl">Founding partner places are open.</h2>
-                        <p class="mt-3 max-w-2xl leading-relaxed text-navy-600">Universities, companies, government bodies and development partners can help shape Delta Initiatives from day one — co-designing challenges, hosting pilots and putting evidence to work.</p>
-                    </div>
-                    <div class="flex lg:col-span-4 lg:justify-end">
-                        <x-button :href="route('partner.index')" variant="dark" size="lg" icon="arrow-right">{{ __('core::ui.nav.partner') }}</x-button>
-                    </div>
-                </div>
-            @endif
-        </div>
-    </section>
-
-    {{-- 9 · Newsletter --}}
-    <section class="bg-mist py-20 sm:py-24" aria-labelledby="newsletter-title">
-        <div class="container-delta grid items-center gap-10 lg:grid-cols-12">
-            <div class="lg:col-span-5" data-reveal>
-                <p class="eyebrow">{{ __('core::ui.footer.newsletter_eyebrow') }}</p>
-                <h2 id="newsletter-title" class="mt-3 text-3xl font-semibold tracking-tight text-navy-900 sm:text-4xl">{{ __('core::ui.footer.newsletter_title') }}</h2>
-                <p class="mt-3 text-lg text-navy-600">{{ __('core::ui.footer.newsletter_text') }}</p>
-            </div>
-            <div class="lg:col-span-6 lg:col-start-7" data-reveal style="--delay:.1s">
-                <x-newsletter::signup variant="light" source="home" />
-            </div>
-        </div>
-    </section>
+<section class="sec navy"><div class="wrap"><div class="eyebrow">Year-one targets <span class="sample">Targets, not results</span></div><h2 class="" data-bn="যে মাপকাঠিতে আমাদের বিচার হবে।">What we will be measured by.</h2><div class="stats"><div class="stat"><b><i data-count="500">0</i><span>+</span></b><small>ideas protected on the Idea Ledger</small></div><div class="stat"><b><i data-count="40">0</i><span></span></b><small>ideas developed with mentors and labs</small></div><div class="stat"><b><i data-count="12">0</i><span></span></b><small>policy-grade briefs delivered</small></div><div class="stat"><b><i data-count="3">0</i><span></span></b><small>pilots running with an implementing partner</small></div></div></div></section>
 </x-layouts.public>

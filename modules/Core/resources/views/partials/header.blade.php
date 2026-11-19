@@ -1,69 +1,57 @@
+{{-- v3 site header: sticky, shrinks after scroll (site.js), Research mega-menu, Ctrl K search, language. --}}
 @php
+    $areas = [
+        ['ai', 'AI & Computing', 'Bangla language technology'],
+        ['hardware', 'Hardware & Engineering', 'Sensors, devices, low-cost machines'],
+        ['ventures', 'Startups & Ventures', 'Research that becomes companies'],
+        ['climate', 'Nature & Climate', 'Floods, salinity, cyclones'],
+        ['life', 'Life Sciences & Health', 'Diagnostics and water safety'],
+        ['governance', 'Good Governance', 'Evidence and civic technology'],
+    ];
     $nav = [
-        ['about', 'about', 'about'],
-        ['what_we_do', 'what-we-do', 'what-we-do'],
-        ['programmes_short', 'programmes.index', 'programmes.*|events.*'],
-        ['partner', 'partner.index', 'partner.*'],
-        ['join', 'join.create', 'join.*|bn.join.*'],
-        ['contact', 'contact.create', 'contact.*'],
+        ['initiatives.index', 'Initiatives', 'initiatives.*'],
+        ['insights.index', 'Insights', 'insights.*'],
+        ['ideas.create', 'Idea Portal', 'ideas.*|bn.ideas.*'],
+        ['impact', 'Impact', 'impact'],
+        ['partner.index', 'Collaborate', 'partner.*'],
+        ['about', 'About', 'about|join.*|bn.join.*'],
     ];
     $isActive = fn (string $patterns) => collect(explode('|', $patterns))->contains(fn ($p) => request()->routeIs($p));
+    $alts = $alternates ?? [];
+    $searchIcon = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>';
 @endphp
-<header data-site-header @if($solid ?? false) data-solid @endif @class(['site-header fixed inset-x-0 top-0 z-50', 'is-scrolled' => $solid ?? false])>
-    <div class="container-delta flex h-18 items-center justify-between gap-6">
-        <a href="{{ route('home') }}" class="-m-1 rounded-lg p-1" aria-label="{{ setting('site_name') }} — {{ __('core::ui.nav.home') }}">
-            <x-logo />
-        </a>
-
-        <nav aria-label="{{ __('core::ui.nav.primary') }}" class="hidden items-center gap-0.5 xl:flex">
-            @foreach($nav as [$label, $route, $patterns])
-                <a href="{{ localized_route($route) }}" class="nav-link" @if($isActive($patterns)) aria-current="page" @endif>{{ __('core::ui.nav.'.$label) }}</a>
-            @endforeach
-        </nav>
-
-        <div class="flex items-center gap-2">
-            @if(count($alternates ?? []) > 1)
-                <div class="hidden items-center rounded-full p-0.5 text-xs font-semibold ring-1 ring-current/20 sm:flex" role="group" aria-label="{{ __('core::ui.language.label') }}">
-                    @foreach($alternates as $code => $href)
-                        <a href="{{ $href }}" hreflang="{{ $code }}" lang="{{ $code }}"
-                           @class(['rounded-full px-2.5 py-1 transition', 'bg-river-500 text-navy-950' => app()->getLocale() === $code, 'opacity-75 hover:opacity-100' => app()->getLocale() !== $code])
-                           @if(app()->getLocale() === $code) aria-current="true" @endif>{{ __('core::ui.language.'.$code) }}</a>
-                    @endforeach
-                </div>
-            @endif
-            <x-button :href="localized_route('ideas.create')" size="sm" class="hidden sm:inline-flex" icon="arrow-right">{{ __('core::ui.nav.submit_idea') }}</x-button>
-            <button type="button" class="-mr-2 inline-flex size-11 items-center justify-center rounded-full xl:hidden" data-nav-toggle aria-controls="mobile-nav" aria-expanded="false">
-                <span class="sr-only">{{ __('core::ui.nav.menu') }}</span>
-                <x-icon name="menu" class="size-6" data-nav-icon="open" />
-                <x-icon name="x" class="size-6" data-nav-icon="close" hidden />
-            </button>
-        </div>
+<header class="hdr"><div class="wrap">
+    <a class="logo" href="{{ route('home') }}" aria-label="{{ setting('site_name', 'Delta Initiatives') }}, home">
+        <svg width="38" height="38" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 4 37 35H3Z" fill="none" stroke="#0B1F3A" stroke-width="3" stroke-linejoin="round"/><path d="M20 14v21M20 22l-8 13M20 22l8 13" stroke="#1FA2A6" stroke-width="2.4" stroke-linecap="round"/><circle cx="20" cy="12" r="2.6" fill="#C9A227"/></svg>
+        <span><b>Delta Initiatives</b><small>Engineering Change</small></span>
+    </a>
+    <div class="tools-m">
+        <button class="icon-btn" type="button" data-open-search aria-label="Search">{!! $searchIcon !!}</button>
+        <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
-
-    {{-- Mobile navigation panel --}}
-    <div id="mobile-nav" hidden class="fixed inset-x-0 top-18 bottom-0 overflow-y-auto bg-navy-950 text-white xl:hidden">
-        <nav aria-label="{{ __('core::ui.nav.primary') }}" class="container-delta flex min-h-full flex-col py-8">
-            <ul class="divide-y divide-white/10 border-y border-white/10">
-                @foreach($nav as [$label, $route, $patterns])
-                    <li>
-                        <a href="{{ localized_route($route) }}" data-nav-close class="flex items-center justify-between py-4 text-lg font-medium {{ $isActive($patterns) ? 'text-river-400' : 'text-white' }}" @if($isActive($patterns)) aria-current="page" @endif>
-                            {{ __('core::ui.nav.'.$label) }}
-                            <x-icon name="arrow-right" class="size-5 opacity-50" />
-                        </a>
-                    </li>
+    <nav class="nav" id="nav" aria-label="Main">
+        <div class="has-mega">
+            <button type="button" @class(['mega-btn', 'cur' => $isActive('research.*|what-we-do')]) aria-expanded="false" aria-controls="mega">Research</button>
+            <div class="mega" id="mega">
+                @foreach($areas as [$key, $label, $blurb])
+                    <a href="{{ route('research.'.$key) }}"><b>{{ $label }}</b><span>{{ $blurb }}</span></a>
                 @endforeach
-            </ul>
-            <div class="mt-8 grid gap-3">
-                <x-button :href="localized_route('ideas.create')" size="lg" icon="arrow-right">{{ __('core::ui.nav.submit_idea') }}</x-button>
-                @if(count($alternates ?? []) > 1)
-                    <div class="mt-2 flex justify-center gap-2 text-sm">
-                        @foreach($alternates as $code => $href)
-                            <a href="{{ $href }}" lang="{{ $code }}" @class(['rounded-full px-4 py-2 ring-1 ring-white/20', 'bg-white/10' => app()->getLocale() === $code])>{{ __('core::ui.language.'.$code) }}</a>
-                        @endforeach
-                    </div>
-                @endif
+                <div class="mega-foot"><a href="{{ route('research.index') }}">All six research areas →</a><a href="{{ route('insights.index') }}">Latest insights →</a></div>
             </div>
-            <p class="mt-auto pt-10 text-sm text-white/50">{{ setting('site_descriptor') }} · <span class="italic text-white/70">{{ setting('site_tagline') }}</span></p>
-        </nav>
-    </div>
-</header>
+        </div>
+        @foreach($nav as [$route, $label, $patterns])
+            <a href="{{ localized_route($route) }}" @if($isActive($patterns)) aria-current="page" @endif>{{ $label }}</a>
+        @endforeach
+        <button class="search-btn" type="button" data-open-search aria-label="Search the site">{!! $searchIcon !!}<span>Search</span><kbd>Ctrl K</kbd></button>
+        @if(count($alts) > 1)
+            <div class="lang-links" role="group" aria-label="{{ __('core::ui.language.label') }}">
+                @foreach($alts as $code => $href)
+                    <a href="{{ $href }}" hreflang="{{ $code }}" lang="{{ $code }}" @if(app()->getLocale() === $code) aria-current="true" @endif>{{ __('core::ui.language.'.$code) }}</a>
+                @endforeach
+            </div>
+        @else
+            <button class="lang-btn" type="button" data-lang-toggle aria-pressed="false" title="Switch headlines to Bangla"><span class="bn">বাংলা</span></button>
+        @endif
+        <a class="btn pri" href="{{ localized_route('ideas.create') }}#submit-form">{{ __('core::ui.nav.submit_idea') }}</a>
+    </nav>
+</div></header>

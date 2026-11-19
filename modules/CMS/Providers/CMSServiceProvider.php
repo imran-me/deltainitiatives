@@ -53,6 +53,21 @@ class CMSServiceProvider extends ModuleServiceProvider
                 ['loc' => route('what-we-do'), 'changefreq' => 'monthly', 'priority' => 0.8],
             ];
 
+            // v3 static pages (modules/CMS/routes/v3.php)
+            $v3 = ['research.index', 'initiatives.index', 'insights.index', 'impact', 'initiators', 'events.index', 'press'];
+            foreach (['ai', 'hardware', 'ventures', 'climate', 'life', 'governance'] as $area) {
+                $v3[] = 'research.'.$area;
+            }
+            foreach (['climate-lab', 'govtech-lab', 'bangla-ai-lab', 'hardware-lab', 'venture-studio'] as $lab) {
+                $v3[] = 'initiatives.'.$lab;
+            }
+            foreach (['adoption-pathway', 'bangla-ai-readiness', 'flood-warnings', 'idea-ledger'] as $article) {
+                $v3[] = 'insights.'.$article;
+            }
+            foreach ($v3 as $name) {
+                $entries[] = ['loc' => route($name), 'changefreq' => 'monthly', 'priority' => 0.7];
+            }
+
             foreach (LegalPage::query()->published()->get(['slug', 'updated_at']) as $page) {
                 $entries[] = ['loc' => route('legal.show', $page->slug), 'lastmod' => $page->updated_at?->toAtomString(), 'changefreq' => 'yearly', 'priority' => 0.3];
             }

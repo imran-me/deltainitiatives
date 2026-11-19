@@ -27,6 +27,9 @@
         @endif
     </x-page-hero>
 
+    {{-- v3 briefing room: four doors, each with a 60-second brief (forms below post to the real inquiry endpoint) --}}
+    @include('partnerships::partials.v3-doors')
+
     {{-- Why partner --}}
     <section class="bg-white py-20 sm:py-28">
         <div class="container-delta">

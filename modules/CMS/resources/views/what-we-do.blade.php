@@ -1,118 +1,13 @@
-@php
-    $intro = block('whatwedo.intro');
-    $armCtas = [
-        'delta-labs' => [localized_route('ideas.create'), __('core::ui.nav.submit_idea')],
-        'delta-policy' => [route('partner.index'), __('core::ui.nav.partner')],
-        'delta-challenge' => [route('programmes.index'), __('core::ui.nav.programmes')],
-    ];
-@endphp
-<x-layouts.public title="What We Do" :description="strip_tags((string) $intro->body)">
-    <x-page-hero :eyebrow="$intro->eyebrow ?: 'What we do'" :title="$intro->title ?: 'From research to prototype to policy'" :intro="strip_tags((string) $intro->body)" bangla="আমরা যা করি">
-        @foreach($arms as $arm)
-            <a href="#{{ $arm->slug }}" class="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium text-white/80 ring-1 ring-white/20 transition hover:bg-white/5 hover:text-white">
-                <x-icon :name="$arm->icon" class="size-4 text-river-400" /> {{ $arm->name }}
-            </a>
-        @endforeach
-    </x-page-hero>
-
-    {{-- The three arms --}}
-    @foreach($arms as $arm)
-        <section id="{{ $arm->slug }}" @class(['scroll-mt-20 py-24 sm:py-28', 'bg-mist' => $loop->even]) aria-labelledby="{{ $arm->slug }}-title">
-            <div class="container-delta grid gap-12 lg:grid-cols-12 lg:gap-16">
-                <div class="lg:col-span-5" data-reveal>
-                    <div class="flex items-center gap-4">
-                        <span class="inline-flex size-14 items-center justify-center rounded-2xl bg-navy-900 text-river-400"><x-icon :name="$arm->icon" class="size-7" /></span>
-                        <span class="font-mono text-sm text-navy-400">0{{ $loop->iteration }} / 0{{ $loop->count }}</span>
-                    </div>
-                    <p class="mt-8 eyebrow">{{ $arm->tagline }}</p>
-                    <h2 id="{{ $arm->slug }}-title" class="mt-3 text-4xl font-semibold tracking-tight text-navy-900 sm:text-5xl">{{ $arm->name }}</h2>
-                    <p class="mt-5 text-lg leading-relaxed text-navy-600">{{ $arm->summary }}</p>
-                    @isset($armCtas[$arm->slug])
-                        <x-button :href="$armCtas[$arm->slug][0]" variant="dark" icon="arrow-right" class="mt-8">{{ $armCtas[$arm->slug][1] }}</x-button>
-                    @endisset
-                </div>
-                <div class="lg:col-span-7" data-reveal style="--delay:.1s">
-                    @if($arm->body)
-                        <div class="prose-delta">{{ markdown($arm->body) }}</div>
-                    @endif
-                    @if($highlights = $arm->highlightList())
-                        <ul class="mt-8 grid gap-3 sm:grid-cols-2" role="list">
-                            @foreach($highlights as $highlight)
-                                <li class="flex items-start gap-3 rounded-xl bg-white p-4 text-sm font-medium text-navy-800 ring-1 ring-navy-100">
-                                    <x-icon name="circle-check" class="mt-px size-5 text-river-600" /> {{ $highlight }}
-                                </li>
-                            @endforeach
-                        </ul>
-                    @endif
-                </div>
-            </div>
-        </section>
-    @endforeach
-
-    {{-- Pipeline, in detail --}}
-    @if($steps->isNotEmpty())
-        <section class="on-dark relative isolate overflow-hidden bg-navy-900 py-24 text-white sm:py-32" aria-labelledby="pipeline-title" id="pipeline">
-            <x-delta-lines variant="page" class="-z-10 opacity-40" />
-            <div class="container-delta grid gap-14 lg:grid-cols-12">
-                <div class="lg:col-span-4">
-                    <x-section-heading eyebrow="The pipeline" title="How an idea becomes impact" intro="Every submission follows the same transparent path. Not every idea goes all the way — but every idea is read, scored fairly and answered." :dark="true" id="pipeline-title" class="lg:sticky lg:top-28" />
-                </div>
-                <ol class="relative space-y-4 lg:col-span-7 lg:col-start-6" role="list">
-                    @foreach($steps as $step)
-                        <li class="flex gap-5 rounded-2xl bg-white/[0.04] p-6 ring-1 ring-white/10" data-reveal style="--delay: {{ $loop->index * 0.05 }}s">
-                            <span class="inline-flex size-11 shrink-0 items-center justify-center rounded-full bg-river-500/15 text-river-400 ring-1 ring-river-400/30"><x-icon :name="$step->icon" class="size-5" /></span>
-                            <div>
-                                <p class="font-mono text-xs text-river-400">Step {{ str_pad((string) $loop->iteration, 2, '0', STR_PAD_LEFT) }}</p>
-                                <h3 class="mt-1 text-lg font-semibold">{{ $step->title }}</h3>
-                                <p class="mt-1.5 leading-relaxed text-white/65">{{ $step->summary }}</p>
-                            </div>
-                        </li>
-                    @endforeach
-                </ol>
-            </div>
-        </section>
-    @endif
-
-    {{-- Focus areas with examples --}}
-    @if($focusAreas->isNotEmpty())
-        <section class="scroll-mt-20 py-24 sm:py-32" id="focus-areas" aria-labelledby="focus-title">
-            <div class="container-delta">
-                <x-section-heading eyebrow="Focus areas" :title="$focusAreas->count() === 8 ? 'Eight focus areas' : 'Our focus areas'" intro="Where we look for ideas, build evidence and convene policy conversations. Example problems are illustrative — bring us the one you know best." id="focus-title" />
-                <div class="mt-14 grid gap-5 md:grid-cols-2">
-                    @foreach($focusAreas as $area)
-                        <article class="card-delta flex gap-5 p-6 sm:p-7" data-reveal style="--delay: {{ ($loop->index % 2) * 0.06 }}s">
-                            <span class="inline-flex size-12 shrink-0 items-center justify-center rounded-2xl bg-river-50 text-river-700 ring-1 ring-river-100"><x-icon :name="$area->icon" class="size-6" /></span>
-                            <div>
-                                <h3 class="text-lg font-semibold text-navy-900">{{ $area->name }}</h3>
-                                <p class="mt-1.5 leading-relaxed text-navy-600">{{ $area->summary }}</p>
-                                @if($examples = $area->exampleList())
-                                    <ul class="mt-4 flex flex-wrap gap-2" role="list" aria-label="Example problems">
-                                        @foreach($examples as $example)
-                                            <li class="rounded-full bg-navy-50 px-3 py-1 text-xs font-medium text-navy-600 ring-1 ring-navy-100">{{ $example }}</li>
-                                        @endforeach
-                                    </ul>
-                                @endif
-                            </div>
-                        </article>
-                    @endforeach
-                </div>
-            </div>
-        </section>
-    @endif
-
-    {{-- Call to action --}}
-    <section class="pb-24 sm:pb-32">
-        <div class="container-delta">
-            <div class="grid items-center gap-8 rounded-3xl bg-river-50 p-8 ring-1 ring-river-100 sm:p-12 lg:grid-cols-12" data-reveal>
-                <div class="lg:col-span-7">
-                    <h2 class="text-3xl font-semibold tracking-tight text-navy-900">Have an idea in one of these areas?</h2>
-                    <p class="mt-3 text-lg text-navy-600">Submit it through the Idea Portal. You get an ID, a timestamp and a fingerprint the moment you press send.</p>
-                </div>
-                <div class="flex flex-wrap gap-3 lg:col-span-5 lg:justify-end">
-                    <x-button :href="localized_route('ideas.create')" variant="dark" size="lg" icon="arrow-right">{{ __('core::ui.nav.submit_idea') }}</x-button>
-                    <x-button :href="route('programmes.index')" variant="outline" size="lg">{{ __('core::ui.nav.programmes') }}</x-button>
-                </div>
-            </div>
-        </div>
-    </section>
+{{-- Generated from the Delta v3 design (deltainitiatives-v3/_build.py). Edit there, then re-run port.py. --}}
+<x-layouts.public :title="'What We Do'" :description="'Six research areas: AI & computing, hardware, ventures, nature & climate, life sciences, good governance.'" :canonical="route('research.index')">
+<section class="phead"><svg class="contours" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#E6F5F5" stroke-width="1.2"><path d="M-50 120C300 60 520 200 820 150S1300 90 1500 160"/><path d="M-50 190C300 130 520 264 820 216S1300 162 1500 230"/><path d="M-50 260C300 200 520 328 820 282S1300 234 1500 300"/><path d="M-50 330C300 270 520 392 820 348S1300 306 1500 370"/><path d="M-50 400C300 340 520 456 820 414S1300 378 1500 440"/><path d="M-50 470C300 410 520 520 820 480S1300 450 1500 510"/><path d="M-50 540C300 480 520 584 820 546S1300 522 1500 580"/><path d="M-50 610C300 550 520 648 820 612S1300 594 1500 650"/><path d="M-50 680C300 620 520 712 820 678S1300 666 1500 720"/><path d="M-50 750C300 690 520 776 820 744S1300 738 1500 790"/></g></svg><div class="wrap phead-in"><div>
+<nav class="crumb" aria-label="Breadcrumb"><a href="{{ route('home') }}">Home</a> / Research</nav>
+<div class="eyebrow">Research</div><h1 class="" data-bn="মানুষের বাস্তব সমস্যা থেকে বেছে নেওয়া ছয়টি ক্ষেত্র।">Six areas, chosen by the problems people <em>live with</em>.</h1><p class="lead">Our agenda is set by the delta itself: water, heat, language, institutions and livelihoods. Each area has open questions, active projects and published briefs.</p>
+<div class="btns phead-btns"><a class="btn pri" href="{{ route('ideas.create') }}#submit-form">Submit an idea in an area</a><a class="btn ghost" href="{{ route('insights.index') }}">Read the briefs</a></div></div></div></section>
+<section class="sec"><div class="wrap"><h2 class="sr">Research areas</h2><div class="areas"><a class="area rv" id="ai" href="{{ route('research.ai') }}"><span class="num">01 / 06</span><h3 data-bn="এআই ও কম্পিউটিং">AI & Computing</h3><p>Bangla language technology, public-sector AI and the compute a developing country needs to build its own models.</p><span class="go">Explore the area →</span></a><a class="area rv" id="hardware" href="{{ route('research.hardware') }}"><span class="num">02 / 06</span><h3 data-bn="হার্ডওয়্যার ও প্রকৌশল">Hardware & Engineering</h3><p>Sensors, devices and low-cost machines engineered for heat, humidity, floods and unreliable power.</p><span class="go">Explore the area →</span></a><a class="area rv" id="ventures" href="{{ route('research.ventures') }}"><span class="num">03 / 06</span><h3 data-bn="স্টার্টআপ ও উদ্যোগ">Startups & Ventures</h3><p>Turning validated research into companies that can sustain themselves and employ the next generation.</p><span class="go">Explore the area →</span></a><a class="area rv" id="climate" href="{{ route('research.climate') }}"><span class="num">04 / 06</span><h3 data-bn="প্রকৃতি ও জলবায়ু">Nature & Climate</h3><p>Floods, salinity, cyclones and river erosion: adaptation designed by the people who live with them.</p><span class="go">Explore the area →</span></a><a class="area rv" id="life" href="{{ route('research.life') }}"><span class="num">05 / 06</span><h3 data-bn="জীবনবিজ্ঞান ও স্বাস্থ্য">Life Sciences & Health</h3><p>Diagnostics, water safety and public-health research that works at a union health centre.</p><span class="go">Explore the area →</span></a><a class="area rv" id="governance" href="{{ route('research.governance') }}"><span class="num">06 / 06</span><h3 data-bn="সুশাসন">Good Governance</h3><p>Evidence, civic technology and transparency tools that help institutions serve citizens better.</p><span class="go">Explore the area →</span></a></div></div></section>
+<section class="sec soft"><div class="wrap split"><div><div class="eyebrow">How we choose</div><h2 class="" data-bn="প্রতিটি গবেষণা প্রশ্নের জন্য তিনটি পরীক্ষা।">Three tests for every research question.</h2></div>
+<ol class="list-num rv"><li><strong>Is it real?</strong>The problem is felt by people in Bangladesh today, not imported from a donor brief.</li>
+<li><strong>Can young people solve it?</strong>There is a role for student and early-career researchers and engineers.</li>
+<li><strong>Will someone implement it?</strong>A ministry, agency, company or community could adopt the answer.</li></ol></div></section>
+<section class="sec"><div class="wrap"><div class="cta rv"><div class="cta-in"><div class="eyebrow">Next step</div><h2 class="" data-bn="এই সমস্যাগুলোর একটিতে কাজ করছ?">Working on one of these problems?</h2><p>Protect your idea on the ledger and we will review it for the pipeline.</p></div><div class="btns"><a class="btn light" href="{{ route('ideas.create') }}#submit-form">Submit an idea →</a></div></div></div></section>
 </x-layouts.public>

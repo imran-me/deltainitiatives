@@ -1,101 +1,23 @@
-@php
-    $intro = block('about.intro');
-    $story = block('about.story');
-    $vision = block('about.vision');
-    $mission = block('about.mission');
-    $origin = block('about.origin');
-@endphp
-<x-layouts.public title="About" :description="strip_tags((string) $intro->body)">
-    <x-page-hero :eyebrow="$intro->eyebrow ?: 'About'" :title="$intro->title ?: 'About Delta Initiatives'" :intro="strip_tags((string) $intro->body)" bangla="আমাদের সম্পর্কে" />
-
-    {{-- The name --}}
-    <section class="py-24 sm:py-32" aria-labelledby="name-title">
-        <div class="container-delta grid gap-12 lg:grid-cols-12 lg:gap-16">
-            <div class="lg:col-span-5" data-reveal>
-                <p class="eyebrow">{{ $story->eyebrow ?: 'The story of our name' }}</p>
-                <h2 id="name-title" class="mt-4 text-3xl font-semibold tracking-tight text-balance text-navy-900 sm:text-4xl">{{ $story->title }}</h2>
-            </div>
-            <div class="prose-delta lg:col-span-7" data-reveal style="--delay:.1s">{{ markdown($story->body) }}</div>
-        </div>
-    </section>
-
-    {{-- Vision & mission --}}
-    <section class="pb-24 sm:pb-32" aria-label="Vision and mission">
-        <div class="container-delta grid gap-5 lg:grid-cols-2">
-            <article class="on-dark relative isolate overflow-hidden rounded-3xl bg-navy-900 p-8 text-white sm:p-12" data-reveal>
-                <x-delta-mark class="absolute -right-6 -bottom-8 -z-10 h-48 w-auto opacity-10" />
-                <p class="eyebrow">{{ $vision->eyebrow ?: 'Vision' }}</p>
-                <p class="mt-5 text-2xl leading-snug font-medium tracking-tight text-balance sm:text-[1.75rem]">{{ $vision->title }}</p>
-                @if($vision->body)<div class="prose-delta on-dark mt-5">{{ markdown($vision->body) }}</div>@endif
-            </article>
-            <article class="rounded-3xl bg-river-50 p-8 ring-1 ring-river-100 sm:p-12" data-reveal style="--delay:.1s">
-                <p class="eyebrow">{{ $mission->eyebrow ?: 'Mission' }}</p>
-                <p class="mt-5 text-2xl leading-snug font-medium tracking-tight text-balance text-navy-900 sm:text-[1.75rem]">{{ $mission->title }}</p>
-                @if($mission->body)<div class="prose-delta mt-5">{{ markdown($mission->body) }}</div>@endif
-            </article>
-        </div>
-    </section>
-
-    {{-- Values --}}
-    @if($values->isNotEmpty())
-        <section class="border-y border-navy-100 bg-navy-50/50 py-24 sm:py-32" aria-labelledby="values-title">
-            <div class="container-delta">
-                <x-section-heading eyebrow="Values" title="What we hold ourselves to" id="values-title" />
-                <ul role="list" @class(['mt-14 grid gap-5 sm:grid-cols-2', $values->count() >= 5 ? 'lg:grid-cols-5' : 'lg:grid-cols-4'])>
-                    @foreach($values as $value)
-                        <li class="card-delta p-6" data-reveal style="--delay: {{ $loop->index * 0.06 }}s">
-                            <x-icon :name="$value->icon" class="size-6 text-river-700" />
-                            <h3 class="mt-5 font-semibold text-navy-900">{{ $value->title }}</h3>
-                            <p class="mt-2 text-sm leading-relaxed text-navy-500">{{ $value->summary }}</p>
-                        </li>
-                    @endforeach
-                </ul>
-            </div>
-        </section>
-    @endif
-
-    {{-- Team --}}
-    @if($team->isNotEmpty())
-        <section class="py-24 sm:py-32" aria-labelledby="team-title" id="team">
-            <div class="container-delta">
-                <x-section-heading eyebrow="Team" title="The people building Delta Initiatives" intro="Students, researchers and practitioners who believe Bangladesh's next ideas deserve a real path to impact." id="team-title" />
-                <ul class="mt-14 grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-4" role="list">
-                    @foreach($team as $member)
-                        @include('cms::partials.person', ['member' => $member])
-                    @endforeach
-                </ul>
-            </div>
-        </section>
-    @endif
-
-    {{-- Advisory Board --}}
-    @if($advisors->isNotEmpty())
-        <section class="border-t border-navy-100 bg-mist py-24 sm:py-32" aria-labelledby="advisors-title" id="advisory-board">
-            <div class="container-delta">
-                <x-section-heading eyebrow="Advisory Board" title="Guidance from experience" intro="Independent advisors who keep our research rigorous and our policy work grounded." id="advisors-title" />
-                <ul class="mt-14 grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-4" role="list">
-                    @foreach($advisors as $member)
-                        @include('cms::partials.person', ['member' => $member])
-                    @endforeach
-                </ul>
-            </div>
-        </section>
-    @endif
-
-    {{-- Our origin --}}
-    <section class="py-24 sm:py-32" aria-labelledby="origin-title">
-        <div class="container-delta grid gap-12 lg:grid-cols-12 lg:gap-16">
-            <div class="lg:col-span-5" data-reveal>
-                <p class="eyebrow">{{ $origin->eyebrow ?: 'Our origin' }}</p>
-                <h2 id="origin-title" class="mt-4 text-3xl font-semibold tracking-tight text-balance text-navy-900 sm:text-4xl">{{ $origin->title }}</h2>
-            </div>
-            <div class="lg:col-span-7" data-reveal style="--delay:.1s">
-                <div class="prose-delta">{{ markdown($origin->body) }}</div>
-                <div class="mt-10 flex flex-wrap gap-3">
-                    <x-button :href="localized_route('join.create')" variant="dark" icon="arrow-right">{{ __('core::ui.nav.join') }}</x-button>
-                    <x-button :href="route('partner.index')" variant="outline">{{ __('core::ui.nav.partner') }}</x-button>
-                </div>
-            </div>
-        </div>
-    </section>
+{{-- Generated from the Delta v3 design (deltainitiatives-v3/_build.py). Edit there, then re-run port.py. --}}
+<x-layouts.public :title="'About'" :description="'Mission, independence and ethics, governance and fellowships at Delta Initiatives.'">
+<section class="phead"><svg class="contours" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#E6F5F5" stroke-width="1.2"><path d="M-50 120C300 60 520 200 820 150S1300 90 1500 160"/><path d="M-50 190C300 130 520 264 820 216S1300 162 1500 230"/><path d="M-50 260C300 200 520 328 820 282S1300 234 1500 300"/><path d="M-50 330C300 270 520 392 820 348S1300 306 1500 370"/><path d="M-50 400C300 340 520 456 820 414S1300 378 1500 440"/><path d="M-50 470C300 410 520 520 820 480S1300 450 1500 510"/><path d="M-50 540C300 480 520 584 820 546S1300 522 1500 580"/><path d="M-50 610C300 550 520 648 820 612S1300 594 1500 650"/><path d="M-50 680C300 620 520 712 820 678S1300 666 1500 720"/><path d="M-50 750C300 690 520 776 820 744S1300 738 1500 790"/></g></svg><div class="wrap phead-in"><div>
+<nav class="crumb" aria-label="Breadcrumb"><a href="{{ route('home') }}">Home</a> / About</nav>
+<div class="eyebrow">About</div><h1 class="" data-bn="কাজের মানুষদের প্রতিষ্ঠান।">An institute for <em>doers</em>.</h1><p class="lead">Delta Initiatives is an independent research, innovation and policy institute. We exist so that the best ideas of young Bangladeshis are judged on evidence and carried to implementation.</p>
+<div class="btns phead-btns"><a class="btn pri" href="#careers">Join a fellowship</a><a class="btn ghost" href="{{ route('press') }}">Press kit</a></div></div></div></section>
+<section class="sec"><div class="wrap"><div class="eyebrow">The mandate</div><div class="mandate">
+<div class="rv"><b>Mission</b><p>Turn the ideas of young Bangladeshis into implemented solutions.</p></div>
+<div class="rv"><b>Vision</b><p>A country where any curious mind can reach the people who decide.</p></div>
+<div class="rv"><b>Name</b><p>A delta is where one river becomes many. One idea, many outcomes.</p></div></div></div></section>
+<section class="sec soft"><div class="wrap split"><div><div class="eyebrow">Independence & research ethics</div><h2 class="" data-bn="যে নিয়মে আমরা নিজেদের বাঁধি।">Rules we hold ourselves to.</h2></div>
+<ol class="list-num rv"><li><strong>Credit belongs to the creator</strong>The innovator’s name stays on the idea at every stage, in every brief.</li>
+<li><strong>Evidence before advocacy</strong>We brief only on what we have tested, and we publish what did not work.</li>
+<li><strong>Independent and non-partisan</strong>Funding never buys a conclusion. Funders are disclosed on each publication.</li>
+<li><strong>Consent and data care</strong>Field research follows informed consent and is reviewed by an ethics committee.</li></ol></div></section>
+<section class="sec"><div class="wrap"><div class="sec-head"><div><div class="eyebrow">Governance</div><h2 class="" data-bn="বোর্ড ও নেতৃত্ব">Board &amp; leadership</h2></div><p class="lead">Our founding structure. Names will be published as appointments are confirmed.</p></div>
+<div class="grid g3"><div class="card rv"><span class="av " aria-hidden="true">CB</span><h3>Chair, Board of Trustees</h3><p>Independent oversight of mission and finances</p><p class="hint">To be announced</p></div><div class="card rv"><span class="av t" aria-hidden="true">ED</span><h3>Executive Director</h3><p>Leads the institute and its partnerships</p><p class="hint">To be announced</p></div><div class="card rv"><span class="av g" aria-hidden="true">DO</span><h3>Director of Research</h3><p>Research agenda, methods and peer review</p><p class="hint">To be announced</p></div><div class="card rv"><span class="av l" aria-hidden="true">DO</span><h3>Director of Policy</h3><p>Briefs and engagement with government and multilaterals</p><p class="hint">To be announced</p></div><div class="card rv"><span class="av " aria-hidden="true">DO</span><h3>Director of Innovation</h3><p>Labs, Idea Portal and the venture studio</p><p class="hint">To be announced</p></div><div class="card rv"><span class="av t" aria-hidden="true">RE</span><h3>Research Ethics Committee</h3><p>Independent review of field work and data</p><p class="hint">To be announced</p></div></div></div></section>
+<section class="sec soft" id="careers"><div class="wrap"><div class="sec-head"><div><div class="eyebrow">Careers & fellowships</div><h2 class="" data-bn="এখানকার গুরুত্বপূর্ণ সমস্যায় কাজ করুন।">Work on problems that matter here.</h2></div><p class="lead">Openings are announced through the Delta Dispatch and our open calls.</p></div>
+<div class="grid g3 trio"><div class="card rv"><span class="tag">6 months</span><h3>Delta Fellows</h3><p>For early-career researchers and engineers with an idea on the ledger. Mentors, lab access and a development grant.</p></div>
+<div class="card rv"><span class="tag">Ongoing</span><h3>Campus Scouts</h3><p>Student ambassadors who find problem-solvers in universities across the country.</p></div>
+<div class="card rv"><span class="tag">Volunteer</span><h3>Mentors & reviewers</h3><p>Experts who give a few hours a month to develop and validate ideas.</p></div></div></div></section>
+<section class="sec"><div class="wrap"><div class="cta rv"><div class="cta-in"><div class="eyebrow">Next step</div><h2 class="" data-bn="আপনার দক্ষতা নিয়ে আসুন।">Bring your expertise.</h2><p>Mentors, reviewers and fellows make the method work.</p></div><div class="btns"><a class="btn light" href="{{ route('contact.create') }}">Get in touch →</a></div></div></div></section>
 </x-layouts.public>
