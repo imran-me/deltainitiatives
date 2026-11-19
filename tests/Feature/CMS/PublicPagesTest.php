@@ -5,7 +5,6 @@ namespace Tests\Feature\CMS;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Modules\CMS\Models\LegalPage;
 use Modules\CMS\Models\Partner;
-use Modules\CMS\Models\Stat;
 use Modules\CMS\Seeders\CMSSeeder;
 use Tests\TestCase;
 
@@ -24,37 +23,55 @@ class PublicPagesTest extends TestCase
         $this->get('/')
             ->assertOk()
             ->assertSee('Engineering Change')
-            ->assertSee('In science, delta means change. In geography, it means Bangladesh.')
-            ->assertSee('Delta Labs')
-            ->assertSee('Delta Policy')
-            ->assertSee('Delta Challenge')
-            ->assertSee('Scale &amp; inform policy', false)
-            ->assertSee('Climate &amp; Water Resilience', false)
-            ->assertSee('Founding partner places are open.')
+            ->assertSee('solutions</em> the world can implement', false)
+            ->assertSee('The Living Delta Map')
+            ->assertSee('Why Bangladesh, why now')
+            ->assertSee('Six areas. One')
+            ->assertSee('Latest from the ledger')
+            ->assertSee('Built to collaborate with')
             ->assertSee('The Delta Dispatch');
     }
 
-    public function test_about_page_shows_vision_mission_values_team_and_origin(): void
+    public function test_about_page_shows_mandate_ethics_governance_and_careers(): void
     {
         $this->get('/about')
             ->assertOk()
-            ->assertSee('Vision')
             ->assertSee('Mission')
-            ->assertSee('Rigour')
-            ->assertSee('Head of Delta Labs')
-            ->assertSee('Advisory Board')
-            ->assertSee('Why students needed an institution of their own')
-            ->assertSee('Sample'); // demo team entries are badged
+            ->assertSee('Vision')
+            ->assertSee('Independence &amp; research ethics', false)
+            ->assertSee('Board &amp; leadership', false)
+            ->assertSee('To be announced');
     }
 
-    public function test_what_we_do_page_lists_arms_pipeline_and_focus_areas(): void
+    public function test_what_we_do_shows_the_research_overview(): void
     {
         $this->get('/what-we-do')
             ->assertOk()
-            ->assertSee('id="delta-labs"', false)
-            ->assertSee('How an idea becomes impact')
-            ->assertSee('Eight focus areas')
-            ->assertSee('Solar mini-grids');
+            ->assertSee('Six areas, chosen by the problems people')
+            ->assertSee('Nature &amp; Climate', false);
+    }
+
+    public function test_every_v3_static_page_renders(): void
+    {
+        $names = ['research.index', 'initiatives.index', 'insights.index', 'impact', 'initiators', 'events.index', 'press'];
+        foreach (['ai', 'hardware', 'ventures', 'climate', 'life', 'governance'] as $area) {
+            $names[] = 'research.'.$area;
+        }
+        foreach (['climate-lab', 'govtech-lab', 'bangla-ai-lab', 'hardware-lab', 'venture-studio'] as $lab) {
+            $names[] = 'initiatives.'.$lab;
+        }
+        foreach (['adoption-pathway', 'bangla-ai-readiness', 'flood-warnings', 'idea-ledger'] as $article) {
+            $names[] = 'insights.'.$article;
+        }
+        foreach ($names as $name) {
+            $this->get(route($name))->assertOk()->assertSee('Delta Initiatives');
+        }
+    }
+
+    public function test_home_never_lists_partners_as_endorsements(): void
+    {
+        Partner::query()->create(['name' => 'Acme Research Trust', 'permission_confirmed' => true, 'is_published' => true]);
+        $this->get('/')->assertDontSee('Acme Research Trust')->assertSee('We name a partner only after an agreement is signed.');
     }
 
     public function test_legal_pages_render_and_unpublished_pages_404(): void
@@ -67,25 +84,5 @@ class PublicPagesTest extends TestCase
 
         LegalPage::query()->where('slug', 'terms')->update(['is_published' => false]);
         $this->get('/terms')->assertNotFound();
-    }
-
-    public function test_numbers_section_never_shows_unverified_or_zero_figures(): void
-    {
-        $this->get('/')->assertDontSee('Pilots launched');
-
-        Stat::query()->where('label', 'Pilots launched')->update(['value' => 3, 'is_verified' => false]);
-        $this->get('/')->assertDontSee('Pilots launched');
-
-        Stat::query()->where('label', 'Pilots launched')->update(['is_verified' => true]);
-        $this->get('/')->assertSee('Pilots launched');
-    }
-
-    public function test_partner_logos_appear_only_with_confirmed_permission(): void
-    {
-        $partner = Partner::query()->create(['name' => 'Acme Research Trust', 'permission_confirmed' => false, 'is_published' => true]);
-        $this->get('/')->assertDontSee('Acme Research Trust');
-
-        $partner->update(['permission_confirmed' => true]);
-        $this->get('/')->assertSee('Acme Research Trust')->assertSee('In collaboration with');
     }
 }
