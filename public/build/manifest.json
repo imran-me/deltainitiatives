@@ -1,4 +1,40 @@
 {
+  "node_modules/@fontsource-variable/anek-bangla/files/anek-bangla-bengali-wght-normal.woff2": {
+    "file": "assets/anek-bangla-bengali-wght-normal-fF1wxCIt.woff2",
+    "src": "node_modules/@fontsource-variable/anek-bangla/files/anek-bangla-bengali-wght-normal.woff2"
+  },
+  "node_modules/@fontsource-variable/anek-bangla/files/anek-bangla-latin-ext-wght-normal.woff2": {
+    "file": "assets/anek-bangla-latin-ext-wght-normal-dgFCsCY0.woff2",
+    "src": "node_modules/@fontsource-variable/anek-bangla/files/anek-bangla-latin-ext-wght-normal.woff2"
+  },
+  "node_modules/@fontsource-variable/anek-bangla/files/anek-bangla-latin-wght-normal.woff2": {
+    "file": "assets/anek-bangla-latin-wght-normal-SsiSBGyZ.woff2",
+    "src": "node_modules/@fontsource-variable/anek-bangla/files/anek-bangla-latin-wght-normal.woff2"
+  },
+  "node_modules/@fontsource-variable/fraunces/files/fraunces-latin-ext-opsz-italic.woff2": {
+    "file": "assets/fraunces-latin-ext-opsz-italic-CGbN9UgK.woff2",
+    "src": "node_modules/@fontsource-variable/fraunces/files/fraunces-latin-ext-opsz-italic.woff2"
+  },
+  "node_modules/@fontsource-variable/fraunces/files/fraunces-latin-ext-opsz-normal.woff2": {
+    "file": "assets/fraunces-latin-ext-opsz-normal-CJcjJNj7.woff2",
+    "src": "node_modules/@fontsource-variable/fraunces/files/fraunces-latin-ext-opsz-normal.woff2"
+  },
+  "node_modules/@fontsource-variable/fraunces/files/fraunces-latin-opsz-italic.woff2": {
+    "file": "assets/fraunces-latin-opsz-italic-lSdLDfvT.woff2",
+    "src": "node_modules/@fontsource-variable/fraunces/files/fraunces-latin-opsz-italic.woff2"
+  },
+  "node_modules/@fontsource-variable/fraunces/files/fraunces-latin-opsz-normal.woff2": {
+    "file": "assets/fraunces-latin-opsz-normal-DihXLNYH.woff2",
+    "src": "node_modules/@fontsource-variable/fraunces/files/fraunces-latin-opsz-normal.woff2"
+  },
+  "node_modules/@fontsource-variable/fraunces/files/fraunces-vietnamese-opsz-italic.woff2": {
+    "file": "assets/fraunces-vietnamese-opsz-italic-DxWqP7Ku.woff2",
+    "src": "node_modules/@fontsource-variable/fraunces/files/fraunces-vietnamese-opsz-italic.woff2"
+  },
+  "node_modules/@fontsource-variable/fraunces/files/fraunces-vietnamese-opsz-normal.woff2": {
+    "file": "assets/fraunces-vietnamese-opsz-normal-Czevyj-6.woff2",
+    "src": "node_modules/@fontsource-variable/fraunces/files/fraunces-vietnamese-opsz-normal.woff2"
+  },
   "node_modules/@fontsource-variable/inter/files/inter-cyrillic-ext-wght-normal.woff2": {
     "file": "assets/inter-cyrillic-ext-wght-normal-BOeWTOD4.woff2",
     "src": "node_modules/@fontsource-variable/inter/files/inter-cyrillic-ext-wght-normal.woff2"
@@ -27,24 +63,8 @@
     "file": "assets/inter-vietnamese-wght-normal-CBcvBZtf.woff2",
     "src": "node_modules/@fontsource-variable/inter/files/inter-vietnamese-wght-normal.woff2"
   },
-  "node_modules/@fontsource/hind-siliguri/files/hind-siliguri-bengali-400-normal.woff": {
-    "file": "assets/hind-siliguri-bengali-400-normal-qtENw2Fc.woff",
-    "src": "node_modules/@fontsource/hind-siliguri/files/hind-siliguri-bengali-400-normal.woff"
-  },
-  "node_modules/@fontsource/hind-siliguri/files/hind-siliguri-bengali-400-normal.woff2": {
-    "file": "assets/hind-siliguri-bengali-400-normal-rHQ7AW0H.woff2",
-    "src": "node_modules/@fontsource/hind-siliguri/files/hind-siliguri-bengali-400-normal.woff2"
-  },
-  "node_modules/@fontsource/hind-siliguri/files/hind-siliguri-bengali-600-normal.woff": {
-    "file": "assets/hind-siliguri-bengali-600-normal-D_VSXRuy.woff",
-    "src": "node_modules/@fontsource/hind-siliguri/files/hind-siliguri-bengali-600-normal.woff"
-  },
-  "node_modules/@fontsource/hind-siliguri/files/hind-siliguri-bengali-600-normal.woff2": {
-    "file": "assets/hind-siliguri-bengali-600-normal-DLZF4s8q.woff2",
-    "src": "node_modules/@fontsource/hind-siliguri/files/hind-siliguri-bengali-600-normal.woff2"
-  },
   "resources/css/app.css": {
-    "file": "assets/app-q6oTWmyn.css",
+    "file": "assets/app-DLsFf0Xp.css",
     "src": "resources/css/app.css",
     "isEntry": true,
     "name": "app",
@@ -52,10 +72,25 @@
       "app.css"
     ]
   },
+  "resources/css/site.css": {
+    "file": "assets/site-C9mkDoB3.css",
+    "src": "resources/css/site.css",
+    "isEntry": true,
+    "name": "site",
+    "names": [
+      "site.css"
+    ]
+  },
   "resources/js/app.js": {
     "file": "assets/app-CtCIEApj.js",
     "name": "app",
     "src": "resources/js/app.js",
+    "isEntry": true
+  },
+  "resources/js/site.js": {
+    "file": "assets/site-CARJ-qOl.js",
+    "name": "site",
+    "src": "resources/js/site.js",
     "isEntry": true
   }
 }

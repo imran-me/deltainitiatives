@@ -1,7 +1,6 @@
 @import 'tailwindcss';
 @import '@fontsource-variable/inter/wght.css';
-@import '@fontsource/hind-siliguri/bengali-400.css';
-@import '@fontsource/hind-siliguri/bengali-600.css';
+@import '@fontsource-variable/anek-bangla/wght.css';
 
 @source '../../modules/**/*.blade.php';
 @source '../../modules/**/*.php';
@@ -13,8 +12,8 @@
  | Deep Navy #0B1F3A · River Teal #1FA2A6 · Delta Mist #E6F5F5 · Silt Gold #C9A227
  * ------------------------------------------------------------------ */
 @theme {
-    --font-sans: 'Inter Variable', 'Hind Siliguri', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-    --font-bangla: 'Hind Siliguri', 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+    --font-sans: 'Inter Variable', 'Anek Bangla Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    --font-bangla: 'Anek Bangla Variable', 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
     --font-mono: ui-monospace, 'SFMono-Regular', 'Cascadia Code', 'Consolas', monospace;
 
     --color-navy-50: #f2f5f9;
