@@ -66,7 +66,7 @@ class ServicesTest extends TestCase
     public function test_idea_bank_and_eon_pages_render(): void
     {
         $this->get(route('public-ideas.index'))->assertOk()->assertSee('EON');
-        $this->get(route('public-ideas.eon'))->assertOk()->assertSee('Reading mode')->assertSee('SHA-256');
+        $this->get(route('public-ideas.show', 'eon'))->assertOk()->assertSee('Reading mode')->assertSee('SHA-256');
         $this->get(route('initiatives.eon'))->assertOk();
         $this->get(route('people'))->assertOk()->assertSee('Top contributors');
     }

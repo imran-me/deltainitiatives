@@ -791,6 +791,18 @@ a.pcard:hover{border-color:var(--teal)}
 @media (max-width:1100px){.itiles{grid-template-columns:1fr 1fr}.itile.big{grid-column:1/-1}.slots{grid-template-columns:1fr 1fr}.fcards{grid-template-columns:1fr 1fr}.badges{grid-template-columns:repeat(3,1fr)}.pstrip{grid-template-columns:1fr 1fr}.pstep:nth-child(2){border-right:0}.pstep{border-bottom:1px solid var(--line)}}
 @media (max-width:760px){.grid.g3:has(.pcard),.grid.g4:has(.pcard){grid-template-columns:1fr 1fr}.pcard{padding:var(--s2)}.itiles,.fcards,.feat-top{grid-template-columns:1fr}.badges{grid-template-columns:1fr 1fr}.pstrip{grid-template-columns:1fr}.pstep{border-right:0}
 .lboard li{grid-template-columns:28px 40px 1fr auto;padding:12px}.lboard .ideas-n{display:none}.face{width:88px}.face .av{width:60px;height:60px}.kanban{grid-template-columns:repeat(5,78vw)}}
+/* ===== round 4b: bento, profiles, votes ===== */
+.bento{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s4) var(--s3)}
+.bento .bento-big{grid-column:span 2;grid-row:span 2}.bento .bento-big h3{font-size:var(--fs-3)}.bento .bento-big .card-pic img{aspect-ratio:16/10}
+.profile-head{display:flex;gap:var(--s4);align-items:center}
+.av.av-xl{width:120px;height:120px;font-size:2.4rem;flex:none}
+.badge-inline{display:inline-flex;align-items:center;gap:10px;margin-top:var(--s2);font-weight:600;color:var(--ink)}.badge-inline .bdg{width:40px;height:40px;font-size:1rem}
+.profile-stats{margin-top:0}.profile-bio{margin-top:var(--s4)}
+.person-link{flex-direction:row;align-items:center;gap:14px;max-width:420px}.person-link .av{margin:0}
+.slot-logo{max-height:48px;max-width:140px;object-fit:contain}
+.rb.vote[aria-pressed=true]{background:var(--bd-red);border-color:var(--bd-red);color:#fff}
+@media (max-width:1100px){.bento{grid-template-columns:1fr 1fr}}
+@media (max-width:760px){.bento{grid-template-columns:1fr}.bento .bento-big{grid-column:auto;grid-row:auto}.profile-head{flex-direction:column;align-items:flex-start}.av.av-xl{width:88px;height:88px;font-size:1.8rem}}
 
 /* SDG colours (generated; text colour picked for AA) */
 .sdgc-1,.sdgb-1[aria-pressed=true]{background:#E5243B;color:#fff;border-color:#E5243B}.lens-1 .wt.hit{background:#E5243B;border-color:#E5243B;color:#fff}.lens-1 .wt.hit b,.lens-1 .wt.hit .kicker{color:#fff}

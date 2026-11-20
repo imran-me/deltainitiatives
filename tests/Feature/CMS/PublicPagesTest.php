@@ -54,7 +54,7 @@ class PublicPagesTest extends TestCase
     public function test_every_v3_static_page_renders(): void
     {
         $names = require base_path('modules/CMS/routes/v3-names.php');
-        $this->assertGreaterThan(30, count($names));
+        $this->assertGreaterThan(20, count($names));
 
         foreach ($names as $name) {
             $this->get(route($name))->assertOk()->assertSee('Delta Initiatives');

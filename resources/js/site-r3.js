@@ -180,6 +180,23 @@
     } else { load(); }
   }
 
+  /* ---------- idea support votes (rate-limited on the server) ---------- */
+  $$('[data-vote-url]').forEach(function (b) {
+    var key = 'vote:' + b.dataset.voteUrl, cnt = $('[data-n]', b), mine = store('di-votes') || {};
+    if (mine[key]) b.setAttribute('aria-pressed', 'true');
+    b.addEventListener('click', function () {
+      b.disabled = true;
+      fetch(b.dataset.voteUrl, { method: 'POST', credentials: 'same-origin', headers: { 'Accept': 'application/json', 'X-CSRF-TOKEN': csrf(), 'X-Requested-With': 'XMLHttpRequest' } })
+        .then(function (r) { if (!r.ok) throw r; return r.json(); })
+        .then(function (d) {
+          cnt.textContent = d.count; b.setAttribute('aria-pressed', !!d.voted);
+          var m = store('di-votes') || {}; if (d.voted) m[key] = 1; else delete m[key]; store('di-votes', m);
+        })
+        .catch(function () {})
+        .then(function () { b.disabled = false; });
+    });
+  });
+
   /* ---------- feed: posts / photos view toggle (?view=grid opens photos) ---------- */
   var views = $('[data-views]');
   if (views) {
