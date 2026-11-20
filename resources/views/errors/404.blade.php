@@ -1,4 +1,6 @@
 {{-- Generated from the Delta v3 design by port.py. --}}
+{{-- Error pages render without the "web" middleware, so share an empty error bag for the forms in the footer. --}}
+@php(view()->share('errors', $errors ?? new \Illuminate\Support\ViewErrorBag))
 <x-layouts.public title="Page not found" :noindex="true">
 <section class="phead nf"><svg class="contours" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#E6F5F5" stroke-width="1.2"><path d="M-50 120C300 60 520 200 820 150S1300 90 1500 160"/><path d="M-50 190C300 130 520 264 820 216S1300 162 1500 230"/><path d="M-50 260C300 200 520 328 820 282S1300 234 1500 300"/><path d="M-50 330C300 270 520 392 820 348S1300 306 1500 370"/><path d="M-50 400C300 340 520 456 820 414S1300 378 1500 440"/><path d="M-50 470C300 410 520 520 820 480S1300 450 1500 510"/><path d="M-50 540C300 480 520 584 820 546S1300 522 1500 580"/><path d="M-50 610C300 550 520 648 820 612S1300 594 1500 650"/><path d="M-50 680C300 620 520 712 820 678S1300 666 1500 720"/><path d="M-50 750C300 690 520 776 820 744S1300 738 1500 790"/></g></svg><div class="wrap phead-in"><div><div class="eyebrow">Error 404</div><h1 class="" data-bn="এই পাতাটি স্রোতে ভেসে গেছে।">This page drifted <em>downstream</em>.</h1>
 <p class="lead">The link may be old or mistyped. Search the site, or start from one of these.</p>

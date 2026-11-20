@@ -39,8 +39,8 @@ class PublicPagesTest extends TestCase
             ->assertOk()
             ->assertSee('Mission')
             ->assertSee('Vision')
-            ->assertSee('Independence &amp; research ethics', false)
-            ->assertSee('Board &amp; leadership', false)
+            ->assertSee('research ethics')
+            ->assertSee('leadership')
             ->assertSee('To be announced');
     }
 

@@ -11,7 +11,7 @@
 @if($newsletter ?? true)
     <section class="news-band" aria-labelledby="dispatch-title"><div class="wrap news">
         <div>
-            <div class="eyebrow">{{ __('core::ui.footer.newsletter_eyebrow') }}</div>
+            <div class="eyebrow">{{ __('core::ui.footer.newsletter_title') }}</div>
             <h2 id="dispatch-title" data-bn="মাসে একটি ইমেইল। প্রমাণ, কোলাহল নয়।">One email a month. Evidence, not noise.</h2>
             <p class="lead">{{ __('core::ui.footer.newsletter_text') }}</p>
         </div>
