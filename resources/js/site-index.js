@@ -145,9 +145,45 @@ export default [
 "m": "Working paper · 11 min"
 },
 {
+"t": "What the five-stage method means in practice",
+"d": "Every idea moves through Discover, Develop, Validate, Brief and Implement. Each stage has an exit test. Stages are published so anyone can follow progress.",
+"u": "/insights/five-stage-method",
+"k": "Insight",
+"a": "governance",
+"s": [
+9,
+17
+],
+"m": "Explainer · 5 min"
+},
+{
+"t": "Why we publish targets before results",
+"d": "Targets set in advance can be checked. Results reported against them build trust. We will publish misses as well as hits.",
+"u": "/insights/targets-before-results",
+"k": "Insight",
+"a": "governance",
+"s": [
+16,
+17
+],
+"m": "Explainer · 4 min"
+},
+{
+"t": "How to write a strong idea submission",
+"d": "Start with the problem and who has it. Show what you have already tried. Be honest about what you do not know.",
+"u": "/insights/strong-idea-submission",
+"k": "Insight",
+"a": "ventures",
+"s": [
+4,
+9
+],
+"m": "Explainer · 6 min"
+},
+{
 "t": "Low-cost flood sensor mesh for char villages",
 "d": "DI-2026-0104 · Validate",
-"u": "/submit-an-idea#ledger",
+"u": "/ideas/low-cost-flood-sensor-mesh-for-char-villages",
 "k": "Idea",
 "a": "hardware",
 "s": [
@@ -158,7 +194,7 @@ export default [
 {
 "t": "Bangla voice assistant for union parishad services",
 "d": "DI-2026-0111 · Brief",
-"u": "/submit-an-idea#ledger",
+"u": "/ideas/bangla-voice-assistant-for-union-parishad-services",
 "k": "Idea",
 "a": "ai",
 "s": [
@@ -169,7 +205,7 @@ export default [
 {
 "t": "Saline-tolerant seedling nursery kit",
 "d": "DI-2026-0118 · Develop",
-"u": "/submit-an-idea#ledger",
+"u": "/ideas/saline-tolerant-seedling-nursery-kit",
 "k": "Idea",
 "a": "climate",
 "s": [
@@ -180,7 +216,7 @@ export default [
 {
 "t": "Open dashboard for school stipend tracking",
 "d": "DI-2026-0125 · Implement",
-"u": "/submit-an-idea#ledger",
+"u": "/ideas/open-dashboard-for-school-stipend-tracking",
 "k": "Idea",
 "a": "governance",
 "s": [
@@ -191,7 +227,7 @@ export default [
 {
 "t": "Paper-strip test for arsenic in tube-well water",
 "d": "DI-2026-0132 · Validate",
-"u": "/submit-an-idea#ledger",
+"u": "/ideas/paper-strip-test-for-arsenic-in-tube-well-water",
 "k": "Idea",
 "a": "life",
 "s": [
@@ -202,7 +238,7 @@ export default [
 {
 "t": "Marketplace linking rickshaw-van owners to cargo",
 "d": "DI-2026-0139 · Develop",
-"u": "/submit-an-idea#ledger",
+"u": "/ideas/marketplace-linking-rickshaw-van-owners-to-cargo",
 "k": "Idea",
 "a": "ventures",
 "s": [
@@ -212,7 +248,7 @@ export default [
 {
 "t": "Offline-first telehealth triage app",
 "d": "DI-2026-0146 · Brief",
-"u": "/submit-an-idea#ledger",
+"u": "/ideas/offline-first-telehealth-triage-app",
 "k": "Idea",
 "a": "life",
 "s": [
@@ -222,7 +258,7 @@ export default [
 {
 "t": "Solar cold box for fish traders",
 "d": "DI-2026-0153 · Discover",
-"u": "/submit-an-idea#ledger",
+"u": "/ideas/solar-cold-box-for-fish-traders",
 "k": "Idea",
 "a": "hardware",
 "s": [
@@ -233,7 +269,7 @@ export default [
 {
 "t": "Mangrove carbon mapping with drones",
 "d": "DI-2026-0160 · Discover",
-"u": "/submit-an-idea#ledger",
+"u": "/ideas/mangrove-carbon-mapping-with-drones",
 "k": "Idea",
 "a": "climate",
 "s": [
@@ -244,11 +280,22 @@ export default [
 {
 "t": "Plain-Bangla legal aid chatbot",
 "d": "DI-2026-0167 · Develop",
-"u": "/submit-an-idea#ledger",
+"u": "/ideas/plain-bangla-legal-aid-chatbot",
 "k": "Idea",
 "a": "ai",
 "s": [
 16
+]
+},
+{
+"t": "EON: one brain, many decision layers for business",
+"d": "DI-2026-0174 · Validate",
+"u": "/ideas/eon",
+"k": "Idea",
+"a": "ai",
+"s": [
+8,
+9
 ]
 },
 {
@@ -262,7 +309,7 @@ export default [
 {
 "t": "Briefing room",
 "d": "Collaborate: government, UN, industry, academia",
-"u": "/partner-with-us",
+"u": "/partners",
 "k": "Page",
 "a": "",
 "s": []
@@ -271,14 +318,6 @@ export default [
 "t": "Impact",
 "d": "Targets, SDG lens, theory of change, roadmap",
 "u": "/impact",
-"k": "Page",
-"a": "",
-"s": []
-},
-{
-"t": "Initiators",
-"d": "Wall of Fame",
-"u": "/initiators",
 "k": "Page",
 "a": "",
 "s": []
@@ -378,5 +417,88 @@ export default [
 8,
 9
 ]
+},
+{
+"t": "EON",
+"d": "An executive AI layer on top of a business ERP: ask in Bangla, English or Banglish, by voice or text, and get the numbers, the reason and the recommended action.",
+"u": "/initiatives/eon",
+"k": "Initiative",
+"a": "ai",
+"s": [
+8,
+9
+]
+},
+{
+"t": "Tech Support",
+"d": "Small and growing organisations lose hours to systems that break, devices nobody maintains and security nobody owns.",
+"u": "/services/tech-support",
+"k": "Service",
+"a": "",
+"s": []
+},
+{
+"t": "Business Systems & ERP",
+"d": "Businesses run on spreadsheets, paper and disconnected apps; owners cannot see accounts, payroll and operations in one place.",
+"u": "/services/business-systems",
+"k": "Service",
+"a": "",
+"s": []
+},
+{
+"t": "Custom Software",
+"d": "Off-the-shelf tools rarely fit Bangladeshi workflows, languages or budgets.",
+"u": "/services/custom-software",
+"k": "Service",
+"a": "",
+"s": []
+},
+{
+"t": "Prototypes & MVPs",
+"d": "Good ideas stall because nobody can build the first working version quickly enough to test it.",
+"u": "/services/prototypes",
+"k": "Service",
+"a": "",
+"s": []
+},
+{
+"t": "Brand Building",
+"d": "New ventures and institutions often launch without a clear name, story or visual identity.",
+"u": "/services/brand",
+"k": "Service",
+"a": "",
+"s": []
+},
+{
+"t": "Delta Expert Network",
+"d": "Organisations need specialist judgement for a few days, not a full-time hire; experts want meaningful work in Bangladesh.",
+"u": "/services/expert-network",
+"k": "Service",
+"a": "",
+"s": []
+},
+{
+"t": "Services",
+"d": "Build with Delta: support, ERP, software, prototypes, brand, experts",
+"u": "/services",
+"k": "Page",
+"a": "",
+"s": []
+},
+{
+"t": "Ideas library",
+"d": "Published ideas and reading list",
+"u": "/ideas",
+"k": "Page",
+"a": "",
+"s": []
+},
+{
+"t": "Feed",
+"d": "Institute updates",
+"u": "/feed",
+"k": "Page",
+"a": "",
+"s": []
 }
 ];

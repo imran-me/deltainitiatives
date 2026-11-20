@@ -64,7 +64,7 @@
     "src": "node_modules/@fontsource-variable/inter/files/inter-vietnamese-wght-normal.woff2"
   },
   "resources/css/app.css": {
-    "file": "assets/app-DLsFf0Xp.css",
+    "file": "assets/app-Bt2HZXYH.css",
     "src": "resources/css/app.css",
     "isEntry": true,
     "name": "app",
@@ -73,7 +73,7 @@
     ]
   },
   "resources/css/site.css": {
-    "file": "assets/site-C9mkDoB3.css",
+    "file": "assets/site-CZALUVvq.css",
     "src": "resources/css/site.css",
     "isEntry": true,
     "name": "site",
@@ -88,7 +88,7 @@
     "isEntry": true
   },
   "resources/js/site.js": {
-    "file": "assets/site-CARJ-qOl.js",
+    "file": "assets/site-iDOvYMaY.js",
     "name": "site",
     "src": "resources/js/site.js",
     "isEntry": true

@@ -1,6 +1,7 @@
 /* Delta Initiatives v3 public site behaviour. Generated from deltainitiatives-v3 by port.py.
    Module script, no inline handlers (strict CSP). Form helpers (guards, counters, files) come from app.js. */
 import SEARCH_INDEX from './site-index.js';
+import './site-r3.js';
 
 (function () {
   'use strict';
@@ -25,10 +26,17 @@ import SEARCH_INDEX from './site-index.js';
   if (menuBtn) menuBtn.addEventListener('click', function () {
     var o = nav.classList.toggle('open'); menuBtn.setAttribute('aria-expanded', o);
   });
-  var megaBtn = $('.mega-btn'), mega = $('#mega');
-  function setMega(o) { if (!megaBtn) return; mega.classList.toggle('open', o); megaBtn.setAttribute('aria-expanded', o); }
+  var megaBtns = $$('.mega-btn'), megaBtn = megaBtns[0];
+  function setMega(o, only) {
+    megaBtns.forEach(function (b) {
+      var m = doc.getElementById(b.getAttribute('aria-controls')), open = o && (!only || b === only);
+      if (m) m.classList.toggle('open', open); b.setAttribute('aria-expanded', open);
+    });
+  }
   if (megaBtn) {
-    megaBtn.addEventListener('click', function (e) { e.stopPropagation(); setMega(!mega.classList.contains('open')); });
+    megaBtns.forEach(function (b) {
+      b.addEventListener('click', function (e) { e.stopPropagation(); setMega(b.getAttribute('aria-expanded') !== 'true', b); });
+    });
     doc.addEventListener('click', function (e) { if (!e.target.closest('.has-mega')) setMega(false); });
   }
 
