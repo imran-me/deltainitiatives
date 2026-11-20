@@ -39,7 +39,6 @@ class PartnershipsServiceProvider extends ModuleServiceProvider
         ]);
 
         $this->app->make(Sitemap::class)->add(fn () => [
-            ['loc' => route('partner.index'), 'changefreq' => 'monthly', 'priority' => 0.8],
         ]);
     }
 }

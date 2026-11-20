@@ -21,25 +21,6 @@
         <x-button href="#promise" variant="outline-light" size="lg" icon-left="shield-check">{{ __($p.'hero.protect') }}</x-button>
     </x-page-hero>
 
-    {{-- How it works --}}
-    <section class="bg-mist py-20 sm:py-24">
-        <div class="container-delta">
-            <x-section-heading :eyebrow="__($p.'steps.eyebrow')" :title="__($p.'steps.title')" :intro="__($p.'steps.intro')" />
-            <ol class="mt-12 grid gap-5 md:grid-cols-3" role="list">
-                @foreach(__($p.'steps.items') as $i => $step)
-                    <li class="card-delta p-7" data-reveal style="--delay: {{ $i * 0.08 }}s">
-                        <div class="flex items-center justify-between">
-                            <span class="inline-flex size-11 items-center justify-center rounded-xl bg-navy-900 text-river-400"><x-icon :name="$step['icon']" class="size-5" /></span>
-                            <span class="font-mono text-sm font-semibold text-navy-200 tabular-nums">0{{ $i + 1 }}</span>
-                        </div>
-                        <h3 class="mt-6 text-lg font-semibold tracking-tight text-navy-900">{{ $step['title'] }}</h3>
-                        <p class="mt-2 leading-relaxed text-navy-500">{{ $step['text'] }}</p>
-                    </li>
-                @endforeach
-            </ol>
-        </div>
-    </section>
-
     {{-- Promise: "Your idea stays yours." --}}
     <section id="promise" class="scroll-mt-20 py-20 sm:py-28">
         <div class="container-delta grid gap-14 lg:grid-cols-12 lg:items-center">
@@ -101,9 +82,8 @@
         </div>
     </section>
 
-    {{-- v3: protection explained + public Idea Ledger (sample entries) with an in-browser fingerprint check --}}
+    {{-- v3: how protection works, as one visual strip --}}
     @include('ideaportal::partials.v3-protection')
-    @include('ideaportal::partials.v3-ledger')
 
     {{-- The form --}}
     <section id="submit-form" class="scroll-mt-20 border-t border-navy-100 bg-[#f6f9fb] py-20 sm:py-28">
@@ -242,4 +222,7 @@
             </div>
         </div>
     </section>
+
+    {{-- v3: Initiator titles --}}
+    @include('ideaportal::partials.v3-recognition')
 </x-layouts.public>

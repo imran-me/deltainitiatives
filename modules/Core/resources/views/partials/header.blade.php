@@ -1,20 +1,12 @@
-{{-- v3 site header: sticky, shrinks after scroll (site.js), Research mega-menu, Ctrl K search, language. --}}
+{{-- Site header: Services · Ideas · Submit · Feed · People · Partners, search, language, "Work with us". --}}
 @php
-    $areas = [
-        ['ai', 'AI & Computing', 'Bangla language technology'],
-        ['hardware', 'Hardware & Engineering', 'Sensors, devices, low-cost machines'],
-        ['ventures', 'Startups & Ventures', 'Research that becomes companies'],
-        ['climate', 'Nature & Climate', 'Floods, salinity, cyclones'],
-        ['life', 'Life Sciences & Health', 'Diagnostics and water safety'],
-        ['governance', 'Good Governance', 'Evidence and civic technology'],
-    ];
     $nav = [
-        ['initiatives.index', 'Initiatives', 'initiatives.*'],
-        ['insights.index', 'Insights', 'insights.*'],
-        ['ideas.create', 'Idea Portal', 'ideas.*|bn.ideas.*'],
-        ['impact', 'Impact', 'impact'],
-        ['partner.index', 'Collaborate', 'partner.*'],
-        ['about', 'About', 'about|join.*|bn.join.*'],
+        ['services.index', 'Services', 'services.*'],
+        ['public-ideas.index', 'Ideas', 'public-ideas.*'],
+        ['ideas.create', 'Submit', 'ideas.*|bn.ideas.*'],
+        ['feed.index', 'Feed', 'feed.*'],
+        ['people', 'People', 'people'],
+        ['partners', 'Partners', 'partners|partner.*'],
     ];
     $isActive = fn (string $patterns) => collect(explode('|', $patterns))->contains(fn ($p) => request()->routeIs($p));
     $alts = $alternates ?? [];
@@ -30,17 +22,12 @@
         <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
     <nav class="nav" id="nav" aria-label="Main">
-        <div class="has-mega">
-            <button type="button" @class(['mega-btn', 'cur' => $isActive('research.*|what-we-do')]) aria-expanded="false" aria-controls="mega">Research</button>
-            <div class="mega" id="mega">
-                @foreach($areas as [$key, $label, $blurb])
-                    <a href="{{ route('research.'.$key) }}"><b>{{ $label }}</b><span>{{ $blurb }}</span></a>
-                @endforeach
-                <div class="mega-foot"><a href="{{ route('research.index') }}">All six research areas →</a><a href="{{ route('insights.index') }}">Latest insights →</a></div>
-            </div>
-        </div>
         @foreach($nav as [$route, $label, $patterns])
-            <a href="{{ localized_route($route) }}" @if($isActive($patterns)) aria-current="page" @endif>{{ $label }}</a>
+            @if($route === 'feed.index')
+                <a href="{{ route('feed.index') }}" class="feed-link" data-feed-link data-latest-url="{{ route('feed.latest') }}" @if($isActive($patterns)) aria-current="page" @endif>Feed<span class="dot" hidden><span class="sr">New updates</span></span></a>
+            @else
+                <a href="{{ localized_route($route) }}" @if($isActive($patterns)) aria-current="page" @endif>{{ $label }}</a>
+            @endif
         @endforeach
         <button class="search-btn" type="button" data-open-search aria-label="Search the site">{!! $searchIcon !!}<span>Search</span><kbd>Ctrl K</kbd></button>
         @if(count($alts) > 1)
@@ -52,6 +39,6 @@
         @else
             <button class="lang-btn" type="button" data-lang-toggle aria-pressed="false" title="Switch headlines to Bangla"><span class="bn">বাংলা</span></button>
         @endif
-        <a class="btn pri" href="{{ localized_route('ideas.create') }}#submit-form">{{ __('core::ui.nav.submit_idea') }}</a>
+        <a class="btn pri" href="{{ route('services.index') }}#proposal">Work with us</a>
     </nav>
 </div></header>

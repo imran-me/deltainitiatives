@@ -14,4 +14,5 @@ return [
     Modules\Applications\Providers\ApplicationsServiceProvider::class,
     Modules\Contact\Providers\ContactServiceProvider::class,
     Modules\Newsletter\Providers\NewsletterServiceProvider::class,
+    Modules\Publishing\Providers\PublishingServiceProvider::class,
 ];
