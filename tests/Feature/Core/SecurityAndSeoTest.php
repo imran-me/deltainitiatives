@@ -33,9 +33,9 @@ class SecurityAndSeoTest extends TestCase
 
     public function test_pages_have_seo_metadata_and_structured_data(): void
     {
-        $this->get('/what-we-do')
+        $this->get('/research')
             ->assertOk()
-            ->assertSee('<title>What We Do · Delta Initiatives</title>', false)
+            ->assertSee('<title>Research · Delta Initiatives</title>', false)
             ->assertSee('<link rel="canonical"', false)
             ->assertSee('property="og:image"', false)
             ->assertSee('"@type":"ResearchOrganization"', false);

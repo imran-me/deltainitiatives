@@ -40,26 +40,10 @@ class PartnershipsTest extends TestCase
         ] + $this->formProtection();
     }
 
-    public function test_partner_page_renders_types_and_brochure_request(): void
+    public function test_old_partner_page_redirects_to_the_partners_page(): void
     {
-        $this->get(route('partner.index'))
-            ->assertOk()
-            ->assertSee('Why partner with us')
-            ->assertSee('Research &amp; Academic', false)
-            ->assertSee('Media &amp; Community', false)
-            ->assertSee('Request the brochure')
-            ->assertSee('data-preselect="government-policy"', false);
-    }
-
-    public function test_type_query_parameter_preselects_the_form(): void
-    {
-        $this->get(route('partner.index', ['type' => 'government-policy']))
-            ->assertOk()
-            ->assertSee('value="government-policy" selected', false);
-
-        $this->get(route('partner.index', ['type' => 'nonsense']))
-            ->assertOk()
-            ->assertDontSee('selected>', false);
+        $this->get('/partner-with-us')->assertStatus(301)->assertRedirect('/partners');
+        $this->get('/partners')->assertOk()->assertSee('Worked with')->assertSee('Your organisation here');
     }
 
     public function test_inquiry_is_stored_and_both_mails_are_queued(): void
@@ -127,7 +111,6 @@ class PartnershipsTest extends TestCase
         Storage::disk('local')->put('brochures/brochure.pdf', '%PDF-1.4 test');
         app(SettingsService::class)->set(['brochure_path' => 'brochures/brochure.pdf']);
 
-        $this->get(route('partner.index'))->assertSee('Download the brochure');
 
         $response = $this->get(route('partner.brochure'));
         $response->assertOk()->assertHeader('Content-Type', 'application/pdf');

@@ -24,11 +24,12 @@ class PublicPagesTest extends TestCase
             ->assertOk()
             ->assertSee('Engineering Change')
             ->assertSee('solutions</em> the world can implement', false)
-            ->assertSee('The Living Delta Map')
-            ->assertSee('Why Bangladesh, why now')
-            ->assertSee('Six areas. One')
-            ->assertSee('Latest from the ledger')
-            ->assertSee('Built to collaborate with')
+            ->assertSee('What we build')
+            ->assertSee('Featured ideas')
+            ->assertSee('EON: one brain, many decision layers for business')
+            ->assertSee('The people behind the ideas')
+            ->assertSee('Your organisation here')
+            ->assertSee('Latest from the feed')
             ->assertSee('The Delta Dispatch');
     }
 
@@ -43,26 +44,18 @@ class PublicPagesTest extends TestCase
             ->assertSee('To be announced');
     }
 
-    public function test_what_we_do_shows_the_research_overview(): void
+    public function test_removed_pages_redirect_permanently(): void
     {
-        $this->get('/what-we-do')
-            ->assertOk()
-            ->assertSee('Six areas, chosen by the problems people')
-            ->assertSee('Nature &amp; Climate', false);
+        $this->get('/what-we-do')->assertStatus(301)->assertRedirect('/research');
+        $this->get('/gallery')->assertStatus(301)->assertRedirect('/feed?view=grid');
+        $this->get('/initiators')->assertStatus(301)->assertRedirect('/submit-an-idea#recognition');
     }
 
     public function test_every_v3_static_page_renders(): void
     {
-        $names = ['research.index', 'initiatives.index', 'insights.index', 'impact', 'initiators', 'events.index', 'press'];
-        foreach (['ai', 'hardware', 'ventures', 'climate', 'life', 'governance'] as $area) {
-            $names[] = 'research.'.$area;
-        }
-        foreach (['climate-lab', 'govtech-lab', 'bangla-ai-lab', 'hardware-lab', 'venture-studio'] as $lab) {
-            $names[] = 'initiatives.'.$lab;
-        }
-        foreach (['adoption-pathway', 'bangla-ai-readiness', 'flood-warnings', 'idea-ledger'] as $article) {
-            $names[] = 'insights.'.$article;
-        }
+        $names = require base_path('modules/CMS/routes/v3-names.php');
+        $this->assertGreaterThan(30, count($names));
+
         foreach ($names as $name) {
             $this->get(route($name))->assertOk()->assertSee('Delta Initiatives');
         }
@@ -71,7 +64,7 @@ class PublicPagesTest extends TestCase
     public function test_home_never_lists_partners_as_endorsements(): void
     {
         Partner::query()->create(['name' => 'Acme Research Trust', 'permission_confirmed' => true, 'is_published' => true]);
-        $this->get('/')->assertDontSee('Acme Research Trust')->assertSee('We name a partner only after an agreement is signed.');
+        $this->get('/')->assertDontSee('Acme Research Trust')->assertSee('We list partners only after an agreement is signed');
     }
 
     public function test_legal_pages_render_and_unpublished_pages_404(): void
