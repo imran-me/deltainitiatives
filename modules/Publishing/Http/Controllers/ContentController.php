@@ -70,9 +70,11 @@ class ContentController extends Controller
         $idea->loadCount('votes')->load('person');
 
         $related = PublicIdea::query()->visible()->whereKeyNot($idea->id)
-            ->withCount('votes')->orderByRaw('case when area = ? then 0 else 1 end', [$idea->area])->limit(3)->get();
+            ->withCount('votes')->where('area', $idea->area)->limit(3)->get();
+        $words = str_word_count(strip_tags($idea->problem.' '.$idea->solution.' '.collect($idea->howSteps())->flatten()->implode(' ')));
+        $readMinutes = max(1, (int) ceil($words / 200));
 
-        return view('publishing::ideas.show', compact('idea', 'related'));
+        return view('publishing::ideas.show', compact('idea', 'related', 'readMinutes'));
     }
 
     public function vote(Request $request, PublicIdea $idea): JsonResponse

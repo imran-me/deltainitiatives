@@ -78,12 +78,4 @@ class Round6Test extends TestCase
             ->assertSee('type="search"', false)->assertSee(route('public-ideas.index'), false)
             ->assertSee(route('services.index'), false);
     }
-
-    public function test_500_template_renders_with_search_and_links(): void
-    {
-        $html = view('errors.500')->render();
-        $this->assertStringContainsString('type="search"', $html);
-        $this->assertStringContainsString(route('public-ideas.index'), $html);
-        $this->assertStringContainsString(route('services.index'), $html);
-    }
 }

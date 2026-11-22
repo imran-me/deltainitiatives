@@ -881,3 +881,22 @@ main .bg-river-500.rounded-full:hover{background:var(--teal-h)}
 .slot-mono{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:var(--wash);color:var(--navy);font:600 1.1rem var(--sans);letter-spacing:.04em}
 .slot-logo{max-height:56px;width:auto;max-width:100%;object-fit:contain}
 .err-search{display:flex;gap:8px;max-width:520px;margin:var(--s3) 0}.err-search input{flex:1;padding:12px 14px;border:1px solid var(--line);border-radius:var(--r)}
+
+/* round 7 */
+.how-steps{list-style:none;margin:32px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.how-steps li{display:flex;flex-direction:column;gap:6px;padding:20px;border:1px solid var(--line);border-radius:var(--r);background:#fff;border-top:3px solid var(--teal)}
+.how-steps li:nth-child(3){border-top-color:#006A4E}.how-steps li:nth-child(4){border-top-color:#F42A41}
+.hs-ic{width:44px;height:44px;border-radius:50%;background:var(--mist);display:grid;place-items:center}
+.hs-ic svg{width:24px;height:24px;fill:none;stroke:var(--navy);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.how-steps small{color:var(--muted)}
+.live-nums{background:var(--navy);color:#fff;padding-block:40px}
+.ln-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center}
+.ln-grid b{display:block;font:600 clamp(2rem,5vw,3.2rem)/1.1 var(--serif)}.ln-grid small{color:#cfe3ee;text-transform:uppercase;letter-spacing:.08em}
+.read-time{color:var(--muted);font-size:.9rem;margin:0 0 12px}
+.submit-steps{list-style:none;display:flex;gap:8px;margin:0 0 32px;padding:0}
+.submit-steps li{flex:1}
+.submit-steps a{display:flex;align-items:center;gap:8px;justify-content:center;padding:10px;border-radius:999px;background:#E6F5F5;color:#0B1F3A;font-weight:600;font-size:.9rem;text-decoration:none;border-bottom:3px solid #1FA2A6}
+.submit-steps li:nth-child(2) a{border-bottom-color:#006A4E}.submit-steps li:nth-child(3) a{border-bottom-color:#F42A41}
+.submit-steps b{width:24px;height:24px;border-radius:50%;background:#0B1F3A;color:#fff;display:grid;place-items:center;font-size:.8rem}
+@media(max-width:760px){.how-steps,.ln-grid{grid-template-columns:1fr 1fr}.submit-steps a{font-size:.75rem;padding:8px 4px}}
+@media print{.live-nums,.submit-steps{display:none!important}body{background:#fff;color:#000;font-size:12pt}a{color:#000;text-decoration:none}.idea-art h2{break-after:avoid}.idea-art .pcard,.idea-art dl{break-inside:avoid}}

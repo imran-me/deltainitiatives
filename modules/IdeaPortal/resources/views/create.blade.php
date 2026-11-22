@@ -132,6 +132,11 @@
                           class="rounded-3xl bg-white p-6 shadow-[0_1px_2px_rgb(11_31_58/0.04)] ring-1 ring-navy-100 sm:p-10">
                         @csrf
                         <x-honeypot />
+                        <ol class="submit-steps" aria-label="Steps">
+                            <li><a href="#fs-team"><b>1</b> You</a></li>
+                            <li><a href="#fs-idea"><b>2</b> Your idea</a></li>
+                            <li><a href="#fs-agreement"><b>3</b> Review</a></li>
+                        </ol>
                         <x-form.errors-summary class="mb-8" />
 
                         {{-- A. About you & your team --}}

@@ -9,6 +9,7 @@
         <nav class="crumb" aria-label="Breadcrumb"><a href="{{ route('home') }}">Home</a> / <a href="{{ route('public-ideas.index') }}">Ideas</a> / {{ $idea->code }}</nav>
         <div class="eyebrow">{{ $idea->is_featured ? 'Featured idea' : 'Idea' }} · {{ $idea->areaName() }} @if($idea->is_demo)<span class="sample">Sample</span>@endif</div>
         <h1>{{ $idea->title }}</h1>
+        <p class="read-time" data-read-time>{{ $readMinutes }} min read</p>
         <div class="reader-bar" data-reader aria-label="Reading options">
             <button type="button" class="rb" data-read="mode" aria-pressed="false">Reading mode</button>
             <button type="button" class="rb" data-read="smaller" aria-label="Smaller text">A−</button>

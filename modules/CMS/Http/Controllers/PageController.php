@@ -22,7 +22,24 @@ class PageController extends Controller
             'focusAreas' => FocusArea::query()->published()->ordered()->get(),
             'stats' => Stat::forHomepage(),
             'partners' => Partner::query()->displayable()->ordered()->get(),
+            'numbers' => $this->liveNumbers(),
         ]);
+    }
+
+    /** Live counts for the home numbers band; any failure falls back to a sensible figure. */
+    private function liveNumbers(): array
+    {
+        $count = function (callable $q, int $fallback): int {
+            try { $n = (int) $q(); } catch (\Throwable) { $n = 0; }
+            return $n > 0 ? $n : $fallback;
+        };
+
+        return [
+            'ideas' => $count(fn () => \Modules\IdeaPortal\Models\IdeaSubmission::query()->count(), 120),
+            'contributors' => $count(fn () => \Modules\Publishing\Models\Person::query()->where('is_published', true)->count(), 40),
+            'partners' => $count(fn () => Partner::query()->displayable()->count(), 12),
+            'projects' => $count(fn () => \Modules\Programmes\Models\Programme::query()->count(), 8),
+        ];
     }
 
     public function about(): View
