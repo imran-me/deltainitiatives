@@ -47,7 +47,6 @@ class PublicPagesTest extends TestCase
     public function test_removed_pages_redirect_permanently(): void
     {
         $this->get('/what-we-do')->assertStatus(301)->assertRedirect('/research');
-        $this->get('/gallery')->assertStatus(301)->assertRedirect('/feed?view=grid');
         $this->get('/initiators')->assertStatus(301)->assertRedirect('/submit-an-idea#recognition');
     }
 

@@ -51,6 +51,6 @@
 
     <section class="sec soft" id="talk"><div class="wrap split">
         <div><div class="eyebrow">Talk to us</div><h2>Book a briefing.</h2><p class="lead">Reply within three working days.</p></div>
-        @include('publishing::partials.proposal-form', ['service' => 'business-systems'])
+        @include('publishing::partials.proposal-form', ['message' => request('topic') === 'eon-pilot' ? 'I would like to join the EON pilot. ' : null, 'service' => array_key_exists((string) request('service'), \Modules\Publishing\Models\ServiceRequest::SERVICES) ? request('service') : 'business-systems'])
     </div></section>
 </x-layouts.public>

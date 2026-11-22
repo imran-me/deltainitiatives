@@ -12,6 +12,8 @@
         'image' => $img['src'] ?? null,
         'mainEntityOfPage' => route('insights.show', $article),
     ];
+    $shareUrl = urlencode(route('insights.show', $article));
+    $shareTitle = urlencode($article->title);
 @endphp
 <x-layouts.public :title="$article->title" :description="implode(' ', $article->summaryLines())" :image="$img['src'] ?? null" og-type="article" :json-ld="$jsonLd">
     <div class="progress" aria-hidden="true"><i></i></div>
@@ -31,12 +33,12 @@
                 </ol></nav>
             @endif
             <div class="share" aria-label="Share"><span class="kicker">Share</span>
-                <a data-share="x" href="#" rel="noopener" target="_blank">X</a>
-                <a data-share="linkedin" href="#" rel="noopener" target="_blank">LinkedIn</a>
-                <a data-share="facebook" href="#" rel="noopener" target="_blank">Facebook</a>
+                <a data-share="x" href="https://twitter.com/intent/tweet?text={{ $shareTitle }}&url={{ $shareUrl }}" rel="noopener" target="_blank">X</a>
+                <a data-share="linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url={{ $shareUrl }}" rel="noopener" target="_blank">LinkedIn</a>
+                <a data-share="facebook" href="https://www.facebook.com/sharer/sharer.php?u={{ $shareUrl }}" rel="noopener" target="_blank">Facebook</a>
                 <a data-share="whatsapp" href="#" rel="noopener" target="_blank">WhatsApp</a>
                 <a data-share="email" href="#">Email</a>
-                <button type="button" class="share-copy" data-copy-link>Copy link</button>
+                <button type="button" class="share-copy" data-copy-link data-url="{{ route('insights.show', $article) }}">Copy link</button>
             </div>
         </aside>
         <article class="article">
@@ -46,7 +48,13 @@
             </div>
             @if($article->is_demo)<p class="note">Sample article: it shows how a Delta publication reads. It contains no survey results or statistics of our own yet.</p>@endif
             {!! $body['html'] !!}
+            <aside class="author-card" aria-label="About the author"><span class="av" aria-hidden="true">{{ collect(explode(' ', $article->author_name))->map(fn ($w) => mb_substr($w, 0, 1))->take(2)->implode('') }}</span>
+                <div><b>{{ $article->author_name }}</b><p class="hint">Published by Delta Initiatives. <a href="{{ route('people') }}">Meet the team</a></p></div></aside>
             <p class="tags">@foreach($article->tagList() as $t)<a class="tg" href="{{ route('insights.index', ['tag' => $t]) }}">#{{ $t }}</a>@endforeach</p>
+            <nav class="art-pn" aria-label="More articles">
+                @if($prev)<a class="pn-prev" rel="prev" href="{{ route('insights.show', $prev) }}"><small>← Previous</small><b>{{ $prev->title }}</b></a>@else<span></span>@endif
+                @if($next)<a class="pn-next" rel="next" href="{{ route('insights.show', $next) }}"><small>Next →</small><b>{{ $next->title }}</b></a>@endif
+            </nav>
         </article>
     </div></section>
 

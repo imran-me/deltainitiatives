@@ -9,7 +9,7 @@ Route::get('/', [PageController::class, 'home'])->name('home');
 Route::get('/about', [PageController::class, 'about'])->name('about');
 // Pages folded into the round-3 structure: 301 to their new place.
 Route::permanentRedirect('/what-we-do', '/research')->name('what-we-do');
-Route::permanentRedirect('/gallery', '/feed?view=grid')->name('gallery');
+Route::view('/eon', 'cms::eon')->name('eon');
 Route::permanentRedirect('/initiators', '/submit-an-idea#recognition')->name('initiators');
 
 // Bangla main pages

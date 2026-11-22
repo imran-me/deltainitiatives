@@ -47,7 +47,9 @@ class ContentController extends Controller
             ->orderByRaw('case when area = ? then 0 else 1 end', [$article->area])
             ->orderByDesc('published_at')->limit(3)->get();
 
-        return view('publishing::insights.show', ['article' => $article, 'body' => $article->rendered(), 'related' => $related]);
+        return view('publishing::insights.show', ['article' => $article, 'body' => $article->rendered(), 'related' => $related,
+            'prev' => Article::query()->visible()->where('published_at', '<', $article->published_at)->orderByDesc('published_at')->first(),
+            'next' => Article::query()->visible()->where('published_at', '>', $article->published_at)->orderBy('published_at')->first()]);
     }
 
     /** Idea Bank: featured idea + kanban by stage, filter by area. */
@@ -129,5 +131,51 @@ class ContentController extends Controller
             'logos' => Partner::query()->displayable()->ordered()->get(),
             'worked' => WorkedWith::query()->published()->ordered()->get(),
         ]);
+    }
+
+    /** Photo gallery with lightbox, built from the licensed photo library. */
+    public function gallery(): View
+    {
+        $photos = collect(\Modules\Publishing\Support\Library::all())->map(function (array $m, string $key) {
+            $w = (int) max($m['widths'] ?? [960]);
+
+            return [
+                'key' => $key, 'src' => "/images/library/{$key}-{$w}.webp", 'thumb' => "/images/library/{$key}-480.webp",
+                'w' => $m['w'] ?? 1600, 'h' => $m['h'] ?? 900, 'alt' => $m['alt'] ?? $m['caption'], 'caption' => $m['caption'],
+                'credit' => 'Photo: '.($m['author'] ?? 'Unknown').', '.($m['licence'] ?? '').', via Wikimedia Commons', 'source' => $m['source'] ?? null,
+            ];
+        })->values();
+
+        return view('publishing::gallery.index', compact('photos'));
+    }
+
+    /** Grouped site search: ideas, insights, services, people. */
+    public function search(Request $request): View
+    {
+        $q = mb_substr(trim((string) $request->query('q', '')), 0, 80);
+        $groups = ['Ideas' => collect(), 'Insights' => collect(), 'Services' => collect(), 'People' => collect()];
+
+        if (mb_strlen($q) >= 2) {
+            $like = '%'.addcslashes($q, '%_'.chr(92)).'%';
+            $groups['Ideas'] = PublicIdea::query()->visible()
+                ->where(fn ($w) => $w->where('title', 'like', $like)->orWhere('problem', 'like', $like)->orWhere('solution', 'like', $like))
+                ->orderBy('title')->limit(10)->get()
+                ->map(fn ($i) => ['title' => $i->title, 'meta' => $i->areaName(), 'url' => route('public-ideas.show', $i)]);
+            $groups['Insights'] = Article::query()->visible()
+                ->where(fn ($w) => $w->where('title', 'like', $like)->orWhere('summary', 'like', $like)->orWhere('tags', 'like', $like))
+                ->orderByDesc('published_at')->limit(10)->get()
+                ->map(fn ($a) => ['title' => $a->title, 'meta' => $a->categoryName(), 'url' => route('insights.show', $a)]);
+            $groups['Services'] = collect(\Modules\Publishing\Models\ServiceRequest::SERVICES)
+                ->filter(fn ($name, $slug) => mb_stripos($name.' '.str_replace('-', ' ', $slug), $q) !== false)
+                ->map(fn ($name, $slug) => ['title' => $name, 'meta' => 'Service', 'url' => \Illuminate\Support\Facades\Route::has('services.'.$slug) ? route('services.'.$slug) : route('partners', ['service' => $slug]).'#talk'])->values();
+            $groups['People'] = Person::query()->published()->ordered()
+                ->where(fn ($w) => $w->where('name', 'like', $like)->orWhere('role', 'like', $like)->orWhere('bio', 'like', $like))
+                ->limit(10)->get()
+                ->map(fn ($p) => ['title' => $p->name, 'meta' => $p->role, 'url' => route('people.show', $p)]);
+        }
+
+        $total = collect($groups)->sum(fn ($g) => $g->count());
+
+        return view('publishing::search', compact('q', 'groups', 'total'));
     }
 }

@@ -21,7 +21,7 @@
         <x-form.input name="phone" type="tel" label="Phone" autocomplete="tel" maxlength="40" />
         <x-form.select name="budget" label="Budget range" :options="$budgets" />
     </div>
-    <x-form.textarea name="message" label="What do you need?" required rows="5" maxlength="3000" />
+    <x-form.textarea name="message" label="What do you need?" :value="$message ?? null" required rows="5" maxlength="3000" />
     <x-turnstile />
     <button class="btn pri" type="submit" data-loading-text="Sending…">Send request</button>
 </form>

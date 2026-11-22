@@ -184,13 +184,15 @@ import './site-r3.js';
       return words.every(function (w) { return hay.indexOf(w) > -1; });
     }).slice(0, 12);
     sel = 0; res.innerHTML = '';
-    if (!hits.length) { var li = doc.createElement('li'); li.className = 'none'; li.textContent = 'No results. Try another word or clear a filter.'; res.appendChild(li); return; }
+    var allLink = function () { if (q.value.trim().length < 2) return; var li = doc.createElement('li'), a = doc.createElement('a'); a.href = '/search?q=' + encodeURIComponent(q.value.trim()); a.className = 'cmdk-all'; a.textContent = 'See all results for “' + q.value.trim() + '” (ideas, insights, services, people) →'; li.appendChild(a); res.appendChild(li); };
+    if (!hits.length) { var li = doc.createElement('li'); li.className = 'none'; li.textContent = 'No results. Try another word or clear a filter.'; res.appendChild(li); allLink(); return; }
     hits.forEach(function (it, i) {
       var li = doc.createElement('li'), a = doc.createElement('a'), b = doc.createElement('b'), s = doc.createElement('small'), e = doc.createElement('em');
       a.href = it.u; a.setAttribute('role', 'option'); a.setAttribute('aria-selected', i === 0);
       b.textContent = it.t; s.textContent = it.m ? it.m + ' · ' + it.d : it.d; e.textContent = it.k;
       a.appendChild(b); a.appendChild(s); a.appendChild(e); li.appendChild(a); res.appendChild(li);
     });
+    allLink();
   }
   function openS() { if (!ck) return; lastFocus = doc.activeElement; ck.hidden = false; root.classList.add('locked'); render(); q.focus(); }
   function closeS() { if (!ck || ck.hidden) return; ck.hidden = true; root.classList.remove('locked'); if (lastFocus) lastFocus.focus(); }

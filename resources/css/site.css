@@ -900,3 +900,19 @@ main .bg-river-500.rounded-full:hover{background:var(--teal-h)}
 .submit-steps b{width:24px;height:24px;border-radius:50%;background:#0B1F3A;color:#fff;display:grid;place-items:center;font-size:.8rem}
 @media(max-width:760px){.how-steps,.ln-grid{grid-template-columns:1fr 1fr}.submit-steps a{font-size:.75rem;padding:8px 4px}}
 @media print{.live-nums,.submit-steps{display:none!important}body{background:#fff;color:#000;font-size:12pt}a{color:#000;text-decoration:none}.idea-art h2{break-after:avoid}.idea-art .pcard,.idea-art dl{break-inside:avoid}}
+
+/* Round 8: EON page, article extras, gallery, search page */
+.eon-link{margin:var(--s3,1.5rem) 0 0;display:flex;gap:.75rem;flex-wrap:wrap}
+.eon-ico{display:inline-grid;place-items:center;width:2.2rem;height:2.2rem;border-radius:50%;background:#0B4F9C;color:#fff;font-weight:700;margin-bottom:.5rem}
+.eon-diagram{margin:1.5rem 0}.eon-diagram svg{width:100%;height:auto;display:block}
+.author-card{display:flex;gap:1rem;align-items:center;margin:2rem 0 1rem;padding:1rem 1.25rem;border:1px solid var(--line);border-radius:var(--r)}
+.author-card p{margin:.2rem 0 0}
+.art-pn{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.5rem}
+.art-pn a{display:block;padding:1rem;border:1px solid var(--line);border-radius:var(--r);text-decoration:none}
+.art-pn .pn-next{text-align:right;grid-column:2}.art-pn small{display:block;color:var(--muted)}
+.search-form{display:flex;gap:.5rem;max-width:560px;margin-top:1rem}.search-form input{flex:1;padding:.7rem 1rem;border:1px solid var(--line);border-radius:var(--r)}
+.search-h{margin:2rem 0 .5rem}.search-h span{color:var(--muted);font-size:.9rem}
+.search-list{list-style:none;padding:0;margin:0}.search-list a{display:flex;flex-direction:column;padding:.75rem 0;border-bottom:1px solid var(--line);text-decoration:none}
+.search-list small{color:var(--muted)}
+.cmdk-all{display:block;padding:.75rem 1.25rem;font-weight:600}
+@media (max-width:560px){.art-pn{grid-template-columns:1fr}.art-pn .pn-next{grid-column:1;text-align:left}}

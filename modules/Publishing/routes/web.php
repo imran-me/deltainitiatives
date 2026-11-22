@@ -22,3 +22,6 @@ Route::post('/ideas/{idea}/support', [ContentController::class, 'vote'])->middle
 Route::get('/people', [ContentController::class, 'people'])->name('people');
 Route::get('/people/{person}', [ContentController::class, 'person'])->name('people.show');
 Route::get('/partners', [ContentController::class, 'partners'])->name('partners');
+
+Route::get('/gallery', [ContentController::class, 'gallery'])->name('gallery');
+Route::get('/search', [ContentController::class, 'search'])->middleware('throttle:60,1')->name('search');

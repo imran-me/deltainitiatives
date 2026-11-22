@@ -4,7 +4,8 @@
     </x-page-hero>
 
     @if($featured)
-        <section class="sec"><div class="wrap"><h2 class="sr">Featured idea</h2>@include('publishing::ideas.tile', ['idea' => $featured, 'big' => true])</div></section>
+        <section class="sec"><div class="wrap"><h2 class="sr">Featured idea</h2>@include('publishing::ideas.tile', ['idea' => $featured, 'big' => true])
+            @if($featured->slug === 'eon')<p class="eon-link"><a class="btn pri" href="{{ route('eon') }}">See the EON flagship page</a> <a class="btn ghost" href="{{ route('partners', ['service' => 'business-systems', 'topic' => 'eon-pilot']) }}#talk">Join the pilot</a></p>@endif</div></section>
     @endif
 
     <section class="sec soft"><div class="wrap">
