@@ -4,6 +4,7 @@ namespace Modules\CMS\Http\Controllers;
 
 use Illuminate\Routing\Controller;
 use Illuminate\View\View;
+use Modules\CMS\Support\BanglaServices;
 use Modules\Publishing\Models\Article;
 use Modules\Publishing\Models\Person;
 use Modules\Publishing\Models\PublicIdea;
@@ -18,6 +19,14 @@ class BanglaController extends Controller
             'ideas' => PublicIdea::query()->visible()->withCount('votes')->orderByDesc('votes_count')->limit(3)->get(),
             'articles' => Article::query()->visible()->orderByDesc('published_at')->limit(3)->get(),
         ]);
+    }
+
+    public function service(string $slug): View
+    {
+        $data = BanglaServices::find($slug);
+        abort_if($data === null, 404);
+
+        return view('cms::bn.service', ['slug' => $slug, 's' => $data]);
     }
 
     public function about(): View

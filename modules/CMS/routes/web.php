@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Modules\CMS\Support\BanglaServices;
 use Modules\CMS\Http\Controllers\BanglaController;
 use Modules\CMS\Http\Controllers\LegalController;
 use Modules\CMS\Http\Controllers\PageController;
@@ -24,6 +25,9 @@ Route::prefix('bn')->middleware('locale:bn')->as('bn.')->group(function () {
     Route::get('/partners', [BanglaController::class, 'partners'])->name('partners');
     Route::view('/services', 'cms::bn.services')->name('services.index');
     Route::view('/eon', 'cms::bn.eon')->name('eon');
+    foreach (BanglaServices::SLUGS as $serviceSlug) {
+        Route::get('/services/'.$serviceSlug, [BanglaController::class, 'service'])->defaults('slug', $serviceSlug)->name('services.'.$serviceSlug);
+    }
 });
 
 // v3 static pages (research areas, initiatives, insights, impact, initiators, events, press)

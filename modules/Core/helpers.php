@@ -103,3 +103,32 @@ if (! function_exists('hreflang_alternates')) {
         return ['en' => route($en), 'bn' => route($pairs[$en])];
     }
 }
+
+if (! function_exists('bn_digits')) {
+    /** Convert Western digits to Bangla numerals (০-৯) when the current locale is Bangla (or $force). */
+    function bn_digits(mixed $value, ?bool $force = null): string
+    {
+        $value = (string) $value;
+        if (! ($force ?? app()->getLocale() === 'bn')) {
+            return $value;
+        }
+
+        return strtr($value, ['0' => '০', '1' => '১', '2' => '২', '3' => '৩', '4' => '৪', '5' => '৫', '6' => '৬', '7' => '৭', '8' => '৮', '9' => '৯']);
+    }
+}
+
+if (! function_exists('localized_date')) {
+    /** Date in the current locale: Bangla month names and numerals under /bn, English format otherwise. */
+    function localized_date(?\DateTimeInterface $date, string $format = 'j M Y'): string
+    {
+        if (! $date) {
+            return '';
+        }
+        $c = \Illuminate\Support\Carbon::instance($date);
+        if (app()->getLocale() !== 'bn') {
+            return $c->format($format);
+        }
+
+        return bn_digits($c->locale('bn')->translatedFormat($format));
+    }
+}

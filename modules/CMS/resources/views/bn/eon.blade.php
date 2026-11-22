@@ -2,6 +2,7 @@
 <x-page-hero :eyebrow="'ফ্ল্যাগশিপ প্রকল্প'" :title="'ইওন'" :intro="'আপনার ERP-র ওপর একটি এক্সিকিউটিভ এআই স্তর। মুখে প্রশ্ন করুন; পান সংখ্যা, কারণ ও পরবর্তী করণীয়।'">
     <a class="btn pri" href="{{ route('partners', ['service' => 'business-systems', 'topic' => 'eon-pilot']) }}#talk">পাইলটে যোগ দিন</a>
     <a class="btn ghost" href="{{ route('public-ideas.show', 'eon') }}">ইওন আইডিয়া পড়ুন</a>
+    <x-slot:visual>@include('cms::partials.eon-hero-diagram')</x-slot:visual>
 </x-page-hero>
 <section class="sec"><div class="wrap"><div class="eyebrow">সমস্যা</div><h2>মালিকদের রিপোর্টের জন্য অপেক্ষা করতে হয়।</h2>
 <div class="grid g3">

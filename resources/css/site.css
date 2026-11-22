@@ -926,3 +926,45 @@ main .bg-river-500.rounded-full:hover{background:var(--teal-h)}
 .logo-prev img{display:block;height:38px;width:auto}
 .card-delta,.sec .card{box-shadow:none}
 @media (prefers-reduced-motion:reduce){.face:hover,.slot:hover,.bcell:hover,.post:hover{transform:none}}
+
+/* ===== Round 10: EON hero, micro-interactions, accessibility ===== */
+/* EON hero: two columns, diagram on the right, stacked on small screens */
+.phead.has-visual .phead-in{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);align-items:center}
+.phead-visual{position:relative;max-width:460px;width:100%;justify-self:end}
+.eon-hero-svg{width:100%;height:auto;display:block;filter:drop-shadow(0 18px 30px rgba(11,79,156,.12))}
+.eon-hero-svg .eon-flow{animation:eon-dash 1.4s linear infinite}
+.eon-hero-svg .eon-step{animation:eon-pulse 6s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+.eon-hero-svg .eon-step:nth-of-type(2){animation-delay:1.5s}.eon-hero-svg .eon-step:nth-of-type(3){animation-delay:3s}.eon-hero-svg .eon-step:nth-of-type(4){animation-delay:4.5s}
+@keyframes eon-dash{to{stroke-dashoffset:-22}}
+@keyframes eon-pulse{0%,18%,100%{opacity:1;transform:none}8%{opacity:1;transform:scale(1.025)}}
+@media (max-width:900px){.phead.has-visual .phead-in{grid-template-columns:1fr}.phead-visual{justify-self:start;max-width:420px}}
+
+/* Shared reveal: .rv is the single system; stays visible without JS */
+html:not(.js) .rv{opacity:1;transform:none}
+
+/* Buttons: hover lift, press, consistent focus */
+.btn{transition:background-color .2s,color .2s,border-color .2s,transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-1px);box-shadow:0 8px 18px -10px rgba(11,31,58,.5)}
+.btn:active{transform:translateY(1px) scale(.985);box-shadow:none}
+.btn:focus-visible,.react:focus-visible,.cmdk-r a:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.react{transition:background-color .2s,border-color .2s,transform .15s}.react:active{transform:scale(.96)}
+
+/* Links in running text: underline grows from the left */
+.lead a,.note a,.hint a,.post-body a,.list-num a,.sec p a:not(.btn):not(.card){text-decoration:none;background:linear-gradient(currentColor,currentColor) 0 100%/0 1.5px no-repeat;transition:background-size .25s ease;padding-bottom:1px}
+.lead a:hover,.note a:hover,.hint a:hover,.post-body a:hover,.list-num a:hover,.sec p a:not(.btn):not(.card):hover,.lead a:focus-visible,.note a:focus-visible,.sec p a:not(.btn):not(.card):focus-visible{background-size:100% 1.5px}
+
+/* Contrast: teal-on-white small text uses the darker teal (>= 4.5:1) */
+.sec:not(.navy) .step .bn,.list-num li:before,.ftr a:hover,.go{color:var(--teal-d)}
+.sec.navy .list-num li:before{color:var(--teal-on-navy)}
+.kicker,.hint,.note,.post-stats,.post-h time{color:var(--muted)}
+.field-control::placeholder,.news input::placeholder,.lib-search input::placeholder{color:#5F6B7B;opacity:1}
+.err-line{color:var(--err);font-weight:500}
+.field-control[aria-invalid=true],.field input[aria-invalid=true],.field textarea[aria-invalid=true]{border-color:var(--err)}
+input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.sec.navy a:focus-visible,.cta a:focus-visible{outline-color:#fff}
+
+@media (prefers-reduced-motion:reduce){
+.eon-hero-svg .eon-flow,.eon-hero-svg .eon-step{animation:none!important}
+.btn:hover,.btn:active,.react:active{transform:none}
+.lead a,.note a,.hint a,.post-body a,.list-num a,.sec p a:not(.btn):not(.card){transition:none}
+}

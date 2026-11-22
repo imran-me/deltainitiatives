@@ -2,6 +2,7 @@
     <x-page-hero eyebrow="Flagship project" title="EON" bangla="ইওন" intro="An executive AI layer on top of your ERP. Ask a question out loud; get the numbers, the reason and the next action.">
         <a class="btn pri" href="{{ route('partners', ['service' => 'business-systems', 'topic' => 'eon-pilot']) }}#talk">Join the pilot</a>
         <a class="btn ghost" href="{{ route('public-ideas.show', 'eon') }}">Read the EON idea</a>
+    <x-slot:visual>@include('cms::partials.eon-hero-diagram')</x-slot:visual>
     </x-page-hero>
 
     <section class="sec"><div class="wrap">
