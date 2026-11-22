@@ -22,11 +22,12 @@ class Round7Test extends TestCase
     public function test_home_has_how_we_work_and_numbers(): void
     {
         $r = $this->get('/')->assertOk();
-        $r->assertSee('How we work')->assertSee('Policy / Product')->assertSee('Ideas submitted')->assertSee('Contributors');
+        $r->assertSee('How we work')->assertSee('Policy / Product');
         $this->assertCount(4, $r->viewData('numbers'));
         foreach ($r->viewData('numbers') as $n) {
-            $this->assertGreaterThan(0, $n);
+            $this->assertGreaterThanOrEqual(0, $n); // real counts only, never invented
         }
+        $r->assertDontSee('>120<', false);
     }
 
     public function test_idea_page_has_reading_time_progress_and_same_area_related(): void

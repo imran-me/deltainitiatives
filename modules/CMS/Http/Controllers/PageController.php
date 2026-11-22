@@ -29,16 +29,16 @@ class PageController extends Controller
     /** Live counts for the home numbers band; any failure falls back to a sensible figure. */
     private function liveNumbers(): array
     {
-        $count = function (callable $q, int $fallback): int {
+        $count = function (callable $q): int {
             try { $n = (int) $q(); } catch (\Throwable) { $n = 0; }
-            return $n > 0 ? $n : $fallback;
+            return $n;
         };
 
         return [
-            'ideas' => $count(fn () => \Modules\IdeaPortal\Models\IdeaSubmission::query()->count(), 120),
-            'contributors' => $count(fn () => \Modules\Publishing\Models\Person::query()->where('is_published', true)->count(), 40),
-            'partners' => $count(fn () => Partner::query()->displayable()->count(), 12),
-            'projects' => $count(fn () => \Modules\Programmes\Models\Programme::query()->count(), 8),
+            'ideas' => $count(fn () => \Modules\IdeaPortal\Models\IdeaSubmission::query()->count()),
+            'contributors' => $count(fn () => \Modules\Publishing\Models\Person::query()->where('is_published', true)->count()),
+            'partners' => $count(fn () => Partner::query()->displayable()->count()),
+            'projects' => $count(fn () => \Modules\Programmes\Models\Programme::query()->count()),
         ];
     }
 
