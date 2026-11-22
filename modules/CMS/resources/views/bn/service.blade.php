@@ -16,6 +16,9 @@
 @endforeach
 </div>
 <p class="note">“নমুনা” চিহ্নিত কেস কেবল কাজের ধরন বোঝায়; এগুলো ক্লায়েন্টের দাবি নয়। <a href="{{ route('services.'.$slug) }}">পূর্ণ বিবরণ (ইংরেজি)</a></p></div></section>
+@if($slug === 'expert-network')
+<section class="sec soft" id="join"><div class="wrap split"><div><div class="eyebrow">যোগ দিন</div><h2>আপনার দক্ষতা দেশের কাজে লাগান।</h2><p class="lead">দেশ ও প্রবাসের বিশেষজ্ঞরা যোগ দিতে পারেন। তালিকাভুক্তির আগে আমরা প্রতিটি প্রোফাইল যাচাই করি।</p></div>@include('publishing::partials.expert-form-bn')</div></section>
+@endif
 <section class="sec soft" id="proposal"><div class="wrap split"><div><div class="eyebrow">প্রস্তাবনা চান</div><h2>একটি আলাপ দিয়ে শুরু।</h2><p class="lead">সমস্যাটি আমাদের জানান। আমরা তিন কর্মদিবসের মধ্যে উত্তর দিই।</p></div>@include('publishing::partials.proposal-form', ['service' => $slug])</div></section>
 <nav class="sec area-nav" aria-label="অন্যান্য সেবা"><div class="wrap"><div class="eyebrow">অন্যান্য সেবা</div><div class="strip">
 @foreach(\Modules\CMS\Support\BanglaServices::all() as $k => $o)@if($k !== $slug)<a href="{{ route('bn.services.'.$k) }}">{{ $o['title'] }}</a>@endif @endforeach

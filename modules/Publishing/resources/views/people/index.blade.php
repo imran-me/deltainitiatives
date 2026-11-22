@@ -14,7 +14,7 @@
         <div class="row-head"><div><div class="eyebrow">Leaderboard</div><h2>Top contributors</h2></div><a class="more-a" href="{{ localized_route('ideas.create') }}#recognition">How titles work →</a></div>
         @unless($leaderboard->isEmpty())
             <ul class="top-strip" aria-label="Top contributors">
-                @foreach($leaderboard->take(6) as $n => $row)
+                @foreach($topStrip as $n => $row)
                     <li><a href="{{ route('people.show', $row['person']) }}"><x-publishing::avatar :person="$row['person']" :i="$n" /><b>{{ $row['person']->name }}</b><small>{{ number_format($row['points']) }} pts</small></a></li>
                 @endforeach
             </ul>

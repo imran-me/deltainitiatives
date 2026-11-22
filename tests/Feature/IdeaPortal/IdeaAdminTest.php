@@ -181,7 +181,7 @@ class IdeaAdminTest extends TestCase
         $this->get(route('admin.dashboard'))
             ->assertOk()
             ->assertSee('Latest ideas')
-            ->assertSee('New ideas')
+            ->assertSee('Pending idea submissions')
             ->assertSee($this->idea->code);
     }
 

@@ -29,7 +29,8 @@ class PersonResource extends Resource
             Field::text('role')->required()->onIndex(),
             Field::select('area')->options(PublicIdea::AREAS),
             Field::textarea('bio')->rows(3),
-            Field::number('sort_order')->label('Order')->default(0),
+            Field::boolean('is_top_contributor')->label('Top contributor (show first on the People page)')->help('Tick to pin this contributor in the "Top contributors" strip. If nobody is ticked, the strip shows the highest points.')->onIndex(),
+        Field::number('sort_order')->label('Order')->default(0),
             Field::boolean('is_published')->label('Published')->default(true)->onIndex(),
         ];
     }

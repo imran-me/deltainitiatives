@@ -18,7 +18,7 @@ class Person extends Model
 
     protected $table = 'people';
 
-    protected $fillable = ['slug', 'name', 'kind', 'role', 'area', 'bio', 'photo_path', 'sort_order', 'is_published', 'is_demo'];
+    protected $fillable = ['slug', 'name', 'kind', 'role', 'area', 'bio', 'photo_path', 'sort_order', 'is_published', 'is_top_contributor', 'is_demo'];
 
     public function getRouteKeyName(): string
     {

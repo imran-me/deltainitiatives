@@ -28,7 +28,7 @@ class PublicIdeaResource extends Resource
             Field::text('slug')->required()->unique()->help('Web address: /ideas/{slug}')->rules(['regex:/^[a-z0-9-]+$/']),
             Field::text('code')->label('Idea ID')->required()->onIndex(),
             Field::select('area')->options(PublicIdea::AREAS)->required()->onIndex(),
-            Field::select('stage')->options(PublicIdea::STAGES)->required()->onIndex(),
+            Field::select('stage')->label('Idea stage')->help('How far the idea has progressed; it sets the initiator title.')->options(PublicIdea::STAGES)->required()->onIndex(),
             Field::textarea('problem')->required()->rows(3),
             Field::textarea('solution')->required()->rows(3),
             Field::textarea('how')->label('How it works (optional)')->rows(5)->help('One step per line: "Step: explanation".'),
@@ -38,7 +38,7 @@ class PublicIdeaResource extends Resource
             Field::select('cover_key')->label('Library photo')->options(Library::options()),
             Field::image('cover_path')->label('Or upload a cover')->directory('ideas'),
             Field::select('person_id')->label('Initiator')->options(Person::query()->orderBy('name')->pluck('name', 'id')->all()),
-            Field::boolean('is_featured')->label('Featured on top'),
+            Field::boolean('is_featured')->label('Featured idea (pin to the top of the Ideas page)')->onIndex(),
             Field::boolean('is_published')->label('Published')->onIndex(),
         ];
     }

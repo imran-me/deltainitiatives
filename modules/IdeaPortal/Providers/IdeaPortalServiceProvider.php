@@ -68,7 +68,7 @@ class IdeaPortalServiceProvider extends ModuleServiceProvider
         ]);
 
         AdminDashboard::stat([
-            'label' => 'New ideas',
+            'label' => 'Pending idea submissions',
             'value' => fn () => number_format(IdeaSubmission::query()->where('status', 'received')->count()),
             'hint' => fn () => IdeaSubmission::query()->where('submitted_at', '>=', now()->subDays(7))->count().' submitted in the last 7 days',
             'icon' => 'lightbulb',

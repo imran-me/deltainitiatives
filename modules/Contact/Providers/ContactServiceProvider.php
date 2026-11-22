@@ -24,7 +24,7 @@ class ContactServiceProvider extends ModuleServiceProvider
         DemoContent::register(ContactMessage::class);
 
         AdminDashboard::stat([
-            'label' => 'Unread messages',
+            'label' => 'Pending contact messages',
             'value' => fn () => number_format(ContactMessage::query()->unread()->count()),
             'hint' => fn () => ContactMessage::query()->where('created_at', '>=', now()->subDays(7))->count().' received this week',
             'icon' => 'inbox',

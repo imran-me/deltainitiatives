@@ -119,7 +119,10 @@ class ContentController extends Controller
             ->map(fn (Person $p) => ['person' => $p, 'points' => $p->points(), 'ideas' => $p->ideas->count()])
             ->sortByDesc('points')->values();
 
+        $pinned = $leaderboard->filter(fn ($r) => $r['person']->is_top_contributor)->values();
+
         return view('publishing::people.index', [
+            'topStrip' => ($pinned->isNotEmpty() ? $pinned : $leaderboard)->take(6),
             'team' => $all->where('kind', 'team')->values(),
             'board' => $all->where('kind', 'board')->values(),
             'leaderboard' => $leaderboard,
