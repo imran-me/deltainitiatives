@@ -1,0 +1,6 @@
+<x-layouts.public :title="'আমাদের সম্পর্কে'" :description="'ডেল্টা ইনিশিয়েটিভস কী করে এবং কেন।'" :alternates="['en' => route('about'), 'bn' => route('bn.about')]">
+<section class="phead"><div class="wrap phead-in"><div>
+<nav class="crumb" aria-label="Breadcrumb"><a href="{{ route('bn.home') }}">হোম</a> / আমাদের সম্পর্কে</nav>
+<h1>তরুণ মেধা থেকে <em>বাস্তব সমাধান</em>।</h1><p class="lead">ডেল্টা ইনিশিয়েটিভস বাংলাদেশের তরুণ গবেষক ও উদ্ভাবকদের আইডিয়াকে গবেষণা, প্রোটোটাইপ ও নীতি-সংক্ষেপে রূপ দেয়।</p></div></div></section>
+<section class="sec"><div class="wrap"><div class="bgrid"><div class="bcell"><h3>আমাদের লক্ষ্য</h3><p>সম্ভাবনাময় আইডিয়া যেন কাগজেই হারিয়ে না যায়। আমরা সেগুলো রক্ষা করি, যাচাই করি এবং বাস্তবায়নে পৌঁছে দিই।</p></div><div class="bcell"><h3>আমাদের পদ্ধতি</h3><p>আবিষ্কার, উন্নয়ন, যাচাই ও সংক্ষেপ। প্রতিটি ধাপে স্বাধীন পর্যালোচনা।</p></div><div class="bcell"><h3>কৃতিত্ব আপনার</h3><p>আইডিয়ার স্রষ্টার নাম সবসময় থাকে। আইডিয়া জমা দিলেই তা সময়ছাপসহ সুরক্ষিত হয়।</p></div></div><div class="btns" style="margin-top:2rem"><a class="btn pri" href="{{ route('bn.ideas.create') }}">আইডিয়া জমা দিন</a> <a class="btn ghost" href="{{ route('bn.join.create') }}">আমাদের সঙ্গে যোগ দিন</a></div></div></section>
+</x-layouts.public>

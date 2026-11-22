@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Modules\CMS\Http\Controllers\BanglaController;
 use Modules\CMS\Http\Controllers\LegalController;
 use Modules\CMS\Http\Controllers\PageController;
 
@@ -10,6 +11,17 @@ Route::get('/about', [PageController::class, 'about'])->name('about');
 Route::permanentRedirect('/what-we-do', '/research')->name('what-we-do');
 Route::permanentRedirect('/gallery', '/feed?view=grid')->name('gallery');
 Route::permanentRedirect('/initiators', '/submit-an-idea#recognition')->name('initiators');
+
+// Bangla main pages
+Route::prefix('bn')->middleware('locale:bn')->as('bn.')->group(function () {
+    Route::get('/', [BanglaController::class, 'home'])->name('home');
+    Route::get('/about', [BanglaController::class, 'about'])->name('about');
+    Route::get('/research', [BanglaController::class, 'research'])->name('research');
+    Route::get('/ideas', [BanglaController::class, 'ideas'])->name('ideas.list');
+    Route::get('/insights', [BanglaController::class, 'insights'])->name('insights');
+    Route::get('/people', [BanglaController::class, 'people'])->name('people');
+    Route::get('/partners', [BanglaController::class, 'partners'])->name('partners');
+});
 
 // v3 static pages (research areas, initiatives, insights, impact, initiators, events, press)
 require __DIR__.'/v3.php';
