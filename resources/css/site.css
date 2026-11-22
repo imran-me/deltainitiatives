@@ -933,3 +933,12 @@ input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-vi
 .btn:hover,.btn:active,.react:active{transform:none}
 .lead a,.note a,.hint a,.post-body a,.list-num a,.sec p a:not(.btn):not(.card){transition:none}
 }
+
+/* round12: feed card clips its full-bleed photo; Bangla pages grid cards (.bgrid had no styles) */
+.post{overflow:hidden}
+.bgrid{display:grid;gap:var(--s3);grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr))}
+.bcell{background:#fff;border:1px solid var(--line);border-top:3px solid var(--teal);padding:var(--s4) var(--s3)}
+.bcell h2,.bcell h3{margin:0 0 var(--s2);line-height:1.4}
+.bcell p{margin:0;line-height:1.8}
+.pgroup .slots{grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr))}
+@media (max-width:640px){.pgroup .slots{grid-template-columns:1fr}.pgroup .slot{padding:var(--s3)}}
