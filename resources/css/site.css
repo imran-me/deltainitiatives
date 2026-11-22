@@ -853,3 +853,20 @@ main .bg-river-500.rounded-full:hover{background:var(--teal-h)}
 .phead-slot .text-white.rounded-full{color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line)}
 .phead-slot .text-white.rounded-full:hover{box-shadow:inset 0 0 0 1.5px var(--ink)}
 .search-btn svg,.icon-btn svg{width:18px;height:18px;flex:none}
+
+/* Round 5: service cards, mobile + a11y */
+.svc-b{gap:var(--s1)}
+.svc-ic{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:12px;background:var(--soft,#EAF2FB);color:var(--navy)}
+.svc-b h3 a{color:inherit;text-decoration:none}.svc-b h3 a:hover{text-decoration:underline}
+.svc-b p{flex:1}
+.svc-talk{align-self:flex-start;min-height:44px;margin-top:var(--s1)}
+.svc:hover{transform:none}
+@media (max-width:760px){
+  html,body{overflow-x:hidden}
+  .nav a,.ftr a,.menu-btn{min-height:44px}
+  .nav a{display:flex;align-items:center}
+  img,svg,video{max-width:100%}
+  .btn{min-height:44px;justify-content:center}
+  .form input,.form select,.form textarea{min-height:44px;font-size:16px}
+  .row2{grid-template-columns:1fr!important}
+}
