@@ -52,6 +52,12 @@ class CMSServiceProvider extends ModuleServiceProvider
                 ['loc' => route('about'), 'changefreq' => 'monthly', 'priority' => 0.8],
             ];
 
+            foreach (['eon', 'careers', 'bn.home', 'bn.about', 'bn.research', 'bn.ideas.list', 'bn.insights', 'bn.people', 'bn.partners', 'bn.services.index', 'bn.eon'] as $name) {
+                if (\Illuminate\Support\Facades\Route::has($name)) {
+                    $entries[] = ['loc' => route($name), 'changefreq' => 'monthly', 'priority' => 0.6];
+                }
+            }
+
             // v3 static pages (modules/CMS/routes/v3.php)
             $v3 = (array) require base_path('modules/CMS/routes/v3-names.php');
             foreach ($v3 as $name) {

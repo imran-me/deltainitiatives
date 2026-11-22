@@ -35,7 +35,7 @@
         <li><a href="{{ route('about') }}">{{ __('core::ui.nav.about') }}</a></li>
         <li><a href="{{ route('impact') }}">Impact</a></li>
         <li><a href="{{ route('initiatives.index') }}">Initiatives</a></li>
-        <li><a href="{{ localized_route('join.create') }}">Careers</a></li>
+        <li><a href="{{ route('careers') }}">Careers</a></li>
     </ul></div>
     <div><h2 class="ftr-h">Research</h2><ul>
         <li><a href="{{ route('research.index') }}">Research areas</a></li>

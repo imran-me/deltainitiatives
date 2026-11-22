@@ -13,8 +13,10 @@
     'jsonLd' => null,
     'solidHeader' => false,
     'ogType' => 'website',
+    'breadcrumbs' => null,
 ])
 @php
+    $alternates = $alternates ?: hreflang_alternates();
     $siteName = setting('site_name');
     $fullTitle = $title ? $title.' · '.$siteName : $siteName.' — '.setting('site_tagline');
     $metaDescription = \Illuminate\Support\Str::limit(trim(strip_tags($description ?: setting('site_description'))), 158);
@@ -33,6 +35,23 @@
         'address' => ['@type' => 'PostalAddress', 'addressLocality' => 'Dhaka', 'addressCountry' => 'BD'],
         'sameAs' => array_values(array_filter([setting('social_linkedin'), setting('social_facebook'), setting('social_x'), setting('social_youtube'), setting('social_instagram')])),
     ];
+    $isHome = request()->routeIs('home', 'bn.home');
+    $crumbs = $breadcrumbs;
+    if ($crumbs === null && ! $isHome && request()->isMethod('GET')) {
+        $path = '';
+        $segs = array_values(array_filter(explode('/', trim(request()->path(), '/'))));
+        $crumbs = [[$locale === 'bn' ? 'হোম' : 'Home', $locale === 'bn' ? route('bn.home') : url('/')]];
+        foreach ($segs as $i => $seg) {
+            $path .= '/'.$seg;
+            if ($i === 0 && $seg === 'bn') { continue; }
+            $crumbs[] = [$i === count($segs) - 1 ? ($title ?: ucfirst($seg)) : ucfirst(str_replace('-', ' ', $seg)), url($path)];
+        }
+    }
+    $breadcrumbLd = $crumbs && count($crumbs) > 1 ? [
+        '@context' => 'https://schema.org',
+        '@type' => 'BreadcrumbList',
+        'itemListElement' => collect($crumbs)->values()->map(fn ($c, $i) => ['@type' => 'ListItem', 'position' => $i + 1, 'name' => $c[0], 'item' => $c[1]])->all(),
+    ] : null;
 @endphp
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', $locale) }}">
@@ -68,6 +87,7 @@
         <meta name="google-site-verification" content="{{ $verification }}">
     @endif
 
+    <link rel="alternate" type="application/atom+xml" title="{{ $siteName }} Insights" href="{{ route('insights.feed') }}">
     <link rel="icon" href="{{ asset('favicon.svg') }}" type="image/svg+xml">
     <link rel="icon" href="{{ asset('favicon.ico') }}" sizes="32x32">
     <link rel="apple-touch-icon" href="{{ asset('apple-touch-icon.png') }}">
@@ -75,7 +95,12 @@
     <script nonce="{{ \Illuminate\Support\Facades\Vite::cspNonce() }}">document.documentElement.classList.add('js')</script>
     @vite(['resources/css/app.css', 'resources/css/site.css', 'resources/js/app.js', 'resources/js/site.js'])
 
+    @if($isHome)
     <script type="application/ld+json" nonce="{{ \Illuminate\Support\Facades\Vite::cspNonce() }}">{!! json_encode($organization, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_HEX_TAG) !!}</script>
+    @endif
+    @if($breadcrumbLd)
+        <script type="application/ld+json" nonce="{{ \Illuminate\Support\Facades\Vite::cspNonce() }}">{!! json_encode($breadcrumbLd, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_HEX_TAG) !!}</script>
+    @endif
     @if($jsonLd)
         <script type="application/ld+json" nonce="{{ \Illuminate\Support\Facades\Vite::cspNonce() }}">{!! json_encode($jsonLd, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_HEX_TAG) !!}</script>
     @endif

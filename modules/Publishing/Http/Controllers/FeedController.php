@@ -33,6 +33,14 @@ class FeedController extends Controller
         return view('publishing::feed.index', ['posts' => $posts]);
     }
 
+    public function indexBn(): View
+    {
+        $posts = FeedPost::query()->visible()->with('approvedComments')
+            ->orderByDesc('published_at')->orderByDesc('id')->paginate(self::PER_PAGE);
+
+        return view('publishing::feed.bn', ['posts' => $posts]);
+    }
+
     public function react(Request $request, FeedPost $post): JsonResponse
     {
         abort_unless($post->is_published && $post->published_at && $post->published_at->isPast(), 404);

@@ -79,3 +79,27 @@ if (! function_exists('dhaka_time')) {
         return \Illuminate\Support\Carbon::instance($date)->setTimezone(config('app.display_timezone', 'Asia/Dhaka'))->format($format).' BST';
     }
 }
+
+if (! function_exists('hreflang_alternates')) {
+    /** en/bn alternate URLs for the current route when both language versions exist, else []. */
+    function hreflang_alternates(): array
+    {
+        $pairs = [
+            'home' => 'bn.home', 'about' => 'bn.about', 'research.index' => 'bn.research',
+            'public-ideas.index' => 'bn.ideas.list', 'insights.index' => 'bn.insights',
+            'people' => 'bn.people', 'partners' => 'bn.partners', 'ideas.create' => 'bn.ideas.create',
+            'join.create' => 'bn.join.create', 'services.index' => 'bn.services.index',
+            'eon' => 'bn.eon', 'feed.index' => 'bn.feed.index',
+        ];
+        $current = Route::currentRouteName();
+        if (! $current || ! request()->isMethod('GET')) {
+            return [];
+        }
+        $en = array_search($current, $pairs, true) ?: (isset($pairs[$current]) ? $current : null);
+        if (! $en || ! Route::has($en) || ! Route::has($pairs[$en])) {
+            return [];
+        }
+
+        return ['en' => route($en), 'bn' => route($pairs[$en])];
+    }
+}

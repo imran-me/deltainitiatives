@@ -17,6 +17,15 @@ class ContentController extends Controller
 {
     public const PER_PAGE = 6;
 
+    /** Atom feed of the latest published insights. */
+    public function atom(): \Illuminate\Http\Response
+    {
+        $articles = Article::query()->visible()->orderByDesc('published_at')->limit(30)->get();
+        $xml = view('publishing::insights.atom', ['articles' => $articles])->render();
+
+        return response($xml, 200, ['Content-Type' => 'application/atom+xml; charset=UTF-8']);
+    }
+
     /** Insights library with server-side search, category, tag and pagination. */
     public function insights(Request $request): View
     {

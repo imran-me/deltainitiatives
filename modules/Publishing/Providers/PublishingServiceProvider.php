@@ -57,6 +57,8 @@ class PublishingServiceProvider extends ModuleServiceProvider
                 ['loc' => route('feed.index'), 'changefreq' => 'daily', 'priority' => 0.6],
                 ['loc' => route('insights.index'), 'changefreq' => 'weekly', 'priority' => 0.8],
                 ['loc' => route('public-ideas.index'), 'changefreq' => 'weekly', 'priority' => 0.8],
+                ['loc' => route('gallery'), 'changefreq' => 'monthly', 'priority' => 0.5],
+                ['loc' => route('bn.feed.index'), 'changefreq' => 'daily', 'priority' => 0.4],
                 ['loc' => route('people'), 'changefreq' => 'monthly', 'priority' => 0.6],
                 ['loc' => route('partners'), 'changefreq' => 'monthly', 'priority' => 0.7],
             ];

@@ -35,7 +35,7 @@ class PageController extends Controller
         };
 
         return [
-            'ideas' => $count(fn () => \Modules\IdeaPortal\Models\IdeaSubmission::query()->count()),
+            'ideas' => $count(fn () => \Modules\IdeaPortal\Models\IdeaSubmission::query()->where('is_demo', false)->count()),
             'contributors' => $count(fn () => \Modules\Publishing\Models\Person::query()->where('is_published', true)->count()),
             'partners' => $count(fn () => Partner::query()->displayable()->count()),
             'projects' => $count(fn () => \Modules\Programmes\Models\Programme::query()->count()),

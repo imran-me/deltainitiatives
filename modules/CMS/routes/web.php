@@ -10,6 +10,7 @@ Route::get('/about', [PageController::class, 'about'])->name('about');
 // Pages folded into the round-3 structure: 301 to their new place.
 Route::permanentRedirect('/what-we-do', '/research')->name('what-we-do');
 Route::view('/eon', 'cms::eon')->name('eon');
+Route::view('/careers', 'cms::careers')->name('careers');
 Route::permanentRedirect('/initiators', '/submit-an-idea#recognition')->name('initiators');
 
 // Bangla main pages
@@ -21,6 +22,8 @@ Route::prefix('bn')->middleware('locale:bn')->as('bn.')->group(function () {
     Route::get('/insights', [BanglaController::class, 'insights'])->name('insights');
     Route::get('/people', [BanglaController::class, 'people'])->name('people');
     Route::get('/partners', [BanglaController::class, 'partners'])->name('partners');
+    Route::view('/services', 'cms::bn.services')->name('services.index');
+    Route::view('/eon', 'cms::bn.eon')->name('eon');
 });
 
 // v3 static pages (research areas, initiatives, insights, impact, initiators, events, press)

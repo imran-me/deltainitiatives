@@ -8,6 +8,19 @@
         ['people', 'People', 'people'],
         ['partners', 'Partners', 'partners|partner.*'],
     ];
+    $bn = app()->getLocale() === 'bn';
+    if ($bn) {
+        $nav = [
+            ['services.index', 'সেবা', 'services.*|bn.services.*'],
+            ['public-ideas.index', 'আইডিয়া', 'public-ideas.*|bn.ideas.list'],
+            ['ideas.create', 'জমা দিন', 'ideas.*|bn.ideas.*'],
+            ['feed.index', 'ফিড', 'feed.*|bn.feed.*'],
+            ['people', 'মানুষ', 'people|bn.people'],
+            ['partners', 'অংশীদার', 'partners|partner.*|bn.partners'],
+        ];
+    }
+    $bnRoutes = ['public-ideas.index' => 'bn.ideas.list'];
+    $navUrl = fn (string $r) => $bn && isset($bnRoutes[$r]) ? route($bnRoutes[$r]) : localized_route($r);
     $isActive = fn (string $patterns) => collect(explode('|', $patterns))->contains(fn ($p) => request()->routeIs($p));
     $alts = $alternates ?? [];
     $searchIcon = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>';
@@ -24,9 +37,9 @@
     <nav class="nav" id="nav" aria-label="Main">
         @foreach($nav as [$route, $label, $patterns])
             @if($route === 'feed.index')
-                <a href="{{ route('feed.index') }}" class="feed-link" data-feed-link data-latest-url="{{ route('feed.latest') }}" @if($isActive($patterns)) aria-current="page" @endif>Feed<span class="dot" hidden><span class="sr">New updates</span></span></a>
+                <a href="{{ $navUrl('feed.index') }}" class="feed-link" data-feed-link data-latest-url="{{ route('feed.latest') }}" @if($isActive($patterns)) aria-current="page" @endif>{{ $bn ? 'ফিড' : 'Feed' }}<span class="dot" hidden><span class="sr">New updates</span></span></a>
             @else
-                <a href="{{ localized_route($route) }}" @if($isActive($patterns)) aria-current="page" @endif>{{ $label }}</a>
+                <a href="{{ $navUrl($route) }}" @if($isActive($patterns)) aria-current="page" @endif>{{ $label }}</a>
             @endif
         @endforeach
         <button class="search-btn" type="button" data-open-search aria-label="Search the site">{!! $searchIcon !!}<span>Search</span><kbd>Ctrl K</kbd></button>
@@ -39,6 +52,6 @@
         @else
             <button class="lang-btn" type="button" data-lang-toggle aria-pressed="false" title="Switch headlines to Bangla"><span class="bn">বাংলা</span></button>
         @endif
-        <a class="btn pri" href="{{ route('services.index') }}#proposal">Work with us</a>
+        <a class="btn pri" href="{{ $bn ? route('bn.services.index') : route('services.index') }}#proposal">{{ $bn ? 'আমাদের সঙ্গে কাজ করুন' : 'Work with us' }}</a>
     </nav>
 </div></header>

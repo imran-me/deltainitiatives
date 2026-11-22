@@ -17,14 +17,14 @@
     </x-page-hero>
 
     {{-- Channels --}}
-    <section class="py-20 sm:py-28" aria-labelledby="channels-title">
-        <div class="container-delta">
+    <section class="sec" aria-labelledby="channels-title">
+        <div class="wrap">
             <x-section-heading id="channels-title" :eyebrow="__('contact::contact.channels.eyebrow')" :title="__('contact::contact.channels.title')" />
 
             <div class="mt-12 grid gap-5 md:grid-cols-3">
                 @foreach($channels as $i => $channel)
                     @continue(blank($channel['email']))
-                    <article class="card-delta flex flex-col p-7" data-reveal style="--delay: {{ $i * 0.07 }}s">
+                    <article class="card flex flex-col rv">
                         <span class="inline-flex size-11 items-center justify-center rounded-2xl bg-navy-900 text-river-400"><x-icon :name="$channel['icon']" class="size-5" /></span>
                         <h3 class="mt-5 text-lg font-semibold text-navy-900">{{ __('contact::contact.channels.'.$channel['key'].'.title') }}</h3>
                         <p class="mt-2 text-sm leading-relaxed text-navy-500">{{ __('contact::contact.channels.'.$channel['key'].'.text') }}</p>
@@ -43,7 +43,7 @@
 
             <div class="mt-5 grid gap-5 {{ $phone ? 'md:grid-cols-2' : '' }}">
                 @if($phone)
-                    <article class="flex items-start gap-5 rounded-[1.25rem] bg-mist p-7" data-reveal>
+                    <article class="flex items-start gap-5 card rv">
                         <span class="inline-flex size-11 shrink-0 items-center justify-center rounded-2xl bg-white text-river-700 ring-1 ring-river-200"><x-icon name="phone" class="size-5" /></span>
                         <div>
                             <h3 class="text-lg font-semibold text-navy-900">{{ __('contact::contact.channels.phone.title') }}</h3>
@@ -52,7 +52,7 @@
                         </div>
                     </article>
                 @endif
-                <article class="flex items-start gap-5 rounded-[1.25rem] bg-mist p-7" data-reveal>
+                <article class="flex items-start gap-5 card rv">
                     <span class="inline-flex size-11 shrink-0 items-center justify-center rounded-2xl bg-white text-river-700 ring-1 ring-river-200"><x-icon name="map-pin" class="size-5" /></span>
                     <div>
                         <h3 class="text-lg font-semibold text-navy-900">{{ __('contact::contact.channels.visit.title') }}</h3>
@@ -67,7 +67,7 @@
             <div class="mt-10 flex flex-col gap-6 border-t border-navy-100 pt-8 sm:flex-row sm:items-center sm:justify-between">
                 <p class="flex max-w-2xl items-start gap-3 text-sm text-navy-600">
                     <x-icon name="megaphone" class="mt-0.5 size-4.5 text-river-700" />
-                    <span>{{ __('contact::contact.channels.media') }}</span>
+                    <span>{{ __('contact::contact.channels.media') }} <a href="{{ route('press') }}" class="font-semibold text-river-700 underline">Press kit</a></span>
                 </p>
                 @if($socials)
                     <div class="flex items-center gap-3">
@@ -89,16 +89,16 @@
     </section>
 
     {{-- Contact form --}}
-    <section id="message" class="relative isolate scroll-mt-20 overflow-hidden bg-mist py-20 sm:py-28" aria-labelledby="message-title">
-        <div class="bg-contours absolute inset-0 -z-10 opacity-60"></div>
-        <div class="container-delta grid gap-12 lg:grid-cols-12">
+    <section id="message" class="sec soft scroll-mt-20" aria-labelledby="message-title">
+        
+        <div class="wrap grid gap-12 lg:grid-cols-12">
             <div class="lg:col-span-4">
                 <x-section-heading id="message-title" :eyebrow="__('contact::contact.form.eyebrow')" :title="__('contact::contact.form.title')" :intro="__('contact::contact.form.intro')" />
             </div>
 
             <div class="lg:col-span-8">
                 @if(session('success'))
-                    <div class="rounded-3xl bg-white p-8 ring-1 ring-river-200 sm:p-10">
+                    <div class="form-card">
                         <x-flash />
                         <div class="mt-8">
                             <x-button :href="route('contact.create').'#message'" variant="outline">{{ __('contact::contact.form.another') }}</x-button>
@@ -106,7 +106,7 @@
                     </div>
                 @else
                     <form method="POST" action="{{ route('contact.store') }}" novalidate data-guard
-                          class="rounded-3xl bg-white p-6 shadow-[0_24px_60px_-40px_rgb(11_31_58/0.45)] ring-1 ring-navy-100 sm:p-10">
+                          class="form-card">
                         @csrf
                         <x-honeypot />
                         <x-form.errors-summary class="mb-8" />

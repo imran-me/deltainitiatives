@@ -6,6 +6,7 @@ use Modules\Publishing\Http\Controllers\FeedController;
 use Modules\Publishing\Http\Controllers\ServicesController;
 
 Route::get('/feed', [FeedController::class, 'index'])->name('feed.index');
+Route::get('/bn/feed', [FeedController::class, 'indexBn'])->middleware('locale:bn')->name('bn.feed.index');
 Route::get('/feed/latest', [FeedController::class, 'latest'])->name('feed.latest');
 Route::post('/feed/{post}/react', [FeedController::class, 'react'])->whereNumber('post')->middleware('throttle:feed-reactions')->name('feed.react');
 Route::post('/feed/{post}/comments', [FeedController::class, 'comment'])->whereNumber('post')->middleware('throttle:public-forms')->name('feed.comment');
@@ -15,6 +16,7 @@ Route::post('/services/expert-network/apply', [ServicesController::class, 'exper
 
 // Admin-managed content
 Route::get('/insights', [ContentController::class, 'insights'])->name('insights.index');
+Route::get('/insights/feed.xml', [ContentController::class, 'atom'])->name('insights.feed');
 Route::get('/insights/{article}', [ContentController::class, 'article'])->name('insights.show');
 Route::get('/ideas', [ContentController::class, 'ideas'])->name('public-ideas.index');
 Route::get('/ideas/{idea}', [ContentController::class, 'idea'])->name('public-ideas.show');

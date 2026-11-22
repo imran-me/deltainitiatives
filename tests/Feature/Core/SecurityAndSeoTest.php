@@ -38,7 +38,7 @@ class SecurityAndSeoTest extends TestCase
             ->assertSee('<title>Research · Delta Initiatives</title>', false)
             ->assertSee('<link rel="canonical"', false)
             ->assertSee('property="og:image"', false)
-            ->assertSee('"@type":"ResearchOrganization"', false);
+            ->assertSee('BreadcrumbList', false);
     }
 
     public function test_sitemap_lists_public_pages(): void
