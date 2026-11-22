@@ -14,11 +14,5 @@
 <div><small>Activities</small><h3>The method</h3><p>Discover, develop, validate and brief, with independent review at each step.</p></div>
 <div><small>Outputs</small><h3>Evidence</h3><p>Validated prototypes, policy briefs, pilots and new ventures.</p></div>
 <div><small>Outcomes</small><h3>Adoption</h3><p>Services, policies and products that reach people, with credit kept by their creators.</p></div></div></div></section>
-<section class="sec soft"><div class="wrap split"><div><div class="eyebrow">Roadmap</div><h2 class="" data-bn="পাঁচটি ধাপ, প্রতিটির নির্দিষ্ট লক্ষ্য।">Five phases, each with a finish line.</h2><p class="lead">From foundation to scale, published in advance so we can be held to it.</p></div>
-<ol class="tl rv"><li class="now"><small>Phase 0 · Weeks 1–4</small><h3>Foundation</h3><p class="hint">Legal set-up, board, brand and the Idea Portal.</p></li>
-<li><small>Phase 1 · Months 2–3</small><h3>Launch</h3><p class="hint">Public launch, first open call, campus partners.</p></li>
-<li><small>Phase 2 · Months 4–6</small><h3>First flagship</h3><p class="hint">First cohort developed and validated.</p></li>
-<li><small>Phase 3 · Months 7–12</small><h3>Prove impact</h3><p class="hint">Two to three running pilots and a first government or SDG-partner MoU.</p></li>
-<li><small>Phase 4 · Years 2–3</small><h3>Scale</h3><p class="hint">More areas, regional hubs and global technology collaborators.</p></li></ol></div></section>
 <section class="sec"><div class="wrap"><div class="cta rv"><div class="cta-in"><div class="eyebrow">Next step</div><h2 class="" data-bn="লক্ষ্য পূরণে আমাদের সঙ্গে থাকুন।">Help us hit these targets.</h2><p>Funders, implementers and mentors: the briefing room is open.</p></div><div class="btns"><a class="btn light" href="{{ route('partners') }}">Open the briefing room →</a></div></div></div></section>
 </x-layouts.public>
