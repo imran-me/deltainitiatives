@@ -67,7 +67,7 @@
             {{-- Description + registration --}}
             <div class="lg:order-1 lg:col-span-8">
                 @if($event->coverUrl())
-                    <img src="{{ $event->coverUrl() }}" alt="{{ $event->title }}" class="mb-10 aspect-[16/9] w-full rounded-[1.25rem] object-cover ring-1 ring-navy-100" decoding="async">
+                    <img src="{{ $event->coverUrl() }}" alt="{{ $event->title }}" class="mb-10 aspect-[16/9] w-full rounded-[1.25rem] object-cover ring-1 ring-navy-100" decoding="async" fetchpriority="high" width="1280" height="720">
                 @endif
 
                 @if(filled($event->body))
@@ -82,7 +82,7 @@
                         <ul class="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3" role="list">
                             @foreach($event->photos as $photo)
                                 <li class="overflow-hidden rounded-xl bg-navy-100">
-                                    <img src="{{ $photo->url() }}" alt="{{ $photo->caption ?: $event->title }}" loading="lazy" decoding="async" class="aspect-[4/3] w-full object-cover">
+                                    <img src="{{ $photo->url() }}" alt="{{ $photo->caption ?: $event->title }}" loading="lazy" decoding="async" class="aspect-[4/3] w-full object-cover" width="800" height="600">
                                 </li>
                             @endforeach
                         </ul>

@@ -4,7 +4,7 @@
     </x-page-hero>
 
     @if($featured)
-        <section class="sec"><div class="wrap">@include('publishing::ideas.tile', ['idea' => $featured, 'big' => true])</div></section>
+        <section class="sec"><div class="wrap"><h2 class="sr">Featured idea</h2>@include('publishing::ideas.tile', ['idea' => $featured, 'big' => true])</div></section>
     @endif
 
     <section class="sec soft"><div class="wrap">

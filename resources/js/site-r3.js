@@ -25,6 +25,7 @@
   doc.addEventListener('click', function (e) {
     var b = e.target.closest('[data-copy-link]');
     if (!b) return;
+    if (b.tagName === 'A') e.preventDefault();
     var url = b.dataset.url ? new URL(b.dataset.url, location.href).href : here;
     var label = b.textContent, done = function () { b.textContent = 'Link copied'; setTimeout(function () { b.textContent = label; }, 1600); };
     if (navigator.clipboard) navigator.clipboard.writeText(url).then(done, done); else done();
@@ -126,6 +127,10 @@
   }
 
   /* ---------- feed: reactions ---------- */
+  function tally(post) {
+    var t = $('[data-total]', post); if (!t) return;
+    t.textContent = $$('[data-react] [data-n]', post).reduce(function (a, c) { return a + (+c.textContent || 0); }, 0);
+  }
   function bindReactions(scope) {
     $$('.post', scope).forEach(function (post) {
       if (post.dataset.bound) return; post.dataset.bound = '1';
@@ -135,7 +140,7 @@
         if (mine[key]) b.setAttribute('aria-pressed', 'true');
         b.addEventListener('click', function () {
           var on = b.getAttribute('aria-pressed') !== 'true', cnt = $('[data-n]', b), n = +cnt.textContent || 0;
-          b.setAttribute('aria-pressed', on); cnt.textContent = Math.max(0, n + (on ? 1 : -1));
+          b.setAttribute('aria-pressed', on); cnt.textContent = Math.max(0, n + (on ? 1 : -1)); tally(post);
           var m = store('di-reacts') || {}; if (on) m[key] = 1; else delete m[key]; store('di-reacts', m);
           if (!url) return;
           b.disabled = true;
@@ -144,9 +149,9 @@
             .then(function (r) { if (!r.ok) throw r; return r.json(); })
             .then(function (d) {
               $$('[data-react]', post).forEach(function (o) { if (d.counts && d.counts[o.dataset.react] !== undefined) $('[data-n]', o).textContent = d.counts[o.dataset.react]; });
-              b.setAttribute('aria-pressed', !!d.reacted);
+              b.setAttribute('aria-pressed', !!d.reacted); tally(post);
             })
-            .catch(function () { b.setAttribute('aria-pressed', !on); cnt.textContent = n; })
+            .catch(function () { b.setAttribute('aria-pressed', !on); cnt.textContent = n; tally(post); })
             .then(function () { b.disabled = false; });
         });
       });

@@ -34,6 +34,7 @@ class PartnerResource extends Resource
     {
         return [
             Field::text('name')->label('Organisation')->required()->half()->onIndex(),
+            Field::select('category')->label('Group')->options(Partner::CATEGORIES)->half(),
             Field::url('website_url')->label('Website')->half(),
             Field::image('logo_path')->label('Logo')->directory('partners')->help('PNG or WebP with a transparent background works best.'),
             Field::boolean('permission_confirmed')->label('Written permission to show this logo has been received')->onIndex()

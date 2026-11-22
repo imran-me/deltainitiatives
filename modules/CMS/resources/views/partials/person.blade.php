@@ -2,7 +2,7 @@
 <li class="group" data-reveal style="--delay: {{ ($loop->index % 4) * 0.06 }}s">
     <div class="relative aspect-[4/5] overflow-hidden rounded-2xl bg-navy-900">
         @if($photo = $member->photoUrl())
-            <img src="{{ $photo }}" alt="{{ $member->name }}" class="h-full w-full object-cover transition duration-700 group-hover:scale-[1.03]" loading="lazy" decoding="async">
+            <img src="{{ $photo }}" alt="{{ $member->name }}" class="h-full w-full object-cover transition duration-700 group-hover:scale-[1.03]" loading="lazy" decoding="async" width="800" height="600">
         @else
             <div class="absolute inset-0 flex items-center justify-center" aria-hidden="true">
                 <svg class="absolute inset-0 h-full w-full opacity-40" viewBox="0 0 200 250" fill="none" preserveAspectRatio="xMidYMid slice"><path d="M100 30 190 230H10L100 30Z" stroke="#1FA2A6" stroke-width=".8"/><path d="M100 80 160 230H40L100 80Z" stroke="#1FA2A6" stroke-width=".6" stroke-opacity=".6"/><path d="M100 60v170M100 120c-12 30-24 70-32 110M100 120c12 30 24 70 32 110" stroke="#4DBABD" stroke-width=".8" stroke-opacity=".7"/></svg>

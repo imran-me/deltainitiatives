@@ -16,7 +16,7 @@ class Partner extends Model
 {
     use HasDemoFlag, Publishable;
 
-    protected $fillable = ['name', 'logo_path', 'website_url', 'permission_confirmed', 'permission_note', 'sort_order', 'is_published', 'is_demo'];
+    protected $fillable = ['name', 'category', 'logo_path', 'website_url', 'permission_confirmed', 'permission_note', 'sort_order', 'is_published', 'is_demo'];
 
     protected function casts(): array
     {
@@ -31,6 +31,16 @@ class Partner extends Model
                 Storage::disk('public')->delete($partner->logo_path);
             }
         });
+    }
+
+    public const CATEGORIES = ['global' => 'Global', 'government' => 'Government', 'industry' => 'Industry', 'academia' => 'Academia'];
+
+    public function monogram(): string
+    {
+        $w = preg_split('/\s+/', trim($this->name)) ?: [];
+        $m = '';
+        foreach ($w as $x) { if (preg_match('/^\p{L}/u', $x)) { $m .= mb_strtoupper(mb_substr($x, 0, 1)); } if (mb_strlen($m) >= 2) { break; } }
+        return $m ?: 'Δ';
     }
 
     /** Published AND permission confirmed. */

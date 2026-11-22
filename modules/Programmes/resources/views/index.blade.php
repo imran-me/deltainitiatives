@@ -84,7 +84,7 @@
                             <li @class(['group relative overflow-hidden rounded-2xl bg-navy-100', 'col-span-2 row-span-2' => $loop->first]) data-reveal style="--delay: {{ ($loop->index % 4) * 0.06 }}s">
                                 <a href="{{ route('events.show', $photo->event) }}" class="block h-full">
                                     <img src="{{ $photo->url() }}" alt="{{ $photo->caption ?: $photo->event->title }}" loading="lazy" decoding="async"
-                                         class="aspect-[4/3] h-full w-full object-cover transition duration-700 group-hover:scale-[1.03]">
+                                         class="aspect-[4/3] h-full w-full object-cover transition duration-700 group-hover:scale-[1.03]" width="800" height="600">
                                     <span class="absolute inset-x-0 bottom-0 bg-linear-to-t from-navy-950/85 to-transparent p-4 pt-10 text-sm text-white">
                                         <span class="block font-medium">{{ $photo->event->title }}</span>
                                         @if($photo->caption)<span class="mt-0.5 block text-xs text-white/70">{{ $photo->caption }}</span>@endif

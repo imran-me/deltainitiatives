@@ -870,3 +870,14 @@ main .bg-river-500.rounded-full:hover{background:var(--teal-h)}
   .form input,.form select,.form textarea{min-height:44px;font-size:16px}
   .row2{grid-template-columns:1fr!important}
 }
+
+/* round 6: feed cards, people, partners, error pages */
+.post-av{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;border:2px solid var(--teal);background:var(--white);flex:none;overflow:hidden}.post-av svg{width:26px;height:26px}
+.post .post-pic{margin:0 calc(var(--s3) * -1);border-radius:0}.post-stats{font-size:.85rem;color:var(--muted);margin:6px 0}.post-stats b{color:var(--ink)}
+.post .post-body{margin-top:4px}a.share-copy{margin-left:auto;font-weight:600;color:var(--teal-d);text-decoration:none;padding:6px 10px}
+.top-strip{display:flex;gap:var(--s3);overflow-x:auto;padding:var(--s2) 0;list-style:none;margin:0}.top-strip a{display:flex;flex-direction:column;align-items:center;gap:6px;text-decoration:none;color:var(--ink);min-width:96px;text-align:center;font-size:.85rem}.top-strip .av{width:64px;height:64px;font-size:1.1rem}.top-strip small{color:var(--muted)}
+.team-grid .pcard{align-items:center;text-align:center}.team-grid .pcard .av{width:84px;height:84px;font-size:1.5rem}
+.pgroup{margin-bottom:var(--s5)}.pgroup h3{font-size:1.05rem;margin-bottom:var(--s2);padding-left:10px;border-left:4px solid #006A4E}.pgroup:nth-of-type(2n) h3{border-left-color:#F42A41}
+.slot-mono{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:var(--wash);color:var(--navy);font:600 1.1rem var(--sans);letter-spacing:.04em}
+.slot-logo{max-height:56px;width:auto;max-width:100%;object-fit:contain}
+.err-search{display:flex;gap:8px;max-width:520px;margin:var(--s3) 0}.err-search input{flex:1;padding:12px 14px;border:1px solid var(--line);border-radius:var(--r)}

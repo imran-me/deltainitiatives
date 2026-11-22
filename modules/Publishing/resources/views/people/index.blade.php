@@ -3,7 +3,7 @@
 
     <section class="sec"><div class="wrap">
         <div class="row-head"><div><div class="eyebrow">Leadership</div><h2>Team</h2></div></div>
-        <div class="grid g3 trio">
+        <div class="grid g4 team-grid">
             @foreach($team as $i => $person)
                 <a class="pcard rv" href="{{ route('people.show', $person) }}"><x-publishing::avatar :person="$person" :i="$i" /><b>{{ $person->name }}</b><span>{{ \Illuminate\Support\Str::limit((string) $person->bio, 60) }}</span></a>
             @endforeach
@@ -12,10 +12,18 @@
 
     <section class="sec soft" id="contributors"><div class="wrap">
         <div class="row-head"><div><div class="eyebrow">Leaderboard</div><h2>Top contributors</h2></div><a class="more-a" href="{{ localized_route('ideas.create') }}#recognition">How titles work →</a></div>
+        @unless($leaderboard->isEmpty())
+            <ul class="top-strip" aria-label="Top contributors">
+                @foreach($leaderboard->take(6) as $n => $row)
+                    <li><a href="{{ route('people.show', $row['person']) }}"><x-publishing::avatar :person="$row['person']" :i="$n" /><b>{{ $row['person']->name }}</b><small>{{ number_format($row['points']) }} pts</small></a></li>
+                @endforeach
+            </ul>
+            <p><a class="more-a" href="#leaderboard">See the full leaderboard ↓</a></p>
+        @endunless
         @if($leaderboard->isEmpty())
             <p class="empty">No contributors yet.</p>
         @else
-            <ol class="lboard">
+            <ol class="lboard" id="leaderboard">
                 @foreach($leaderboard as $n => $row)
                     <li class="rv"><span class="rank">{{ $n + 1 }}</span><x-publishing::avatar :person="$row['person']" :i="$n" />
                         <div><a href="{{ route('people.show', $row['person']) }}"><b>{{ $row['person']->name }}</b></a><span>{{ $row['person']->initiatorTitle() ?? $row['person']->role }}</span></div>
