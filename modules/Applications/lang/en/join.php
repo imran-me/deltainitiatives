@@ -132,7 +132,7 @@ return [
         'hints' => [
             'skills' => 'Research, design, coding, writing, event organising, languages… anything useful.',
             'motivation' => 'A problem you care about, what you hope to learn or build, and what you would bring. At least 50 characters.',
-            'linkedin_url' => 'https://www.linkedin.com/in/…',
+            'linkedin_url' => 'https://www.linkedin.com/in/your-name',
             'cv_choose' => 'Choose a PDF or drop it here',
             'cv' => 'Optional · PDF only · up to 5 MB',
             'cv_too_big' => 'The CV must be 5 MB or smaller.',

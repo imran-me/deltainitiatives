@@ -1,5 +1,5 @@
 <x-layouts.public title="People" description="Team, top contributors and the Board of Delta Initiatives.">
-    <x-page-hero eyebrow="People" title="The people who make it move." intro="Team, contributors, experts and board." />
+    <x-page-hero eyebrow="People" title="The people who make it move." intro="Team, contributors, experts and board. Founded in 2026 by Md Imran Hossain. Headquartered in Uttara Sector 10, Dhaka." />
 
     <section class="sec"><div class="wrap">
         <div class="row-head"><div><div class="eyebrow">Leadership</div><h2>Team</h2></div></div>

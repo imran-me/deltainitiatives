@@ -61,7 +61,7 @@ class PartnershipsTest extends TestCase
         $this->assertSame(PartnershipType::query()->where('slug', 'industry-corporate')->value('id'), $inquiry->partnership_type_id);
 
         Mail::assertQueued(PartnerInquiryAcknowledgement::class, fn ($mail) => $mail->hasTo('nusrat@padma.example.com'));
-        Mail::assertQueued(PartnerInquiryAlert::class, fn ($mail) => $mail->hasTo('partners@deltainitiatives.com'));
+        Mail::assertQueued(PartnerInquiryAlert::class, fn ($mail) => $mail->hasTo('deltainitiativesbd@gmail.com'));
     }
 
     public function test_mails_render(): void

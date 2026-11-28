@@ -2,6 +2,7 @@
     $reasons = [
         ['users', 'Talent and ideas from across Bangladesh', 'Reach students and young researchers in universities nationwide through the Delta Challenge, our Fellows and campus ambassadors.'],
         ['landmark', 'Evidence that travels into policy', 'Delta Policy turns what teams learn into briefs and dialogues that reach the people who make decisions.'],
+        ['cpu', 'Solutions built with Delta Build', 'Delta Build engineers AI-first, research-backed solutions with organisations, from first idea to working product.'],
         ['flask-conical', 'Co-designed pilots in Delta Labs', 'Shape prototypes around your real constraints, then test them with real users before anyone scales.'],
         ['award', 'A visible commitment to youth innovation', 'Stand behind the next generation of Bangladeshi problem-solvers — with transparent reporting at every stage.'],
     ];

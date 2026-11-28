@@ -21,11 +21,11 @@
 <footer class="ftr"><div class="wrap"><div class="ftr-grid">
     <div>
         <a class="logo" href="{{ route('home') }}">
-            <svg width="38" height="38" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 4 37 35H3Z" fill="none" stroke="#0B1F3A" stroke-width="3" stroke-linejoin="round"/><path d="M20 14v21M20 22l-8 13M20 22l8 13" stroke="#1FA2A6" stroke-width="2.4" stroke-linecap="round"/><circle cx="20" cy="12" r="2.6" fill="#C9A227"/></svg>
-            <span><b>Delta Initiatives</b><small>Research · Innovation · Policy</small></span>
+            <img src="{{ asset('images/brand/delta-initiatives-logo.svg') }}" width="134" height="52" alt="Delta Initiatives" loading="lazy" decoding="async">
         </a>
         <p class="bn ftr-bn" lang="bn">আমরা আইডিয়া দিই না — আমরা আইডিয়াকে বাস্তবে রূপ দিই</p>
-        <p class="hint">An independent research, innovation and policy institute from the world’s largest delta.</p>
+        <p class="hint">Delta Initiatives is a youth-led think tank, research and venture studio from Bangladesh. We research problems, then engineer the solutions.</p>
+        <p class="hint">{{ setting('contact_address') }}</p>
         <p class="hint"><a href="mailto:{{ setting('contact_email') }}">{{ setting('contact_email') }}</a>@if($phone = setting('contact_phone')) · <a href="tel:{{ preg_replace('/[^0-9+]/', '', $phone) }}">{{ $phone }}</a>@endif</p>
         @if($socials)
             <p class="hint">@foreach($socials as $label => $url)<a href="{{ $url }}" target="_blank" rel="noopener noreferrer">{{ $label }}</a>@if(! $loop->last) · @endif @endforeach</p>

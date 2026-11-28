@@ -956,3 +956,9 @@ input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-vi
 /* gallery: grid with fixed aspect ratios instead of multi-column reflow (lazy images no longer re-flow the page) */
 .masonry{columns:auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,280px),1fr));gap:var(--s2)}
 .masonry .g-item{margin:0}.masonry .g-item .pic img{aspect-ratio:4/3;object-fit:cover;width:100%;height:auto}
+
+/* Round 14: brand palette from Delta-Initiatives-Brand-Guidelines-v3 (navy, flag green, red accent, powder blue). */
+:root{--navy:#0A1F4E;--ink:#0A1F4E;--teal:#006A4E;--teal-h:#005A42;--teal-d:#00553E;--teal-on-navy:#7FD3B5;--gold:#F42A41;--gold-text:#B3122A;--mist:#DCE8F7;--wash:#DCE8F7;--paper:#F5F8FC;--bd-green:#006A4E;--bd-red:#F42A41}
+.logo img{height:44px;width:auto}
+.arms-grid .card h3{color:var(--navy)}
+.eon-news img{width:100%;height:auto;border-radius:var(--r-s)}

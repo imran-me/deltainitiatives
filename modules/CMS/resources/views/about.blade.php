@@ -1,9 +1,16 @@
 {{-- Generated from the Delta v3 design (deltainitiatives-v3/_build.py). Edit there, then re-run port.py. --}}
-<x-layouts.public :title="'About'" :description="'Mission, independence and ethics, governance and fellowships at Delta Initiatives.'">
+<x-layouts.public :title="'About'" :description="'Delta Initiatives is a youth-led think tank, research and venture studio from Bangladesh, founded in 2026. We research problems, then engineer the solutions.'">
 <section class="phead"><svg class="contours" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#E6F5F5" stroke-width="1.2"><path d="M-50 120C300 60 520 200 820 150S1300 90 1500 160"/><path d="M-50 190C300 130 520 264 820 216S1300 162 1500 230"/><path d="M-50 260C300 200 520 328 820 282S1300 234 1500 300"/><path d="M-50 330C300 270 520 392 820 348S1300 306 1500 370"/><path d="M-50 400C300 340 520 456 820 414S1300 378 1500 440"/><path d="M-50 470C300 410 520 520 820 480S1300 450 1500 510"/><path d="M-50 540C300 480 520 584 820 546S1300 522 1500 580"/><path d="M-50 610C300 550 520 648 820 612S1300 594 1500 650"/><path d="M-50 680C300 620 520 712 820 678S1300 666 1500 720"/><path d="M-50 750C300 690 520 776 820 744S1300 738 1500 790"/></g></svg><div class="wrap phead-in"><div>
 <nav class="crumb" aria-label="Breadcrumb"><a href="{{ route('home') }}">Home</a> / About</nav>
-<div class="eyebrow">About</div><h1 class="" data-bn="কাজের মানুষদের প্রতিষ্ঠান।">An institute for <em>doers</em>.</h1><p class="lead">Delta Initiatives is an independent research, innovation and policy institute. We exist so that the best ideas of young Bangladeshis are judged on evidence and carried to implementation.</p>
+<div class="eyebrow">About</div><h1 class="" data-bn="কাজের মানুষদের প্রতিষ্ঠান।">An institute for <em>doers</em>.</h1><p class="lead">Delta Initiatives is a youth-led think tank, research and venture studio from Bangladesh. We research problems, then engineer the solutions. We work through four arms: Delta Labs, Delta Build, Delta Policy and the Delta Challenge. Founded in 2026 by Md Imran Hossain. Headquartered in Uttara Sector 10, Dhaka.</p>
 <div class="btns phead-btns"><a class="btn pri" href="#careers">Join a fellowship</a><a class="btn ghost" href="{{ route('press') }}">Press kit</a></div></div></div></section>
+<section class="sec"><div class="wrap"><div class="eyebrow">Our arms</div><h2>Four arms, one pipeline.</h2>
+<div class="grid g4 arms-grid">
+<div class="card rv"><h3>Delta Labs</h3><p>Research and prototypes.</p></div>
+<div class="card rv"><h3>Delta Build</h3><p>AI-first, research-backed solutions with organisations, from first idea to working product.</p></div>
+<div class="card rv"><h3>Delta Policy</h3><p>Evidence briefs for decision-makers.</p></div>
+<div class="card rv"><h3>Delta Challenge</h3><p>An open national challenge for young innovators.</p></div>
+</div></div></section>
 <section class="sec"><div class="wrap"><div class="eyebrow">The mandate</div><div class="mandate">
 <div class="rv"><b>Mission</b><p>Turn the ideas of young Bangladeshis into implemented solutions.</p></div>
 <div class="rv"><b>Vision</b><p>A country where any curious mind can reach the people who decide.</p></div>

@@ -33,7 +33,7 @@ class LegalPages
                 'body' => self::DRAFT_NOTE.<<<'MD'
 ## Who we are
 
-Delta Initiatives ("we", "us") is a research, innovation and policy institute based in Dhaka, Bangladesh. This policy explains how we handle personal information collected through **deltainitiatives.com**. Questions can be sent to **hello@deltainitiatives.com**.
+Delta Initiatives ("we", "us") is a research, innovation and policy institute based in Dhaka, Bangladesh. This policy explains how we handle personal information collected through **deltainitiatives.com**. Questions can be sent to **deltainitiativesbd@gmail.com**.
 
 ## What we collect
 
@@ -71,7 +71,7 @@ We use trusted service providers to run the website: **Hostinger** (hosting and 
 
 ## Your choices and rights
 
-You can ask us to **see, correct or delete** the information we hold about you, or **withdraw your consent**, by e-mailing hello@deltainitiatives.com. Every newsletter e-mail includes a one-click unsubscribe link.
+You can ask us to **see, correct or delete** the information we hold about you, or **withdraw your consent**, by e-mailing deltainitiativesbd@gmail.com. Every newsletter e-mail includes a one-click unsubscribe link.
 
 ## Security
 
@@ -133,7 +133,7 @@ These terms are governed by the laws of Bangladesh, and the courts of Dhaka have
 
 ## Contact
 
-Questions about these terms: **hello@deltainitiatives.com**.
+Questions about these terms: **deltainitiativesbd@gmail.com**.
 MD,
             ],
 
@@ -190,7 +190,7 @@ If your idea is selected for Delta Labs, we will agree a separate written agreem
 
 ## 8. Withdrawing
 
-You can withdraw your submission at any time by e-mailing **ideas@deltainitiatives.com** with your Idea ID. We will delete your answers and files and keep only the minimal record — Idea ID, timestamp and fingerprint — so that proof of your submission remains available to you.
+You can withdraw your submission at any time by e-mailing **deltainitiativesbd@gmail.com** with your Idea ID. We will delete your answers and files and keep only the minimal record — Idea ID, timestamp and fingerprint — so that proof of your submission remains available to you.
 
 ## 9. Personal data
 

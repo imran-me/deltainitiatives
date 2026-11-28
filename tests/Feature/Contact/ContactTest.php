@@ -38,11 +38,9 @@ class ContactTest extends TestCase
     {
         $this->get(route('contact.create'))
             ->assertOk()
-            ->assertSee('hello@deltainitiatives.com')
-            ->assertSee('ideas@deltainitiatives.com')
-            ->assertSee('partners@deltainitiatives.com')
-            ->assertDontSee('tel:', false)
-            ->assertDontSee('Follow our work');
+            ->assertSee('deltainitiativesbd@gmail.com')
+            ->assertSee('tel:+8801641606561', false)
+            ->assertSee('Follow our work');
     }
 
     public function test_phone_and_social_links_appear_once_configured(): void

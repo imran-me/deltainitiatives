@@ -16,7 +16,7 @@ class ContentTest extends TestCase
 
     public function test_static_content_was_moved_into_the_database(): void
     {
-        $this->assertSame(7, Article::query()->count());
+        $this->assertSame(8, Article::query()->count()); // 7 moved + the round 14 EON news entry
         $this->assertSame(11, PublicIdea::query()->count());
         $this->assertTrue(PublicIdea::query()->where('slug', 'eon')->where('is_featured', true)->where('is_demo', false)->exists());
         $this->assertGreaterThan(10, Person::query()->count());

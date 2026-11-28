@@ -1,10 +1,18 @@
-<x-layouts.public title="EON: an executive AI layer for business" description="EON sits on top of a business ERP. Ask in Bangla, English or Banglish, by voice or text, and get the numbers, the reason and the recommended action.">
-    <x-page-hero eyebrow="Flagship project" title="EON" bangla="ইওন" intro="An executive AI layer on top of your ERP. Ask a question out loud; get the numbers, the reason and the next action.">
+<x-layouts.public title="EON: an executive AI layer for business" description="EON is an offline, AI-powered BI assistant with an independent reasoning layer. Top 20 finalist at the Bangladesh AI Business Summit 2026. Bangla, English or Banglish.">
+    <x-page-hero eyebrow="Flagship project" title="EON" bangla="ইওন" intro="An offline, AI-powered BI assistant on top of your ERP, with an independent reasoning layer and no outbound API calls. Ask in Bangla, English or Banglish; get the numbers, the reason and the next action.">
         <a class="btn pri" href="{{ route('partners', ['service' => 'business-systems', 'topic' => 'eon-pilot']) }}#talk">Join the pilot</a>
         <a class="btn ghost" href="{{ route('public-ideas.show', 'eon') }}">Read the EON idea</a>
     <x-slot:visual>@include('cms::partials.eon-hero-diagram')</x-slot:visual>
     </x-page-hero>
 
+    <section class="sec"><div class="wrap">
+        <div class="eyebrow">News · November 2026</div><h2>Top 20 finalist at the Bangladesh AI Business Summit 2026.</h2>
+        <p class="lead">Team EON was selected among the Top 20 finalists and showcased EON at the Bangladesh AI Business Summit 2026 in Dhaka. EON runs offline: its own reasoning layer works without outbound API calls, so business data stays on site.</p>
+        <div class="grid g2 eon-news">
+            <figure class="card rv"><img src="{{ asset('images/eon/eon-summit-booth.webp') }}" width="484" height="364" loading="lazy" decoding="async" alt="Team EON at its booth at the Bangladesh AI Business Summit 2026"><figcaption class="hint">Team EON at the booth, Bangladesh AI Business Summit 2026.</figcaption></figure>
+            <figure class="card rv"><img src="{{ asset('images/eon/eon-summit-demo.webp') }}" width="484" height="364" loading="lazy" decoding="async" alt="A visitor tries EON on a phone at the summit"><figcaption class="hint">A live EON demo at the summit.</figcaption></figure>
+        </div>
+    </div></section>
     <section class="sec"><div class="wrap">
         <div class="eyebrow">The problem</div><h2>Owners wait for reports.</h2>
         <div class="grid g3 eon-prob">
@@ -32,7 +40,7 @@
             </svg>
             <figcaption class="hint">Diagram of the design as intended. EON is in the validation stage.</figcaption>
         </figure>
-        <ol class="list-num rv"><li>Answer with the numbers, the rule applied and the recommended action.</li><li>Never save or send anything without the user’s confirmation.</li><li>Keep working when a server or language model is unavailable.</li></ol>
+        <ol class="list-num rv"><li>Answer with the numbers, the rule applied and the recommended action.</li><li>Never save or send anything without the user’s confirmation.</li><li>Run offline, with an independent reasoning layer and no outbound API calls.</li></ol>
     </div></section>
 
     <section class="sec"><div class="wrap">

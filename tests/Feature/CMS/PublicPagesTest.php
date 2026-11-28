@@ -23,7 +23,7 @@ class PublicPagesTest extends TestCase
         $this->get('/')
             ->assertOk()
             ->assertSee('Engineering Change')
-            ->assertSee('solutions</em> the world can implement', false)
+            ->assertSee('engineer the solutions</em>', false)
             ->assertSee('What we build')
             ->assertSee('Featured ideas')
             ->assertSee('EON: one brain, many decision layers for business')

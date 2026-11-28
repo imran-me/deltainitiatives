@@ -32,7 +32,10 @@
         'url' => url('/'),
         'logo' => asset('images/logo-square.png'),
         'email' => setting('contact_email'),
-        'address' => ['@type' => 'PostalAddress', 'addressLocality' => 'Dhaka', 'addressCountry' => 'BD'],
+        'telephone' => setting('contact_phone'),
+        'foundingDate' => '2026',
+        'founder' => ['@type' => 'Person', 'name' => 'Md Imran Hossain'],
+        'address' => ['@type' => 'PostalAddress', 'streetAddress' => 'Uttara Sector 10', 'addressLocality' => 'Dhaka', 'addressCountry' => 'BD'],
         'sameAs' => array_values(array_filter([setting('social_linkedin'), setting('social_facebook'), setting('social_x'), setting('social_youtube'), setting('social_instagram')])),
     ];
     $isHome = request()->routeIs('home', 'bn.home');

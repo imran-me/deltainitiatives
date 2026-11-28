@@ -27,8 +27,7 @@
 @endphp
 <header class="hdr"><div class="wrap">
     <a class="logo" href="{{ route('home') }}" aria-label="{{ setting('site_name', 'Delta Initiatives') }}, home">
-        <svg width="38" height="38" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 4 37 35H3Z" fill="none" stroke="#0B1F3A" stroke-width="3" stroke-linejoin="round"/><path d="M20 14v21M20 22l-8 13M20 22l8 13" stroke="#1FA2A6" stroke-width="2.4" stroke-linecap="round"/><circle cx="20" cy="12" r="2.6" fill="#C9A227"/></svg>
-        <span><b>Delta Initiatives</b><small>Engineering Change</small></span>
+        <img src="{{ asset('images/brand/delta-initiatives-logo.svg') }}" width="134" height="52" alt="Delta Initiatives" decoding="async" fetchpriority="high">
     </a>
     <div class="tools-m">
         <button class="icon-btn" type="button" data-open-search aria-label="Search">{!! $searchIcon !!}</button>
