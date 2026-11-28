@@ -167,7 +167,7 @@ class CMSSeeder extends Seeder
 
     protected function team(): void
     {
-        if (TeamMember::query()->exists()) {
+        if (TeamMember::query()->where('is_demo', true)->exists()) {
             return;
         }
 

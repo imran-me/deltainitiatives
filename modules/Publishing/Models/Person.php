@@ -30,6 +30,16 @@ class Person extends Model
         return $this->hasMany(PublicIdea::class);
     }
 
+    /** Committed photos live in public/images/; uploads on the public disk. */
+    public function photoUrl(): ?string
+    {
+        if (! $this->photo_path) {
+            return null;
+        }
+
+        return str_starts_with($this->photo_path, 'images/') ? asset($this->photo_path) : \Illuminate\Support\Facades\Storage::disk('public')->url($this->photo_path);
+    }
+
     public function initials(): string
     {
         $words = preg_split('/\s+/', trim((string) preg_replace('/[^\pL\s]/u', ' ', $this->name))) ?: [];

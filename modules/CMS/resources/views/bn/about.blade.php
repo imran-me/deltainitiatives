@@ -2,6 +2,7 @@
 <section class="phead"><div class="wrap phead-in"><div>
 <nav class="crumb" aria-label="Breadcrumb"><a href="{{ route('bn.home') }}">হোম</a> / আমাদের সম্পর্কে</nav>
 <h1>তরুণ মেধা থেকে <em>বাস্তব সমাধান</em>।</h1><p class="lead">ডেল্টা ইনিশিয়েটিভস বাংলাদেশের তরুণ-নেতৃত্বাধীন থিংক ট্যাংক, গবেষণা ও ভেঞ্চার স্টুডিও। আমরা সমস্যা নিয়ে গবেষণা করি, তারপর সমাধান গড়ে তুলি। আমাদের চারটি শাখা: ডেল্টা ল্যাবস, ডেল্টা বিল্ড, ডেল্টা পলিসি ও ডেল্টা চ্যালেঞ্জ। ২০২৬ সালে প্রতিষ্ঠা করেন মো. ইমরান হোসেন। প্রধান কার্যালয়: উত্তরা সেক্টর ১০, ঢাকা।</p></div></div></section>
+<section class="sec"><div class="wrap"><div class="eyebrow">প্রতিষ্ঠাতা</div><div class="card rv founder-card"><img class="av av-photo" src="{{ asset('images/people/md-imran-hossain.webp') }}" width="600" height="600" alt="মো. ইমরান হোসেন" loading="lazy" decoding="async"><h2>মো. ইমরান হোসেন</h2><p>প্রতিষ্ঠাতা, ডেল্টা ইনিশিয়েটিভস</p><p class="hint">এপাল গ্রুপের এআই, স্ট্র্যাটেজি ও রিসার্চ প্রধান। কাজ করেন এআই ও আইওটি, প্রযুক্তি ও ব্যবসায়িক কৌশল, গবেষণা এবং নতুন উদ্যোগ গড়ার ক্ষেত্রে; বাংলাদেশে সামাজিক ও নাগরিক কাজে দীর্ঘদিন যুক্ত। <a href="https://www.linkedin.com/in/msgimran/" target="_blank" rel="noopener noreferrer">LinkedIn</a></p></div></div></section>
 <section class="sec"><div class="wrap"><div class="eyebrow">আমাদের শাখা</div><h2>চারটি শাখা, একটি পথ।</h2>
 <div class="grid g4 arms-grid">
 <div class="card rv"><h3>ডেল্টা ল্যাবস</h3><p>গবেষণা ও প্রোটোটাইপ।</p></div>

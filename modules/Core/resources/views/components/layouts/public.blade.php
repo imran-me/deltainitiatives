@@ -91,9 +91,10 @@
     @endif
 
     <link rel="alternate" type="application/atom+xml" title="{{ $siteName }} Insights" href="{{ route('insights.feed') }}">
-    <link rel="icon" href="{{ asset('favicon.svg') }}" type="image/svg+xml">
-    <link rel="icon" href="{{ asset('favicon.ico') }}" sizes="32x32">
-    <link rel="apple-touch-icon" href="{{ asset('apple-touch-icon.png') }}">
+    <link rel="icon" href="{{ asset('favicon.svg') }}?v=20261128" type="image/svg+xml">
+    <link rel="icon" href="{{ asset('images/favicon-32.png') }}?v=20261128" type="image/png" sizes="32x32">
+    <link rel="icon" href="{{ asset('favicon.ico') }}?v=20261128" sizes="16x16 32x32 48x48">
+    <link rel="apple-touch-icon" href="{{ asset('apple-touch-icon.png') }}?v=20261128">
 
     <script nonce="{{ \Illuminate\Support\Facades\Vite::cspNonce() }}">document.documentElement.classList.add('js')</script>
     @vite(['resources/css/app.css', 'resources/css/site.css', 'resources/js/app.js', 'resources/js/site.js'])

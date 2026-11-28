@@ -53,6 +53,12 @@ class Library
             ];
         }
 
+        if ($uploadedPath && str_starts_with($uploadedPath, 'images/') && is_file(public_path($uploadedPath))) {
+            [$w, $h] = @getimagesize(public_path($uploadedPath)) ?: [1600, 1000];
+
+            return ['src' => asset($uploadedPath), 'srcset' => '', 'width' => $w, 'height' => $h, 'alt' => $alt !== '' ? $alt : 'Photo from Delta Initiatives'];
+        }
+
         if ($uploadedPath) {
             return ['src' => Storage::disk('public')->url($uploadedPath), 'srcset' => '', 'width' => 1600, 'height' => 1000, 'alt' => $alt];
         }

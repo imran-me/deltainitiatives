@@ -962,3 +962,5 @@ input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-vi
 .logo img{height:44px;width:auto}
 .arms-grid .card h3{color:var(--navy)}
 .eon-news img{width:100%;height:auto;border-radius:var(--r-s)}
+.av.av-photo{object-fit:cover;padding:0;background:var(--mist)}
+.founder-card .av-photo{width:96px;height:96px;margin-bottom:16px}

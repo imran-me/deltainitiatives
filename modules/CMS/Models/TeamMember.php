@@ -27,6 +27,10 @@ class TeamMember extends Model
 
     public function photoUrl(): ?string
     {
-        return $this->photo_path ? Storage::disk('public')->url($this->photo_path) : null;
+        if (! $this->photo_path) {
+            return null;
+        }
+
+        return str_starts_with($this->photo_path, 'images/') ? asset($this->photo_path) : Storage::disk('public')->url($this->photo_path);
     }
 }

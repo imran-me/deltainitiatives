@@ -14,7 +14,7 @@ class SampleLabelTest extends TestCase
     public function test_every_seeded_person_is_flagged_demo(): void
     {
         $this->assertGreaterThan(0, Person::count());
-        $this->assertSame(0, Person::where('is_demo', false)->count());
+        $this->assertSame(0, Person::where('is_demo', false)->where('slug', '!=', 'md-imran-hossain')->count()); // the founder (round 15) is real
     }
 
     /** Each person card (an element containing the name) must carry a Sample tag. */
