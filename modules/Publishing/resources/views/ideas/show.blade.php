@@ -35,7 +35,7 @@
         @endif
         @if($idea->person)
             <h2>Initiator</h2>
-            <a class="pcard person-link" href="{{ route('people.show', $idea->person) }}"><x-publishing::avatar :person="$idea->person" /><b>{{ $idea->person->name }}</b><span>{{ $idea->person->initiatorTitle() ?? $idea->person->role }}</span></a>
+            <a class="pcard person-link" href="{{ route('people.show', $idea->person) }}"><x-publishing::avatar :person="$idea->person" /><b>{{ $idea->person->name }}</b><span>{{ $idea->person->initiatorTitle() ?? $idea->person->role }}</span>@if($idea->person->is_demo)<span class="sample">Sample</span>@endif</a>
         @endif
         <h2>On the record</h2>
         <dl class="dl dl-s"><dt>Idea ID</dt><dd class="mono">{{ $idea->code }}</dd><dt>Protected</dt><dd class="mono">{{ $idea->protected_at?->format('Y-m-d') }}</dd>

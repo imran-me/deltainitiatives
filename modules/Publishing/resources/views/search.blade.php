@@ -1,7 +1,7 @@
 <x-layouts.public title="Search" description="Search ideas, insights, services and people." :noindex="true">
     <x-page-hero eyebrow="Search" title="Find anything.">
         <form class="search-form" method="GET" action="{{ route('search') }}" role="search">
-            <input type="search" name="q" value="{{ $q }}" placeholder="Search ideas, insights, services, people" aria-label="Search" maxlength="80" autofocus>
+            <input type="search" name="q" value="{{ $q }}" placeholder="Search the site" aria-label="Search" maxlength="80" autofocus>
             <button class="btn pri" type="submit">Search</button>
         </form>
     </x-page-hero>

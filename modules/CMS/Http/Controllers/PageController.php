@@ -23,7 +23,23 @@ class PageController extends Controller
             'stats' => Stat::forHomepage(),
             'partners' => Partner::query()->displayable()->ordered()->get(),
             'numbers' => $this->liveNumbers(),
+            'faces' => $this->faces(),
         ]);
+    }
+
+    /** Published contributors for the home strip (pinned top contributors first). */
+    private function faces(): \Illuminate\Support\Collection
+    {
+        try {
+            $rows = \Modules\Publishing\Models\Person::query()->published()->ordered()->where('kind', 'contributor')
+                ->with(['ideas' => fn ($q) => $q->visible()->withCount('votes')])->get()
+                ->map(fn ($p) => ['person' => $p, 'points' => $p->points()])->sortByDesc('points')->values();
+            $pinned = $rows->filter(fn ($r) => $r['person']->is_top_contributor)->values();
+
+            return ($pinned->isNotEmpty() ? $pinned : $rows)->take(6);
+        } catch (\Throwable) {
+            return collect();
+        }
     }
 
     /** Live counts for the home numbers band; any failure falls back to a sensible figure. */
@@ -36,7 +52,7 @@ class PageController extends Controller
 
         return [
             'ideas' => $count(fn () => \Modules\IdeaPortal\Models\IdeaSubmission::query()->where('is_demo', false)->count()),
-            'contributors' => $count(fn () => \Modules\Publishing\Models\Person::query()->where('is_published', true)->count()),
+            'contributors' => $count(fn () => \Modules\Publishing\Models\Person::query()->where('is_published', true)->where('is_demo', false)->count()),
             'partners' => $count(fn () => Partner::query()->displayable()->count()),
             'projects' => $count(fn () => \Modules\Programmes\Models\Programme::query()->count()),
         ];

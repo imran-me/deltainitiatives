@@ -942,3 +942,17 @@ input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-vi
 .bcell p{margin:0;line-height:1.8}
 .pgroup .slots{grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr))}
 @media (max-width:640px){.pgroup .slots{grid-template-columns:1fr}.pgroup .slot{padding:var(--s3)}}
+
+/* Round 13: mobile rhythm, search placeholders, stable gallery grid */
+.cmdk-in input,.search-form input,.field-control{text-overflow:ellipsis}
+@media (max-width:760px){
+:root{--sec:48px}
+.sec{padding:var(--sec) 0}
+.row-head{margin-bottom:var(--s3);gap:var(--s1)}
+.sec-head{margin-bottom:24px}
+.cmdk-in{padding:12px 14px;gap:8px}.cmdk-in input{font-size:1rem}
+.search-form input::placeholder,.cmdk-in input::placeholder{font-size:.9rem}
+}
+/* gallery: grid with fixed aspect ratios instead of multi-column reflow (lazy images no longer re-flow the page) */
+.masonry{columns:auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,280px),1fr));gap:var(--s2)}
+.masonry .g-item{margin:0}.masonry .g-item .pic img{aspect-ratio:4/3;object-fit:cover;width:100%;height:auto}
